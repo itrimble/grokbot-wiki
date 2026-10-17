@@ -1,0 +1,18 @@
+flowchart LR
+  subgraph Box["Box (shared Debian x86_64 VM)"]
+    Bots["17 active Grok Bots"]
+    CLIs["claude, codex, hermes, swift, xtool"]
+  end
+  subgraph Tailnet["Tailnet (box joined, userspace)"]
+    Mini["Mac mini: ~/projects, Xcode, oMLX, Ollama"]
+    MBP["MacBook Pro (M4 Max)"]
+    Neo["The Neo"]
+    Omarchy["AMD dev PC (omarchy): strongest for coding + local AI"]
+    NAS["NAS (backup mirror; all edits allowed)"]
+  end
+  Box -- "tssh mini/mbp/neo (SSH 22)" --> Mini
+  Box -- "oMLX HTTPS 443, tailnet only" --> Mini
+  Box -. "SSH 22" .-> MBP
+  Box -. "SSH 22" .-> Neo
+  Box -. "tailnet: omarchy-ai" .-> Omarchy
+  Bots -- "desktop connector, mac-mini-files" --> Mini
