@@ -21,12 +21,23 @@ const pages=files.map(rel=>{
   let slug=rel.replace(/\.md$/,"").replace(/\/SKILL$/,"").toLowerCase();
   if(rel==="README.md") slug="index-readme";
   // mermaid -> placeholder div (client renders), keep source escaped
-  let body=raw.replace(/```mermaid\n([\s\S]*?)```/g,(m,code)=>`\n<div class="mermaid">${esc(code)}</div>\n`);
+  // Architecture is pro-only: its mermaid blocks are linked as text below, not rendered inline
+  let body=rel==="ARCHITECTURE.md" ? raw.replace(/```mermaid\n[\s\S]*?```/g,"\n*Mermaid source for this section is linked under \u201cMermaid source renders\u201d below \u2014 not rendered on this page.*\n") : raw.replace(/```mermaid\n([\s\S]*?)```/g,(m,code)=>`\n<div class="mermaid">${esc(code)}</div>\n`);
   // Fix relative .md links to wiki routes
   body=body.replace(/\]\(([^)]+?)\.md(#[^)]*)?\)/g,(m,p,anchor)=>`](/${p.toLowerCase().replace(/\/skill$/,"")}/${anchor||""})`);
   let html=marked.parse(body);
   if(rel==="ARCHITECTURE.md"){
-    html+=`<h2>Detailed diagrams (professional renders, verified 2026-10-17)</h2><p>Detailed local renders from <code>assets/diagrams-pro/</code> (2400px PNGs built by <code>src/build_diagrams.py</code> from wiki sources; no IPs, keys or secrets). They expand the mermaid diagrams below — where counts differ, the current mermaid renders are authoritative (pro renders are a 2026-10-17 snapshot saying 17 bots; current docs say 18). Diagram 4 is labelled DESIGN in the image and expands the approved Phase 0 orchestration mermaid (diagram 3 below).</p><p><img src="/assets/diagrams-pro/diagram-1-network-architecture.png" alt="Network architecture diagram"></p><p><img src="/assets/diagrams-pro/diagram-2-local-ai-flow.png" alt="Local AI flow diagram"></p><p><img src="/assets/diagrams-pro/diagram-3-bot-operating-model.png" alt="Bot operating model diagram"></p><p><img src="/assets/diagrams-pro/diagram-4-orchestration.png" alt="Orchestration control plane diagram (design)"></p><h2>Rendered diagrams (mermaid, current docs)</h2><p>Simple renders generated from the three mermaid blocks above with <code>npx @mermaid-js/mermaid-cli -b white -s 3</code>. Kept as the current-docs fallback to the detailed renders.</p><p><img src="/assets/diagrams/diagram-1-machines.png" alt="Machines diagram"></p><p><img src="/assets/diagrams/diagram-2-bot-handoffs.png" alt="Bot handoffs diagram"></p><p><img src="/assets/diagrams/diagram-3-orchestration.png" alt="Orchestration diagram"></p>`;
+    const pro=[
+      ["Network Architecture","/assets/diagrams-pro/diagram-1-network-architecture.png","Network architecture diagram","Machines, tailnet and trust boundaries \u2014 how the fleet reaches each other. Platforms: macOS \u00b7 Mac mini / MacBook Pro / Neo; iOS apps built on Mac mini."],
+      ["Local AI Flow","/assets/diagrams-pro/diagram-2-local-ai-flow.png","Local AI flow diagram","Who calls which model, and what falls back to what. Platform: macOS \u00b7 Mac mini (oMLX / Ollama host)."],
+      ["Bot Operating Model","/assets/diagrams-pro/diagram-3-bot-operating-model.png","Bot operating model diagram","Lanes, handoffs and the Atlas gate. Platform: macOS \u00b7 AIMacMini ~/projects."],
+      ["Orchestration (design)","/assets/diagrams-pro/diagram-4-orchestration.png","Orchestration control plane diagram (design)","Control plane, routing and failover \u2014 design, labelled DESIGN in the image; expands the approved Phase 0 orchestration mermaid. Platforms: macOS \u00b7 Mac mini / MacBook Pro."],
+    ];
+    html+=`<h2>Diagrams</h2><p class="quiet">Note: these detailed renders are an October 17, 2026 snapshot (they say 17 bots). Where counts differ, the mermaid sources and docs are authoritative \u2014 current docs say 18 bots. No IPs, keys or secrets are shown. Apple platform chips (macOS/iOS) in each diagram use the Simple Icons glyph from <code>assets/diagrams-pro/icons/</code> with a text label \u2014 see <code>assets/diagrams-pro/README.md</code> for source/license. iPadOS, tvOS and watchOS do not appear in the docs, so they are not shown.</p>`+
+      pro.map(([cap,src,alt,desc])=>`<figure class="pro-diagram"><img src="${src}" alt="${alt}"><figcaption><strong>${cap}</strong> \u2014 ${desc}</figcaption></figure>`).join("")+
+      `<h2>Mermaid source renders</h2><p>Text links only \u2014 the current-docs mermaid diagrams are not shown as images on this page:</p><ul>`+
+      [["Machines","diagram-1-machines"],["Bot handoffs","diagram-2-bot-handoffs"],["Orchestration","diagram-3-orchestration"]].map(([name,f])=>`<li>${name}: <a href="/assets/diagrams/${f}.mmd">${f}.mmd (source)</a> \u00b7 <a href="/assets/diagrams/${f}.png">${f}.png (render)</a></li>`).join("")+
+      `</ul>`;
   }
   const section=rel.includes("/")?rel.split("/")[0]:"top";
   return {rel,slug,title,html,section};
