@@ -36,3 +36,5 @@ tbody tr:last-child td { border-bottom: 1px solid var(--table-line); }
 }
 .layout{max-width:72rem;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:16rem 1fr;gap:2rem} nav{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.9rem} nav ul{list-style:none;padding-left:.5rem} nav li{margin:.25rem 0} .mermaid{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto}
 @media(max-width:700px){.layout{grid-template-columns:1fr}}
+
+.pro-diagram{margin:1.75rem 0}.pro-diagram img{width:100%;max-width:100%;height:auto;display:block;margin:0 auto}.pro-diagram figcaption{color:var(--muted);font-family:ui-sans-serif,system-ui,sans-serif;font-size:.9rem;line-height:1.45;margin-top:.5rem}

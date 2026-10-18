@@ -102,3 +102,16 @@ Source: `/workspace/orchestration-design-2026-10-17.md`. Diagrams 1–3 revised 
 | 4 Orchestration — Control Plane, Routing & Failover (DESIGN) | `diagram-4-orchestration.png` | `.svg` | `.mmd` | `src/build_diagrams.py` |
 
 Diagram 4 nodes/edges: Ian→Atlas→Box file queue → (tssh SSH22, SOCKS5→oMLX HTTPS443, machine connector, HTTPS egress) → mini (Xcode/oMLX/Ollama/cron), omarchy (bulk/heavy, conditional ACL), MBP (video+deputy restore), Box-as-worker (cloud CLIs); bottom band = 5-min probes/dead-man/load-shed, Ledger dashboard→EXP→ROUTING.md, failover (oMLX→launchd→cloud; mini→MBP restore; Box→MBP nightly copy). Dashed/conditional = omarchy serving port, LiteLLM pilot. Verified 2026-10-17 facts retained; no publishing/deploy/DNS done.
+
+## Apple platform chips — added 2026-10-18 (preview branch)
+
+A `PLATFORMS:` strip was added under the header of all 4 diagrams via `src/build_diagrams.py` (`SVG.chip`/`platform_strip`, regenerated PNG+SVG with `python3 src/build_diagrams.py`, cairosvg):
+
+- Diagram 1: `macOS · Mac mini / MacBook Pro / Neo`, `iOS · apps built on Mac mini`
+- Diagram 2: `macOS · Mac mini (oMLX / Ollama host)`
+- Diagram 3: `macOS · AIMacMini ~/projects (Foreman)`
+- Diagram 4: `macOS · Mac mini / MacBook Pro`
+
+Only platforms present in the docs/diagrams were chipped (macOS machines; iOS apps built on the Mini per `infra/macs.md` + `infra/apple-dev.md`). iPadOS, tvOS and watchOS do **not** appear in the docs, so no chips were invented for them.
+
+Icon source/license: the glyph inside each chip is the existing `icons/apple.svg` in this folder — from Simple Icons (cdn.simpleicons.org, fetched 2026-10-17; Simple Icons is CC0-1.0, brand trademarks belong to their owners, use here is nominative with a text label). No Apple logo was drawn, scraped, or fabricated; every chip pairs the glyph with plain platform-name text so it reads correctly if the icon is stripped.

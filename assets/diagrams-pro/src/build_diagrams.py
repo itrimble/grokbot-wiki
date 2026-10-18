@@ -28,6 +28,18 @@ class SVG:
         path,fill=d
         scale=size/24
         self.parts.append(f'<g transform="translate({x},{y}) scale({scale})"><path d="{path}" fill="{fill}"/></g>')
+    def chip(self,x,y,label,icon="apple"):
+        w=34+len(label)*9.5
+        self.parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="26" rx="13" fill="white" stroke="#94A3B8" stroke-width="1.2"/>')
+        self.icon(icon,x+8,y+4,18)
+        self.parts.append(f'<text x="{x+30}" y="{y+18}" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#0F2A44">{html.escape(label)}</text>')
+        return w
+    def platform_strip(self,labels):
+        x=48
+        self.parts.append(f'<text x="{x}" y="{140}" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="800" fill="#475569">PLATFORMS:</text>')
+        x+=118
+        for lab in labels:
+            x+=self.chip(x,122,lab)+12
     def card(self,x,y,w,h,title,bullets,accent="blue",icon=None,subtitle=None,title_size=26):
         c=COLORS[accent]
         self.parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="16" fill="white" stroke="#D7E0EC" stroke-width="1.5"/>')
@@ -91,6 +103,7 @@ s=SVG(2400,1680,"1  •  Network Architecture — Machines, Tailnet & Trust Boun
 # tailnet boundary
 s.parts.append('<rect x="40" y="150" width="2320" height="1180" rx="24" fill="#EAF6F3" fill-opacity="0.55" stroke="#0E9A8B" stroke-width="3" stroke-dasharray="14 8"/>')
 s.parts.append('<text x="70" y="190" font-family="Inter,Arial" font-size="22" font-weight="800" fill="#0B6B5E">TAILSCALE TAILNET  —  PRIVATE TRUST BOUNDARY  •  No Funnel  •  Tailnet-only serving</text>')
+s.platform_strip(["macOS \u00b7 Mac mini / MacBook Pro / Neo","iOS \u00b7 apps built on Mac mini"])
 s.icon("tailscale",2280,158,40)
 # Box
 s.card(80,230,620,360,"THE BOX — Shared Agent Host",[
@@ -178,6 +191,7 @@ s.save("diagram-1-network-architecture")
 
 # DIAGRAM 2
 s=SVG(2400,1780,"2  •  Local AI Flow — Who Calls Which Model, and What Falls Back to What","OpenAI-compatible local inference on Apple Silicon, Ollama on two machines, and two SEPARATE Hermes installs with different primaries")
+s.platform_strip(["macOS \u00b7 Mac mini (oMLX / Ollama host)"])
 # sources
 s.card(60,170,460,340,"REQUEST SOURCES",[
  "Grok Bots on the Box (17)",
@@ -284,6 +298,7 @@ s.save("diagram-2-local-ai-flow")
 
 # DIAGRAM 3
 s=SVG(2400,1900,"3  •  Bot Operating Model — Lanes, Handoffs & the Atlas Gate","17 Grok Bots, each with a lane. Atlas is the portfolio gate; Warden owns runtime; Hermes is a coding agent, not a Grok Bot")
+s.platform_strip(["macOS \u00b7 AIMacMini ~/projects (Foreman)"])
 # Atlas center
 s.card(920,170,560,260,"ATLAS — Portfolio Gate",[
  "Gatekeeper: publish / spend / send / ship ONLY",
@@ -366,6 +381,7 @@ s.save("diagram-3-bot-operating-model")
 
 # DIAGRAM 4 — ORCHESTRATION (design 2026-10-17, no machine changes yet)
 s=SVG(2400,1980,"4  •  Orchestration — Control Plane, Routing & Failover (DESIGN)","Box decides (Atlas + file queue), machines work where they are suited, every job heartbeats — design 2026-10-17, Phases 0-2")
+s.platform_strip(["macOS \u00b7 Mac mini / MacBook Pro"])
 # control plane top
 s.card(60,160,720,370,"CONTROL PLANE — THE BOX",[
  "Atlas gate: publish / spend / send / ship ONLY",
