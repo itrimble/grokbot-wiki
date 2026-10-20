@@ -9,6 +9,7 @@ function sanitize(t){
     .replace(/\b100\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g,"[redacted tailnet IP]")
     .replace(/\b(?:\d{1,3}\.){3}\d{1,3}\b/g,(m)=> m.startsWith("100.")?"[redacted tailnet IP]":m)
     .replace(/[a-z0-9\-]+\.ts\.net/gi,"[redacted tailnet host]")
+    .replace(/\b[A-Za-z0-9\-]+\.local\b(?![\/.\w])/g,"[redacted LAN host]")
     .replace(/phc_[A-Za-z0-9]{10,}/g,"[redacted token]")
     .replace(/gh[pousr]_[A-Za-z0-9]{10,}/g,"[redacted token]")
     .replace(/sk-[A-Za-z0-9\-_]{20,}/g,"[redacted token]");
