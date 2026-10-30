@@ -1,0 +1,241 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Project tracking: design and baseline — Grok Bot Wiki</title><link rel="stylesheet" href="/styles.css"><script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'default'});</script></head><body><header><a class="brand" href="/">Grok Bot Wiki</a><span class="by">Remnant Security · source: grokbot-docs</span></header><div class="layout"><nav><details ><summary>top (7)</summary><ul><li><a href="/architecture/">Architecture</a></li><li><a href="/changelog/">Changelog</a></li><li><a href="/open-work/">Open work: Ian&#39;s Grok Bot shop</a></li><li><a href="/index-readme/">Grok Bot shop docs (Remnant Security)</a></li><li><a href="/sync_queue/">Sync queue</a></li><li><a href="/projects-tracking/">Project tracking: design and baseline</a></li><li><a href="/routines/">Routines</a></li></ul></details><details open><summary>bots (27)</summary><ul><li><a href="/bots/apple-mac-tools/">Apple Mac Tools</a></li><li><a href="/bots/archivist/">Archivist</a></li><li><a href="/bots/atlas/">Atlas</a></li><li><a href="/bots/beacon/">Beacon</a></li><li><a href="/bots/bills/">Bills</a></li><li><a href="/bots/book-growth/">Book Growth</a></li><li><a href="/bots/course-builder/">Course Builder</a></li><li><a href="/bots/dev-diary/">Dev Diary</a></li><li><a href="/bots/expert-calls/">Expert Calls</a></li><li><a href="/bots/foreman/">Foreman</a></li><li><a href="/bots/game-stores/">Game Stores</a></li><li><a href="/bots/hermes-tuner/">Hermes Tuner</a></li><li><a href="/bots/improve-my-bots/">Improve My Bots</a></li><li><a href="/bots/inbox-cleaner/">Inbox Cleaner</a></li><li><a href="/bots/learning-to-sell/">Learning to Sell</a></li><li><a href="/bots/ledger/">Ledger</a></li><li><a href="/bots/life-events/">Life events</a></li><li><a href="/bots/outbound-prospecting/">Outbound Prospecting</a></li><li><a href="/bots/phone-call-bot/">Phone Call Bot</a></li><li><a href="/bots/political-spam-blocker/">Political Spam Blocker</a></li><li><a href="/bots/privacy-scrubber/">Privacy Scrubber</a></li><li><a href="/bots/scout/">Scout</a></li><li><a href="/bots/shepherd/">Shepherd (RETIRED)</a></li><li><a href="/bots/studio/">Studio</a></li><li><a href="/bots/tax-collector/">Tax Collector</a></li><li><a href="/bots/warden/">Warden</a></li><li><a href="/bots/x-bookmarks/">X Bookmarks</a></li></ul></details><details ><summary>decisions (19)</summary><ul><li><a href="/decisions/2026-10-10-scout-weekly-trial/">2026-10-10: Scout weekly-only trial</a></li><li><a href="/decisions/2026-10-10-shepherd-retirement/">2026-10-10: Shepherd retired</a></li><li><a href="/decisions/2026-10-10-warden-lane-split/">2026-10-10: Warden lane split</a></li><li><a href="/decisions/2026-10-15-claude-code-codex-install/">2026-10-15: Claude Code and Codex CLI on the box</a></li><li><a href="/decisions/2026-10-16-box-hermes-tuning/">2026-10-16: Hermes Tuner owns the box Hermes install</a></li><li><a href="/decisions/2026-10-16-cli-default-models/">2026-10-16: Claude Code and Codex use default models</a></li><li><a href="/decisions/2026-10-16-cli-rollout-applied/">2026-10-16: CLI rollout, receipt rule, Tax Collector mission, plain-writing, audit #8</a></li><li><a href="/decisions/2026-10-16-dev-diary-public-x/">2026-10-16: Dev Diary may post publicly on X</a></li><li><a href="/decisions/2026-10-16-nas-editable/">2026-10-16: NAS editable — all NAS edits allowed, canonical root stays on the mini</a></li><li><a href="/decisions/2026-10-16-nas-foreman-exception/">2026-10-16: NAS exception for Foreman PROJECTS.md / ACTIVITY.md</a></li><li><a href="/decisions/2026-10-16-product-diary-blog/">2026-10-16: Product Diary on blog.remnantsecurity.com</a></li><li><a href="/decisions/2026-10-16-wiki-site/">2026-10-16: Wiki at wiki.remnantsecurity.com</a></li><li><a href="/decisions/2026-10-17-box-control-plane/">2026-10-17: Box is the control plane, MacBook Pro is the deputy</a></li><li><a href="/decisions/2026-10-18-learning-to-sell/">2026-10-18: Learning to Sell bot and public sales tracker</a></li><li><a href="/decisions/2026-10-19-architecture-diagram-style/">Architecture diagram style — one-page systems map (2026-10-19)</a></li><li><a href="/decisions/2026-10-19-box-nas-ssh-and-nas-hermes/">2026-10-19: Box SSH to the NAS, and Hermes Tuner takes the NAS Hermes install</a></li><li><a href="/decisions/2026-10-19-course-mvp-text-first/">2026-10-19: Course MVP — Cybersecurity Career Jumpstart, text-first</a></li><li><a href="/decisions/2026-10-19-neo-build-node-and-projects-git-rule/">2026-10-19: Neo as build node + every projects folder gets a commit</a></li><li><a href="/decisions/2026-10-19-snapdog-agentic-creator-studio/">2026-10-19: SnapDog Creator Studio tracked (in development)</a></li></ul></details><details ><summary>diagrams (1)</summary><ul><li><a href="/diagrams/style/">Ian&#39;s chosen architecture-diagram style (approved 2026-10-19)</a></li></ul></details><details ><summary>infra (6)</summary><ul><li><a href="/infra/apple-dev/">Apple dev</a></li><li><a href="/infra/box/">The box</a></li><li><a href="/infra/local-ai/">Local AI</a></li><li><a href="/infra/macs/">Ian&#39;s Macs</a></li><li><a href="/infra/omarchy/">AMD dev PC (omarchy)</a></li><li><a href="/infra/tailnet/">Tailnet</a></li></ul></details><details ><summary>skills (16)</summary><ul><li><a href="/skills/amazon-author-catalog-check/">Amazon author catalog check</a></li><li><a href="/skills/app-store-connect-read-with-a-box-api-key/">App Store Connect read with a box API key</a></li><li><a href="/skills/approval-and-delivery-log-check/">Approval and delivery log check</a></li><li><a href="/skills/build-the-target-list/">skills/build-the-target-list/SKILL.md</a></li><li><a href="/skills/campaign-link-convention/">Campaign link convention</a></li><li><a href="/skills/draft-a-first-touch/">skills/draft-a-first-touch/SKILL.md</a></li><li><a href="/skills/draft-a-follow-up/">skills/draft-a-follow-up/SKILL.md</a></li><li><a href="/skills/getting-started/">skills/getting-started/SKILL.md</a></li><li><a href="/skills/handle-a-reply/">skills/handle-a-reply/SKILL.md</a></li><li><a href="/skills/index/">Shared skills</a></li><li><a href="/skills/indie-book-marketing-ops/">Indie book marketing ops</a></li><li><a href="/skills/merge-a-site-pr-and-verify-it-s-live/">Merge a site PR and verify it&#39;s live</a></li><li><a href="/skills/plain-writing/">Plain writing</a></li><li><a href="/skills/research-a-prospect/">skills/research-a-prospect/SKILL.md</a></li><li><a href="/skills/sharpen-what-is-working/">skills/sharpen-what-is-working/SKILL.md</a></li><li><a href="/skills/weekly-prospecting-recap/">skills/weekly-prospecting-recap/SKILL.md</a></li></ul></details></nav><main><article><p class="crumbs"><a href="/">Home</a> / projects-tracking.md</p><h1>Project tracking: design and baseline</h1><h1>Project tracking: design and baseline</h1>
+<p>Owner: Archivist. Built 2026-10-19 after the SnapDog Creator Studio miss:
+work built Oct 17-18 on the MacBook Pro was only found Oct 19 when Scout
+asked, because the docs refresh ran once a day at 06:00 CT and no scan of
+<code>~/projects</code> existed. This page is the design for proactive tracking.
+Scanner + manifests live on the box in <code>/workspace/project-tracker/</code>
+(not in this repo; manifests are machine output, this page is the record).</p>
+<h2>Canonical root and replicas (settled 2026-10-19)</h2>
+<ul>
+<li><strong>Canonical: <code>AIMacMini:~/projects</code>.</strong> Marker file <code>~/projects/.canonical</code>
+exists on the mini (verified 2026-10-19, empty file dated Oct 6).
+Per Ian via Beacon (2026-10-19): writing to mini <code>~/projects</code> replicates
+automatically to the other machines and the NAS. So the mini manifest
+is the truth; MBP, Neo and NAS manifests are <strong>replica / lag checks
+only</strong>. Divergence from the mini is reported as sync lag, not as
+separate work, unless a replica is ahead (dirty files or folders the
+mini does not have yet).</li>
+<li>NAS edits are allowed (decision 2026-10-16), but the NAS is a replica
+target, not the canonical root.</li>
+<li><strong>omarchy is excluded</strong> from scanning (offline, faulty RAM).</li>
+</ul>
+<h3>Access paths (no addresses recorded here)</h3>
+<ol>
+<li>First test is <code>ssh mini</code> from the box (SSH alias in <code>~/.ssh/config</code>,
+SOCKS proxy) and/or a tailscale ping. <strong><code>ListMachines</code> showing
+&quot;disconnected&quot; is not evidence the mini is down</strong> — on 2026-10-19 it
+showed disconnected while <code>ssh mini</code> worked and Beacon verified the
+mini by tailscale ping (DERP). The box had also lost <code>ssh</code>/<code>nc</code> in a
+morning restart (since reinstalled), so test the tools, not the list.</li>
+<li>Fallback: from the MBP over LAN SSH, <code>ssh ian@[redacted LAN host]</code>
+(verified 2026-10-19: mini <code>~/projects</code> present, snapdog HEAD
+<code>797b61c</code> matched the MBP).</li>
+<li>Fallback 2 (verified 2026-10-19 17:07 CT): from the Neo over LAN SSH,
+<code>ssh neo &#39;ssh ian@[redacted LAN host] ...&#39;</code>. At 17:07 CT the box&#39;s SOCKS
+route failed for <code>mini</code> and <code>mbp</code> (SOCKS general failure) while <code>neo</code>
+worked, and the mini scan ran fine through the Neo hop.</li>
+<li>If all fail: mark the mini <strong>unverified</strong> in that run&#39;s diff, scan a
+replica (MBP first), and say plainly that the canonical state is
+unchecked. Never report the mini as down from <code>ListMachines</code> alone.</li>
+</ol>
+<h2>The scanner</h2>
+<p><code>/workspace/project-tracker/scan_projects.py</code> (stdlib only, Python 3).
+It runs <strong>on</strong> each machine (piped over SSH stdin, so nothing has to be
+installed or left behind) and prints one JSON manifest to stdout:</p>
+<pre><code>ssh mini &#39;python3 - scan ~/projects --label mini-projects&#39; &lt; scan_projects.py &gt; manifests/YYYY-MM-DD-mini-projects.json
+ssh mbp  &#39;python3 - scan /Volumes/nas/projects --label nas-projects --inventory-only&#39; &lt; scan_projects.py &gt; manifests/YYYY-MM-DD-nas-projects.json   # NAS via MBP mount; git over SMB is too slow (see below)
+python3 scan_projects.py scan ~/projects --label local-projects            # or locally on any machine
+python3 scan_projects.py scan ~/projects --label mini-projects --skip-dirty  # fast intraday mode: no git status
+python3 scan_projects.py scan /Volumes/nas/projects --label nas-projects --inventory-only  # NAS/SMB: names+mtime only, no git
+python3 scan_projects.py diff manifests/OLD.json manifests/NEW.json --out LATEST-DIFF.md
+python3 scan_projects.py diff manifests/OLD.json manifests/NEW.json --format json
+</code></pre>
+<p>Per top-level folder/file the manifest records: name/relative path,
+folder mtime, <code>is_git</code>, branch, HEAD, dirty file count
+(<code>git status --porcelain</code> line count), remote <strong>names only</strong> (never
+URLs — a URL can carry a token), last commit (hash/date/subject), the
+last 25 commits (so a diff can name the new commit subjects), and
+<code>nested_git</code>: git repos found up to 2 levels below the folder.</p>
+<p>Rules the scanner follows:</p>
+<ul>
+<li>Read-only git only: <code>rev-parse</code>, <code>branch</code>, <code>status</code>, <code>log</code>, <code>remote</code>
+(names). No file contents are read, no code is opened, nothing in any
+project repo is changed.</li>
+<li>A per-repo timeout keeps one hung repo from stalling the scan; a repo
+whose status fails is recorded with <code>dirty_count: null</code> + an error,
+not silently dropped.</li>
+<li><strong>Limitation (v1):</strong> branch/HEAD/dirty are collected for top-level
+repos only. Nested repos are named, not tracked — on the mini, 40
+nested <code>.git</code> dirs were found (including vendored checkouts and
+<code>_handoffs/</code> copies). Real projects hide there (<code>Pipe Flow/PlumberPuzzle</code>,
+<code>books/*</code>, <code>astralforge/AstralForge-iOS</code>, <code>quickstart/zoom-recording-downloader</code>).
+v2 should promote nested repos that are not under <code>.build/</code>, <code>_handoffs/</code>,
+<code>external_repos/</code> or a parent git repo&#39;s vendored deps to full entries.</li>
+</ul>
+<h3>Diff mode</h3>
+<p>Manifests are keyed by relative name, so any two roots/dates compare.
+A diff reports: new entries, removed entries, branch changes, HEAD
+changes with the new commit subjects (commits in the new manifest&#39;s
+25-commit window that were not in the old one), dirty-count changes,
+and repos that became git / stopped being git. The same command does
+yesterday-vs-today (what changed) and mini-vs-MBP (replication lag).</p>
+<h2>Baseline 2026-10-19 (~13:48 CT)</h2>
+<p>Full numbers and repo lists: <code>/workspace/project-tracker/LATEST-DIFF.md</code>
+on the box (mini/MBP/Neo scanned ~13:48 CT; NAS inventory-only 14:07 CT).
+Headlines:</p>
+<table>
+<thead>
+<tr>
+<th>root</th>
+<th>role</th>
+<th>top-level</th>
+<th>git repos</th>
+<th>non-git dirs</th>
+<th>files</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mini <code>~/projects</code></td>
+<td><strong>canonical</strong></td>
+<td>200</td>
+<td>74</td>
+<td>120</td>
+<td>6</td>
+</tr>
+<tr>
+<td>MBP <code>~/projects</code></td>
+<td>replica</td>
+<td>196</td>
+<td>70</td>
+<td>120</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Neo <code>~/projects</code></td>
+<td>replica</td>
+<td>198</td>
+<td>71</td>
+<td>121</td>
+<td>6</td>
+</tr>
+<tr>
+<td>NAS <code>/Volumes/nas/projects</code> (via MBP)</td>
+<td>replica (inventory-only)</td>
+<td>200</td>
+<td>git unverified</td>
+<td>git unverified</td>
+<td>6</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p><strong>MBP and Neo are the same tree as the mini at commit level:</strong> 0 HEAD
+mismatches and 0 branch mismatches on every shared git repo
+(191 shared mini↔MBP, 193 mini↔Neo). snapdog <code>797b61c</code> and
+product-diary <code>fdd48dc</code> match on all three.</p>
+</li>
+<li><p>Folder-level lag is real but small: mini-only folders include <code>books</code>,
+<code>faceless-video-pipeline</code>, <code>ACE-Step-1.5</code>, <code>openclaw</code>; MBP/Neo-only
+folders are 5 non-git folders (<code>classrecordings</code>, <code>pet-tv-content</code>,
+two YouTube folders, <code>fireplace-simulator</code>) — replication lag or
+local-only scratch, to be confirmed, not assumed.</p>
+</li>
+<li><p>Working-tree lag: <code>qix-swift</code> dirty 9 (mini) vs 13 (MBP); snapdog
+dirty 34 vs 35 (Neo). Uncommitted work does not replicate the way
+commits do, so dirty counts are per-machine facts.</p>
+</li>
+<li><p>23 canonical repos had commits in the last 7 days; 57 of 74 canonical
+repos are dirty (6,910 dirty files total, led by SecureWatch 2,049 —
+dirty volume is normal here and is not, by itself, news).</p>
+</li>
+<li><p><strong>Non-git blind spot (proven 2026-10-19):</strong> <code>~/projects/neo</code>, an Xcode scaffold built 2026-10-18 19:01–19:38 CT (likely on the Neo machine), was recorded only as an mtime line in the baseline non-git list and never promoted to OPEN-WORK — scanner v1 has no HEAD/dirty signal for non-git folders and Tier 1 is HEAD-only. Fix needed: daily Tier 2 must promote any non-git folder touched in the last 7 days with no OPEN-WORK item, not just git repos. See <code>/workspace/project-tracker/reports/neo-folder-2026-10-19.md</code>.</p>
+</li>
+</ul>
+<h2>Standing rule: every projects folder gets a commit (Ian, 2026-10-19)</h2>
+<p>Ian&#39;s words 2026-10-19 14:16 CT: &#39;Going forward if a projects folder doesn&#39;t have a commit it should.&#39; And on <code>~/projects/neo</code>: &#39;It was to add the neo to the build orchestration stack so that the Mac mini and mbp would [not] always be bogged down.&#39;</p>
+<ul>
+<li>Every folder in <code>~/projects</code> should be a git repo with at least an initial commit. A non-git folder is a tracking gap to promote/flag, not just an mtime line.</li>
+<li>Remediation approach: the daily (Tier 2) scan lists non-git folders touched in the last 7 days <strong>and</strong> maintains a standing backlog list of all non-git top-level folders. Baseline 2026-10-19: 120 non-git top-level dirs on the canonical mini (of 200 top-level entries; 74 git repos). Those ~120 are <strong>not all necessarily projects</strong> — they include non-project/data/scratch dirs — so flag them for Ian / git-init case-by-case rather than auto-init en masse.</li>
+<li>Do not git-init folders en masse without Ian&#39;s per-folder or batch yes. <code>~/projects/neo</code> was git-initialised 2026-10-19 under this rule (initial commit <code>5bfa987</code>, <code>main</code>, no remote); no other folder was initialised in that pass.</li>
+<li>Fix already noted above for the non-git blind spot stays: daily scan must promote any non-git folder touched in the last 7 days with no OPEN-WORK item.</li>
+</ul>
+<h2>Cadence proposal</h2>
+<p>Two tiers, so Archivist notices within hours without drowning Ian in
+noise. Neither tier is live yet — turning either on as a scheduled
+routine needs Ian&#39;s yes.</p>
+<h3>Tier 1: intraday HEAD-only check-ins (cheap, quiet)</h3>
+<ul>
+<li>When: 09:00, 13:00, 17:00, 21:00 CT daily.</li>
+<li>What: <code>scan --skip-dirty</code> on the mini only; diff against the last
+manifest (intraday or daily). A full mini scan took under ~2 minutes
+from the box in the baseline; HEAD-only is faster because it skips
+<code>git status</code> on huge dirty trees.</li>
+<li>Surfaces only: new top-level folder, new branch or branch change,
+HEAD change in a repo with <strong>no</strong> matching OPEN-WORK item, or a
+HEAD change on a non-<code>main</code> feature branch (the SnapDog signal:
+<code>claude/snapdog-swiftui-app-g6bvt</code> moving on a weekend).</li>
+<li>Everything else is written to the day&#39;s manifest silently. No message
+to Ian unless an untracked repo moves — that is the whole point.</li>
+</ul>
+<h3>Tier 2: daily deep diff (before the 06:00 CT docs refresh)</h3>
+<ul>
+<li>When: ~05:30 CT daily, feeding the existing daily docs refresh.</li>
+<li>What: full scan (with dirty counts) on the mini; full diff vs
+yesterday&#39;s deep manifest; replica lag check (MBP + Neo, HEAD-only)
+twice a week; NAS inventory-only lag check weekly (see cost note).</li>
+<li>What gets recorded:<ul>
+<li><code>OPEN-WORK.md</code>: a new item only when an active repo (commit in the
+last 7 days) has no tracked item under any name, or a tracked repo
+ships/changes branch/gains a gate. Owner = Ian by default, watcher
+= Archivist, until Ian assigns it (the SnapDog pattern).</li>
+<li><code>CHANGELOG.md</code>: one dated line per day summarising the diff
+(repos moved, new folders), not a per-commit dump.</li>
+<li>Decisions still need Ian&#39;s own words (or a bot reporting his yes in
+its chat, marked as such) — a scanner diff is evidence of work,
+never evidence of a decision.</li>
+<li><code>LATEST-DIFF.md</code> on the box is overwritten each deep run; dated
+manifests are kept for 14 days, then pruned.</li>
+</ul>
+</li>
+</ul>
+<h3>Cost / noise tradeoffs</h3>
+<ul>
+<li>Dirty counts are the expensive and noisy part: SecureWatch alone has
+~2,000 dirty files and <code>gameengine</code> ~900. Intraday scans skip them;
+daily dirty is reported only as deltas over +50 files or a repo
+going clean→dirty, with the known-huge repos baseline-muted.</li>
+<li>The NAS is the slowest root by far: it is a mounted share, and a full
+<code>git status</code> pass over it runs many times slower than a local scan
+(the baseline NAS pass was still running when the three local scans
+had all finished). NAS therefore gets inventory-only (names + mtimes, no git —
+a full git pass over SMB was aborted at &gt;13 min and a HEAD-only git
+pass at &gt;9 min in the baseline, while inventory-only took ~4 s),
+weekly, and is treated purely as a backup-lag check; it is never
+on the intraday path and its git HEADs are reported unverified.</li>
+<li>Known-routine commits (e.g. product-diary&#39;s daily posts) are expected
+motion: they are logged, not flagged. Flagging is reserved for
+untracked or feature-branch motion.</li>
+<li>Four check-ins a day is the most that stays quiet. More frequent
+(hourly) buys little: commits are the unit of shipped work, and the
+daily refresh already catches mtime-only (non-git) changes.</li>
+</ul>
+<h3>Failure handling</h3>
+<ul>
+<li>Mini unreachable by both SSH routes: run the tier on the MBP, mark
+every number <strong>canonical-unverified</strong>, and retry the mini at the next
+tier slot. Do not declare the mini down from <code>ListMachines</code>.</li>
+<li>SOCKS/SSH tooling broken on the box (as on the morning of 2026-10-19):
+that is a box fault, not a mini fault; record it as such for Warden.</li>
+<li>One repo hangs or errors: the scan continues; the repo is listed with
+its error in the diff so the gap is visible.</li>
+<li>NAS mount missing on the MBP: skip the NAS check, note it, move on;
+the NAS is a replica, never a blocker.</li>
+</ul>
+<h2>What this does not do</h2>
+<ul>
+<li>No project code is read or changed; git metadata + folder names only.</li>
+<li>No commits, pushes, or syncs are triggered by tracking. Replication
+is the environment&#39;s own mechanism (canonical mini), not the scanner&#39;s.</li>
+<li>Tracked ≠ approved: an active repo found by scan goes to OPEN-WORK
+as in-development/unverified until Ian or its owner confirms scope.</li>
+</ul>
+</article></main></div><footer>Built from <code>/workspace/grokbot-docs</code> — no secrets or tailnet IPs. <a href="https://blog.remnantsecurity.com/">Product Diary</a></footer></body></html>

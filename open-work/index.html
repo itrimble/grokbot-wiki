@@ -1,0 +1,625 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Open work: Ian&#39;s Grok Bot shop — Grok Bot Wiki</title><link rel="stylesheet" href="/styles.css"><script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'default'});</script></head><body><header><a class="brand" href="/">Grok Bot Wiki</a><span class="by">Remnant Security · source: grokbot-docs</span></header><div class="layout"><nav><details ><summary>top (7)</summary><ul><li><a href="/architecture/">Architecture</a></li><li><a href="/changelog/">Changelog</a></li><li><a href="/open-work/">Open work: Ian&#39;s Grok Bot shop</a></li><li><a href="/index-readme/">Grok Bot shop docs (Remnant Security)</a></li><li><a href="/sync_queue/">Sync queue</a></li><li><a href="/projects-tracking/">Project tracking: design and baseline</a></li><li><a href="/routines/">Routines</a></li></ul></details><details open><summary>bots (27)</summary><ul><li><a href="/bots/apple-mac-tools/">Apple Mac Tools</a></li><li><a href="/bots/archivist/">Archivist</a></li><li><a href="/bots/atlas/">Atlas</a></li><li><a href="/bots/beacon/">Beacon</a></li><li><a href="/bots/bills/">Bills</a></li><li><a href="/bots/book-growth/">Book Growth</a></li><li><a href="/bots/course-builder/">Course Builder</a></li><li><a href="/bots/dev-diary/">Dev Diary</a></li><li><a href="/bots/expert-calls/">Expert Calls</a></li><li><a href="/bots/foreman/">Foreman</a></li><li><a href="/bots/game-stores/">Game Stores</a></li><li><a href="/bots/hermes-tuner/">Hermes Tuner</a></li><li><a href="/bots/improve-my-bots/">Improve My Bots</a></li><li><a href="/bots/inbox-cleaner/">Inbox Cleaner</a></li><li><a href="/bots/learning-to-sell/">Learning to Sell</a></li><li><a href="/bots/ledger/">Ledger</a></li><li><a href="/bots/life-events/">Life events</a></li><li><a href="/bots/outbound-prospecting/">Outbound Prospecting</a></li><li><a href="/bots/phone-call-bot/">Phone Call Bot</a></li><li><a href="/bots/political-spam-blocker/">Political Spam Blocker</a></li><li><a href="/bots/privacy-scrubber/">Privacy Scrubber</a></li><li><a href="/bots/scout/">Scout</a></li><li><a href="/bots/shepherd/">Shepherd (RETIRED)</a></li><li><a href="/bots/studio/">Studio</a></li><li><a href="/bots/tax-collector/">Tax Collector</a></li><li><a href="/bots/warden/">Warden</a></li><li><a href="/bots/x-bookmarks/">X Bookmarks</a></li></ul></details><details ><summary>decisions (19)</summary><ul><li><a href="/decisions/2026-10-10-scout-weekly-trial/">2026-10-10: Scout weekly-only trial</a></li><li><a href="/decisions/2026-10-10-shepherd-retirement/">2026-10-10: Shepherd retired</a></li><li><a href="/decisions/2026-10-10-warden-lane-split/">2026-10-10: Warden lane split</a></li><li><a href="/decisions/2026-10-15-claude-code-codex-install/">2026-10-15: Claude Code and Codex CLI on the box</a></li><li><a href="/decisions/2026-10-16-box-hermes-tuning/">2026-10-16: Hermes Tuner owns the box Hermes install</a></li><li><a href="/decisions/2026-10-16-cli-default-models/">2026-10-16: Claude Code and Codex use default models</a></li><li><a href="/decisions/2026-10-16-cli-rollout-applied/">2026-10-16: CLI rollout, receipt rule, Tax Collector mission, plain-writing, audit #8</a></li><li><a href="/decisions/2026-10-16-dev-diary-public-x/">2026-10-16: Dev Diary may post publicly on X</a></li><li><a href="/decisions/2026-10-16-nas-editable/">2026-10-16: NAS editable — all NAS edits allowed, canonical root stays on the mini</a></li><li><a href="/decisions/2026-10-16-nas-foreman-exception/">2026-10-16: NAS exception for Foreman PROJECTS.md / ACTIVITY.md</a></li><li><a href="/decisions/2026-10-16-product-diary-blog/">2026-10-16: Product Diary on blog.remnantsecurity.com</a></li><li><a href="/decisions/2026-10-16-wiki-site/">2026-10-16: Wiki at wiki.remnantsecurity.com</a></li><li><a href="/decisions/2026-10-17-box-control-plane/">2026-10-17: Box is the control plane, MacBook Pro is the deputy</a></li><li><a href="/decisions/2026-10-18-learning-to-sell/">2026-10-18: Learning to Sell bot and public sales tracker</a></li><li><a href="/decisions/2026-10-19-architecture-diagram-style/">Architecture diagram style — one-page systems map (2026-10-19)</a></li><li><a href="/decisions/2026-10-19-box-nas-ssh-and-nas-hermes/">2026-10-19: Box SSH to the NAS, and Hermes Tuner takes the NAS Hermes install</a></li><li><a href="/decisions/2026-10-19-course-mvp-text-first/">2026-10-19: Course MVP — Cybersecurity Career Jumpstart, text-first</a></li><li><a href="/decisions/2026-10-19-neo-build-node-and-projects-git-rule/">2026-10-19: Neo as build node + every projects folder gets a commit</a></li><li><a href="/decisions/2026-10-19-snapdog-agentic-creator-studio/">2026-10-19: SnapDog Creator Studio tracked (in development)</a></li></ul></details><details ><summary>diagrams (1)</summary><ul><li><a href="/diagrams/style/">Ian&#39;s chosen architecture-diagram style (approved 2026-10-19)</a></li></ul></details><details ><summary>infra (6)</summary><ul><li><a href="/infra/apple-dev/">Apple dev</a></li><li><a href="/infra/box/">The box</a></li><li><a href="/infra/local-ai/">Local AI</a></li><li><a href="/infra/macs/">Ian&#39;s Macs</a></li><li><a href="/infra/omarchy/">AMD dev PC (omarchy)</a></li><li><a href="/infra/tailnet/">Tailnet</a></li></ul></details><details ><summary>skills (16)</summary><ul><li><a href="/skills/amazon-author-catalog-check/">Amazon author catalog check</a></li><li><a href="/skills/app-store-connect-read-with-a-box-api-key/">App Store Connect read with a box API key</a></li><li><a href="/skills/approval-and-delivery-log-check/">Approval and delivery log check</a></li><li><a href="/skills/build-the-target-list/">skills/build-the-target-list/SKILL.md</a></li><li><a href="/skills/campaign-link-convention/">Campaign link convention</a></li><li><a href="/skills/draft-a-first-touch/">skills/draft-a-first-touch/SKILL.md</a></li><li><a href="/skills/draft-a-follow-up/">skills/draft-a-follow-up/SKILL.md</a></li><li><a href="/skills/getting-started/">skills/getting-started/SKILL.md</a></li><li><a href="/skills/handle-a-reply/">skills/handle-a-reply/SKILL.md</a></li><li><a href="/skills/index/">Shared skills</a></li><li><a href="/skills/indie-book-marketing-ops/">Indie book marketing ops</a></li><li><a href="/skills/merge-a-site-pr-and-verify-it-s-live/">Merge a site PR and verify it&#39;s live</a></li><li><a href="/skills/plain-writing/">Plain writing</a></li><li><a href="/skills/research-a-prospect/">skills/research-a-prospect/SKILL.md</a></li><li><a href="/skills/sharpen-what-is-working/">skills/sharpen-what-is-working/SKILL.md</a></li><li><a href="/skills/weekly-prospecting-recap/">skills/weekly-prospecting-recap/SKILL.md</a></li></ul></details></nav><main><article><p class="crumbs"><a href="/">Home</a> / OPEN-WORK.md</p><h1>Open work: Ian&#39;s Grok Bot shop</h1><h1>Open work: Ian&#39;s Grok Bot shop</h1>
+<p>Single master list of open work for the shop. Maintained by Archivist.
+Built 2026-10-16 ~00:10 CT by an Atlas executor (read-only scan of the mini plus box notes). Archivist took ownership 2026-10-16 ~00:16 CT: retired <code>OPEN_ITEMS.md</code> into this file, and keeps it updated on the daily docs refresh (move items to Done with dates; flag anything unchanged for more than a week). Include this file in the <code>~/projects/grokbot</code> sync on the mini.
+App-priority board: Foreman&#39;s <code>~/projects/PROJECTS.md</code> on the Mac mini — Foreman&#39;s single canonical root is <code>AIMacMini:~/projects</code> (restored profile, 2026-10-16). Link to it; do not copy it here.
+Status comes from the files cited. Anything not checked is marked <strong>unverified</strong>.</p>
+<h2>Existing trackers found</h2>
+<table>
+<thead>
+<tr>
+<th>path</th>
+<th>tracks</th>
+<th>last modified</th>
+<th>current?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mini <code>~/projects/PROJECTS.md</code> (Foreman)</td>
+<td>App-priority board: now / this-week / watch / duplicates / infra. Link only; do not copy.</td>
+<td>file changed 2026-10-23 (header still says Updated 2026-10-07)</td>
+<td>Mostly. CyberSim still &quot;demoted&quot;, although a lot of CyberSim work happened on Oct 10</td>
+</tr>
+<tr>
+<td>mini <code>~/projects/ACTIVITY.md</code> (Foreman)</td>
+<td>Per-folder table of last file change and last git commit</td>
+<td>2026-10-05</td>
+<td>Stale (21 days, checked 2026-10-26)</td>
+</tr>
+<tr>
+<td>mini <code>~/projects/_docs/DIGEST.md</code></td>
+<td>&quot;Hot last 48h/7d&quot; folders, root = the 4TB mirror</td>
+<td>2026-10-05</td>
+<td>Stale</td>
+</tr>
+<tr>
+<td>mini <code>~/projects/AGENTS.md</code>, <code>CLAUDE.md</code></td>
+<td>Root agent instructions</td>
+<td>2026-10-15</td>
+<td>Current (not tracking docs)</td>
+</tr>
+<tr>
+<td>mini <code>~/projects/_docs/INCIDENTS.md</code></td>
+<td>Incident log</td>
+<td>2026-09-17</td>
+<td>Possibly stale</td>
+</tr>
+<tr>
+<td>mini <code>~/projects/_docs/TODO_PHASE3.md</code>, <code>openclaw/{TODO,STATUS,PROJECTS}.md</code>, <code>clawd-backup/{TODO,PROJECTS}.md</code>, <code>cyber-lab/STATUS.md</code>, <code>moving-baton-rouge/STATUS.md</code></td>
+<td>Old OpenClaw-era todo lists</td>
+<td>Jan to Mar 2026</td>
+<td>Abandoned</td>
+</tr>
+<tr>
+<td>mini per-project plans: <code>prismshift/ROADMAP.md</code> (10-07), <code>remnantsecurity.com/plan.md</code> (10-13), <code>bookpipeline/ROADMAP.md</code> (09-23), <code>pocketgenie/ROADMAP.md</code> (09-02), <code>leaving_kentucky*/PLAN.md</code> (09-14 to 09-29)</td>
+<td>Plans for single projects</td>
+<td>see dates</td>
+<td>Project-level only</td>
+</tr>
+<tr>
+<td>mini <code>~/projects/grokbot/</code></td>
+<td>Archivist docs sync target</td>
+<td>created 2026-10-06</td>
+<td>Was empty; sync target for this repo</td>
+</tr>
+<tr>
+<td>mini <code>~/.hermes/cron/jobs.json</code></td>
+<td>6 Hermes cron jobs</td>
+<td>runs daily</td>
+<td>Current. <strong>4 of 6 ended in error on Oct 15</strong></td>
+</tr>
+<tr>
+<td>mini <code>~/.hermes/kanban.db</code></td>
+<td>Hermes task board</td>
+<td>n/a</td>
+<td>Query returned no rows. <strong>Unverified</strong></td>
+</tr>
+<tr>
+<td>mini <code>~/.hermes/skills/</code></td>
+<td>About 60 skill folders (asc-<em>, cua-</em>, etc.)</td>
+<td>n/a</td>
+<td>Inventory only</td>
+</tr>
+<tr>
+<td>box <code>/workspace/approvals/approvals.md</code></td>
+<td>Ian approvals ledger, with statuses</td>
+<td>2026-10-12</td>
+<td>Current, the best record of what&#39;s done</td>
+</tr>
+<tr>
+<td>box <code>/workspace/grokbot-docs/OPEN-WORK.md</code> (Archivist)</td>
+<td><strong>This file</strong> — single master open-work list</td>
+<td>2026-10-16</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>box <code>/workspace/audits/audit-2026-10-*.md</code></td>
+<td>Improve My Bots audits</td>
+<td>2026-10-15</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>box <code>/workspace/web/INVENTORY.md</code>, <code>/workspace/apple-dev/STATUS.md</code>, <code>/workspace/tailscale/PLAN.md</code></td>
+<td>Web sites, Apple build tools on the box, tailnet</td>
+<td>2026-10-15</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>box <code>/workspace/hermes-tuner/PLAN.md</code>, <code>CHANGELOG.md</code> (Hermes Tuner)</td>
+<td>Box Hermes gap list (13 items) and change log</td>
+<td>2026-10-16</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>box <code>/workspace/orchestration/BOARD.md</code> (+ README, ROUTING, HEARTBEATS, queue/, state/run-log.jsonl)</td>
+<td>Fleet orchestration board, task queue and run log (Phase 0). Link only; do not copy</td>
+<td>2026-10-17</td>
+<td>Current (dated snapshot)</td>
+</tr>
+<tr>
+<td>box <code>/workspace/bills/</code> (Bills)</td>
+<td>Household bill ledger. Link only; amounts stay there</td>
+<td>2026-10-17</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>box <code>/workspace/learning-to-sell/tracker.md</code> (Learning to Sell)</td>
+<td>Public sales tracker vs Ian&#39;s Grok Bot spend; published copy on blog.remnantsecurity.com/learning-to-sell/tracker/. Link only; numbers stay there</td>
+<td>2026-10-18</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>box <code>/workspace/model-orchestration/tracker.csv</code> (+ research.md, mac-mini-inventory.md)</td>
+<td>Model-routing experiments EXP-001 to EXP-009, all proposed</td>
+<td>2026-10-16</td>
+<td>Current</td>
+</tr>
+</tbody></table>
+<h2>In progress</h2>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>owner</th>
+<th>next step</th>
+<th>date</th>
+<th>source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Product Diary on blog.remnantsecurity.com (daily + weekly; real data; macstories.net style)</td>
+<td>Beacon</td>
+<td>Routines live (Ian approved; reported by Beacon). Daily auto-publishes weekdays 7:13 AM CT; weekly PR Fridays 3:43 PM CT waits for Ian yes. First posts and weekly benchmarks still accumulating</td>
+<td>2026-10-16 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>decisions/2026-10-16-product-diary-blog.md; Beacon report</td>
+</tr>
+<tr>
+<td>Orchestration Phase 0: box control plane, MacBook Pro deputy, task queue, run log</td>
+<td>Atlas (Warden runtime health, Ledger numbers)</td>
+<td>Phase 0 files done 2026-10-17. Phase 1 (heartbeats, oMLX probe, cron moves) needs Ian&#39;s per-item yes</td>
+<td>2026-10-17 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>decisions/2026-10-17-box-control-plane.md; <code>/workspace/orchestration/BOARD.md</code></td>
+</tr>
+<tr>
+<td>Docs refresh (daily, weekends included since 2026-10-17)</td>
+<td>Archivist</td>
+<td>Keep OPEN-WORK.md current; sync to mini after each commit (see SYNC_QUEUE.md). No daily refresh landed Oct 21-25 (Oct 25 run failed); resumed 2026-10-26</td>
+<td>2026-10-26</td>
+<td><code>grokbot-docs/</code>, <code>SYNC_QUEUE.md</code></td>
+</tr>
+<tr>
+<td>Build CyberSim 1.1.2 (submission approved)</td>
+<td>Atlas</td>
+<td>Build and submit (Ian&#39;s decision 2026-10-16 12:14 AM CT, reported by Atlas)</td>
+<td>2026-10-16 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>reported by Atlas</td>
+</tr>
+<tr>
+<td>Build SnapDog 1.2.2 (upload only)</td>
+<td>Atlas</td>
+<td>Build and upload; no submit yet (Ian&#39;s decision 2026-10-16 12:14 AM CT, reported by Atlas)</td>
+<td>2026-10-16 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>reported by Atlas</td>
+</tr>
+<tr>
+<td>SnapDog Creator Studio (agentic; branch <code>claude/snapdog-swiftui-app-g6bvt</code>)</td>
+<td>Ian (watcher: Archivist)</td>
+<td>In development, <strong>not shipped</strong>. Separate App Store screenshot/reel production workflow; agent-drivable via local MCP stdio (<code>CreatorStudioMCP/server.mjs</code> + native <code>studioctl mcp</code>). Verified Oct 19 by Archivist on MacBook Pro, Neo and NAS (same <code>~/projects/snapdog</code>; NAS at same commit). <strong>AIMacMini hub copy unverified</strong> (mini unreachable that pass). Oct 17 19:58 CT <code>dd880d6</code> &quot;Add Creator Studio&quot;; Oct 18 11:39 CT <code>91ae0ee</code> agent capture + production workflow; Oct 18 12:41 CT <code>7c1a49c</code> direct license + signed MCP edition (<code>CreatorStudioMCP/</code>, <code>StudioAI.swift</code>, <code>AIAnalyzer.swift</code>). HEAD <code>797b61c</code> Oct 18 23:07 CT; uncommitted tree changes. Gates open: do not bundle MCP with Mac App Store build until entitlement/sandbox bridge done (per <code>CreatorStudioMCP/README</code>); StoreKit / license / notarization. Scout pitches shipped features only</td>
+<td>2026-10-19 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>Archivist + Scout Oct 19</td>
+</tr>
+<tr>
+<td>Private GitHub repos for CyberSim and Lectern site folders</td>
+<td>Atlas / Beacon</td>
+<td>Create private repos (Ian&#39;s decision 2026-10-16 12:14 AM CT, reported by Atlas)</td>
+<td>2026-10-16 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>reported by Atlas</td>
+</tr>
+<tr>
+<td>Bot-guides follow-ups: Auto-review draft, morning board, weekly audit, shared skills + voice guide, roster list</td>
+<td>Atlas</td>
+<td>Finish the drafts. Settings, other bots&#39; prompts and roster changes need a separate yes. Progress <strong>unverified</strong></td>
+<td>2026-10-06 <strong>(unchanged &gt;7 days, flagged 2026-10-16)</strong></td>
+<td>approvals.md 2026-10-06 13:38</td>
+</tr>
+<tr>
+<td>SnapDog standing X replies (≤5/day) and promo codes (≤3/day)</td>
+<td>Scout / X Bookmarks</td>
+<td>Ongoing under standing rules</td>
+<td>standing</td>
+<td>approvals.md standing rules</td>
+</tr>
+<tr>
+<td>New reference-style diagrams (real icons) in <code>/workspace/grokbot-preview/diagrams-pro/</code> — awaiting Ian&#39;s approval before replacing wiki diagrams</td>
+<td>Archivist / Beacon</td>
+<td>Ian reviews the three rebuilt diagrams (machines, bots, orchestration) with real product icons; on yes, Beacon replaces the live wiki images. Not yet published as of 2026-10-19: the wiki went pro-only on 10-18 with the older 4-image diagrams-pro set plus Apple chips, not this set. House-style fleet map preview (<code>/workspace/grokbot-preview/diagrams-house/fleet-map.png</code>) rebuilt 2026-10-26 for 26 active bots, with new icons for Political Spam Blocker and Phone Call Bot; still not published</td>
+<td>2026-10-20 <strong>(unchanged &gt;7 days, flagged 2026-10-28)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Course MVP: Cybersecurity Career Jumpstart, text/workbook-first $47 Founding Beta</td>
+<td>Course Builder (Beacon owns site deploys; Ian merges every PR = deploy gate)</td>
+<td>In progress, <strong>not sellable today</strong> (audit 2026-10-19: checkout preview, 0/18 lesson videos). Daily build: Course Builder specs, cloud agent may PR on connected GitHub repos, Ian reviews/merges — no auto-merge/deploy/publish. Next: Day 1 Module 1 beta-ready text package (<code>/workspace/courses/day-01-task.md</code>, <code>tracker.md</code>, <code>mvp-spec.md</code>). Approval marked <strong>reported</strong>: Ian via Atlas Oct 19 (Archivist did not hear Ian directly); tracker/mvp-spec record the same 2026-10-19 approval</td>
+<td>2026-10-19 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>decisions/2026-10-19-course-mvp-text-first.md; <code>/workspace/courses/audit-2026-10-19.md</code></td>
+</tr>
+<tr>
+<td>Course video pipeline research</td>
+<td>Course Builder</td>
+<td>Plan landed 2026-10-19 ~1:48 PM CT at <code>/workspace/courses/video-plan-2026-10-19.md</code> (research only; nothing bought or generated). Lead recommendation: video v2 via Ian&#39;s own Lectern slides-plus-voice lane, run locally, not an avatar subscription. Text beta ships first; video v2 needs Ian&#39;s pick later</td>
+<td>2026-10-20 <strong>(unchanged &gt;7 days, flagged 2026-10-28)</strong></td>
+<td><code>/workspace/courses/video-plan-2026-10-19.md</code>; <code>tracker.md</code> B5</td>
+</tr>
+<tr>
+<td>New bots tracked: Game Stores + Privacy Scrubber (first tasks)</td>
+<td>Game Stores / Privacy Scrubber</td>
+<td>Game Stores: Plumber Puzzle engine inventory first, Steam first, no enrollment/fee/submission without Ian. Privacy Scrubber: search-only first, no opt-out submission without Ian&#39;s own-words approval; recheck schedule not set. Atlas-reported &quot;Spokeo manual step&quot; <strong>not found in live profile — unverified</strong></td>
+<td>2026-10-19 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>bots/game-stores.md; bots/privacy-scrubber.md</td>
+</tr>
+<tr>
+<td>New bots tracked: Expert Calls + Apple Mac Tools</td>
+<td>Expert Calls / Apple Mac Tools</td>
+<td>Expert Calls: tracker started at <code>/workspace/expert-calls/tracker.csv</code> (Oct 19 evening); first screens drafted for four projects; nothing submitted. It must remind Ian to check Google&#39;s outside-activity and expert-network policy before any paid call, and Ian approves every submission and reply. Apple Mac Tools: runs on request; which Mac it has run on is <strong>unverified</strong></td>
+<td>2026-10-20 <strong>(unchanged &gt;7 days, flagged 2026-10-28)</strong></td>
+<td>bots/expert-calls.md; bots/apple-mac-tools.md</td>
+</tr>
+<tr>
+<td><code>~/projects/neo</code> — add the Neo machine to the build orchestration stack</td>
+<td>Ian (watcher: Archivist)</td>
+<td>Verified purpose (Ian, 2026-10-19): add the Neo (machine) as a build node so the Mac mini and MacBook Pro are not always bogged down. Status: in-progress. Scaffold (Neo.xcodeproj iOS/macOS/tvOS, Sources/Shared, Tests, project.yml) created 2026-10-18 19:01–19:38 CT. Initial git commit done 2026-10-19 on the mini (canonical): <code>5bfa987</code> on <code>main</code>, clean; <code>.git</code> replicated to the Neo machine and MBP at the same hash (verified 2026-10-19). Next: define build-orchestration wiring (which builds move to Neo, trigger/queue, signing/Xcode version gaps noted in the project README) — owner Ian, watcher Archivist. Related: decisions/2026-10-19-neo-build-node-and-projects-git-rule.md; decisions/2026-10-17-box-control-plane.md; infra/macs.md (Neo build node)</td>
+<td>2026-10-19 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>Ian chat 2026-10-19 14:16 CT; Archivist git-init on mini 2026-10-19</td>
+</tr>
+<tr>
+<td>PrismShift / Night Chorus work, now on feature branch <code>night-chorus-godot</code> (was <code>universal-bundle</code>; mini <code>~/projects/prismshift</code>)</td>
+<td>Ian (watcher: Archivist)</td>
+<td>Not on main; no remote configured. Oct 18-19: iPad signed install, Nintendo controller prompts, TV-style wide board, portrait/landscape fit. 2026-10-19 20:27-20:32 CT: <code>8599967</code> &quot;Preserve iPad runs on rotation and sign through the mini login session&quot;, <code>d9fe8b7</code> &quot;Record corrected iPad build launch after unlock&quot;. 2026-10-20 05:40-08:05 CT: 12 more commits, now Apple TV and native Mac work: <code>5ebe0bb</code> &quot;Install signed corrected recoil release on both Apple TVs&quot;, native Mac tide/danger audio and recoil feedback, Metal presentation analysis, <code>d757555</code> &quot;Reconcile full goal evidence and remaining device acceptance dependencies&quot;. 2026-10-20 09:11-12:13 CT: 3 more commits, <code>20afee7</code> &quot;Capture foreground-verified Shed Metal performance and restore normal build&quot;, <code>583b24e</code> &quot;Give native Siri Remote gameplay one input owner&quot;, <code>52a70b2</code> &quot;Record accepted Shed remote fix and restored mini Metal signing pipeline&quot;. 2026-10-20 13:48-17:06 CT: 7 more commits, TV GPU replay profiles, Shed PS4 acceptance, tide default and Drift curve tuning, checkpoint pressure ramp, <code>da1e5cf</code> &quot;Add shared haptic routing patterns and compatible preferences&quot;. 2026-10-20 17:16-20:40 CT: branch switched to <code>night-chorus-godot</code>, 7 more commits: construction pressure, platform haptics wired to gameplay, signed haptic review builds, <code>9cb1ccf</code> &quot;Package approved Night Chorus identity for Apple platforms and Steam&quot;, <code>30ffd3a</code> (HEAD) canonical macOS iconset names. Site moved too: <code>prismshift-site</code> main <code>7d89991</code> &quot;Move game website to nightchorus.remnantsecurity.com&quot;, and <code>remnantsecurity.com</code> main <code>39f484d</code> updated the game links to the Night Chorus domain. Next: merge to main or keep the branch (Ian&#39;s call)</td>
+<td>2026-10-20 <strong>(unchanged &gt;7 days, flagged 2026-10-28)</strong></td>
+<td>Archivist intraday scan 2026-10-20 21:01 CT (mini, read-only git)</td>
+</tr>
+<tr>
+<td>Lightfence (qix-swift) on feature branch <code>design/mockup-pass</code> (mini <code>~/projects/qix-swift</code>)</td>
+<td>Ian (watcher: Archivist)</td>
+<td>Not on main. 2026-10-19 20:02 CT <code>a7696e3</code> &quot;Build 1000 went to App Store review&quot; (HEAD); 09:16 CT <code>fab9269</code> app named Lightfence on the Mac too. Oct 18 commits added MBP/Neo build fallback when the mini is busy. Watch: an App Store submission came from a non-main branch; merge back to main once review settles. 2026-10-20 07:21 CT <code>35ca94d</code> &quot;progress: the real-keyboard check is deferred by the user&quot;. 2026-10-20 13:03-16:52 CT: 9 more commits, the website demo went live (<code>lightfence-site</code> main also moved to <code>b08c00f</code>, demo styled like the iPhone game), Stage 10 open on iPad, iPhone Duo fold fixes, tilt parallax, <code>2a36a16</code> &quot;Mac App Store build: sandbox, and a Mac leg in the release&quot;. 2026-10-20 18:03-20:11 CT: 3 more commits, tilt parallax reach, sector signatures (Black Ice, Event Horizon, Time Tide, Umbra), <code>4fa9994</code> &quot;Late game: a smaller second swarm, so sector 9 is a slope&quot; (HEAD)</td>
+<td>2026-10-20 <strong>(unchanged &gt;7 days, flagged 2026-10-28)</strong></td>
+<td>Archivist intraday scan 2026-10-20 21:01 CT (mini, read-only git)</td>
+</tr>
+<tr>
+<td>Leaving Kentucky on feature branch <code>core-gameplay-ios26</code> (mini <code>~/projects/leaving_kentucky</code>)</td>
+<td>Ian (watcher: Archivist)</td>
+<td>Not on main; no tracked item before tonight. 2026-10-20 17:33-20:52 CT: 6 commits, restored male narration clip, road encounters with native ports, plates and narration (12 more added this evening), Release store screenshots, controller can leave search and unaffordable stops; HEAD <code>db45ca2</code> &quot;Add four more road encounters&quot;. Next: Ian confirms owner and whether this branch merges to main</td>
+<td>2026-10-20 <strong>(unchanged &gt;7 days, flagged 2026-10-28)</strong></td>
+<td>Archivist intraday scan 2026-10-20 21:01 CT (mini, read-only git)</td>
+</tr>
+<tr>
+<td>Learning to Sell series and sales tracker</td>
+<td>Learning to Sell (Beacon builds the blog)</td>
+<td>Part 1 live 2026-10-18. Close data gaps the tracker marks: ASC after Oct 13, Gumroad and KDP book sales, USD conversion of proceeds</td>
+<td>2026-10-18 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>bots/learning-to-sell.md; <code>/workspace/learning-to-sell/tracker.md</code></td>
+</tr>
+<tr>
+<td>Active repos with no OPEN-WORK item (daily full scan 2026-10-20, mini <code>~/projects</code>)</td>
+<td>Ian (watcher: Archivist)</td>
+<td>Found by scan; scope <strong>unverified</strong> until Ian or an owner confirms. <code>appsnap</code> on feature branch <code>reconcile/tiling-iteration-20261017</code> (Oct 18 23:08 CT: new Apple Development signing cert); <code>alttabmacapp</code> on <code>app-store-publishing-readiness</code> (Oct 17: Mac App Store research); <code>civic-fortune-2026-ios</code> on <code>docs/agent-bootstrap</code> (Oct 17: handover, fastlane, ad copy; 17 dirty); <code>launchdeck</code> on <code>main</code> (Oct 17: sandbox hardening); <code>site-templates</code> on <code>main</code> (Oct 18: playable demo); <code>remnant-academy</code> on <code>main</code> (Oct 16: 13 of 13 hostnames domain-verified); <code>books</code> on <code>main</code> (Oct 17); <code>apps-site</code> on <code>main</code> (Oct 16: StatBar listed; see Beacon PR apps #4). Covered under other names (no new row): <code>CyberTestApp</code> = CyberSim (1.1.2 build 5 bump Oct 19 23:09 CT), <code>lightfence-site</code> = Lightfence, <code>prismshift-site</code> = PrismShift, <code>statbar-site</code> = StatBar, <code>cybersim-website</code>/<code>lectern-website</code> = private-repos item, <code>remnant-security-courses</code> = Course MVP. Next: Ian assigns an owner or says not tracked</td>
+<td>2026-10-20 <strong>(unchanged &gt;7 days, flagged 2026-10-28)</strong></td>
+<td><code>/workspace/project-tracker/LATEST-DIFF.md</code></td>
+</tr>
+<tr>
+<td>Intraday scan 2026-10-25 13:04 CT (mini <code>~/projects</code>, read-only git, first scan since 2026-10-20 21:01 CT; intraday/daily runs in between failed)</td>
+<td>Ian (watcher: Archivist)</td>
+<td><strong>Feature-branch motion:</strong> <code>prismshift</code> (<code>night-chorus-godot</code>) +25 commits Oct 21-24, HEAD <code>a9728fa</code> Oct 24 01:26 CT &quot;tv target: use the shared bundle id com.prismshift.app (universal purchase)&quot;; <code>8e4b226</code> Oct 23 added release preflight/gate/release scripts (no push). <code>qix-swift</code> / Lightfence (<code>design/mockup-pass</code>) +19, builds 1003 and 1004 went to App Store review Oct 21-22, <code>aa4bb19</code> Version 1.3 HD art Oct 23, HEAD <code>3f3fef7</code> Oct 24 00:43 CT; still not merged to main. <code>leaving_kentucky</code> (<code>core-gameplay-ios26</code>) +13 Oct 20-21, 70-encounter suite green, tvOS and macOS builds, HEAD <code>8743d06</code> Oct 21 01:32 CT &quot;Record the Namecheap auth block and the signing recheck&quot;. <code>snapdog</code> (<code>claude/snapdog-swiftui-app-g6bvt</code>) +11 Oct 20-23: Linux/Omarchy capture and recording, Mac help links, website storyboards; HEAD <code>e93496a</code> Oct 23 20:36 CT. <strong>Main, no item yet:</strong> <code>statbar</code> 1.6.0 and 1.7.0 Oct 21-22 (HEAD <code>f8b972f</code>; <code>statbar-site</code> matched). Main motion on tracked or catch-all repos logged only: <code>launchdeck</code> +3, <code>lightfence-site</code> +2 (App Store badge Oct 23), <code>neo</code> +1, <code>prismshift-site</code> +1, <code>product-diary</code> +19, <code>remnantsecurity.com</code> +1, <code>site-templates</code> +1. <strong>9 new top-level folders:</strong> git <code>build_orchestration-attrib</code> (branch <code>fleet/menu-v2</code>), <code>build_orchestration-phase1</code> (branch <code>fleet/phase1-host-roles</code>), <code>hermes-fleet</code> (master), <code>plumberpuzzle-site</code> (main, PR #6 merge Oct 23, so the Pipe Flow site now has a mini folder), <code>civclone</code> (master, no commits yet); non-git <code>firestick</code>, <code>meshy</code>, <code>stripepaymentgateway</code>, <code>t3code</code>. Also git-initialised since Oct 20: <code>build_orchestration</code>, <code>cua</code>, <code>Yaber_projector</code> (git repos 74 to 85; 212 top-level). Next: Ian assigns owners / says not tracked</td>
+<td>2026-10-25</td>
+<td><code>/workspace/project-tracker/manifests/2026-10-25-1804-mini-projects.json</code>; <code>LATEST-DIFF.md</code></td>
+</tr>
+<tr>
+<td>Daily full scan 2026-10-26 05:38 CT (mini <code>~/projects</code>, first full scan since 2026-10-20; Oct 25 full scan failed)</td>
+<td>Ian (watcher: Archivist)</td>
+<td><strong>Active git repos with no item:</strong> <code>hermes-webui</code> (new folder Oct 25, <code>master</code>, 0 dirty; last commit Oct 25 04:02 CT &quot;docs(changelog): stamp v0.52.544 stable section&quot;, looks like an upstream clone, <strong>unverified</strong>), <code>letmeretire</code> (became git; <code>main</code>, last commit Oct 23 15:12 CT, 7 dirty), <code>hisense</code> (became git; <code>main</code>, last commit Oct 23 09:34 CT). <strong>Non-git, touched in 7 days, no item:</strong> <code>yolkSouls</code> (Oct 23), <code>astralforge</code> (Oct 21; holds nested repo <code>AstralForge-iOS</code>; top-level <code>astralforge-ios</code> repo also exists). Since the 2026-10-25 21:09 CT check: feature-branch commits on <code>qix-swift</code> (<code>design/mockup-pass</code>, +1, HEAD <code>ceb5064</code>) and <code>snapdog</code> (<code>claude/snapdog-swiftui-app-g6bvt</code>, +2, HEAD <code>9a9a850</code>). <code>prismshift</code> branch moved <code>universal-bundle</code> to <code>night-chorus-godot</code> (already logged). Git repos 75 to 88 since Oct 20 (213 top-level). MacBook Pro replica: 0 HEAD or branch mismatches on 204 shared folders. Neo unreachable on the tailnet. Next: Ian assigns owners or says not tracked; names any folder to git-init</td>
+<td>2026-10-26</td>
+<td><code>/workspace/project-tracker/LATEST-DIFF.md</code>; <code>manifests/2026-10-26-mini-projects.json</code></td>
+</tr>
+<tr>
+<td>Intraday scan 2026-10-28 09:01 CT (mini <code>~/projects</code>, read-only git, fast mode; mini reachable again after failing since ~9 PM CT Oct 27)</td>
+<td>Ian (watcher: Archivist)</td>
+<td><strong>New top-level folder:</strong> <code>books-site</code> (git, branch <code>fix/dead-signal-analytics-and-sample</code>, not main; remote <code>origin</code>; folder touched Oct 28 07:07 CT; HEAD <code>444a1b9</code> Oct 15 01:23 CT &quot;Replace every SVG social card with a raster one, and add missing canonicals&quot;; history includes PR #7 book samples and PR #8 contact email, so it looks like a fresh copy of the books website repo, <strong>unverified</strong>). <strong>Feature-branch commit:</strong> <code>snapdog</code> (<code>claude/snapdog-swiftui-app-g6bvt</code>) +1, HEAD <code>9b5187f</code> Oct 27 23:09 CT &quot;docs: add website video edit pipeline (make_video.py, EDL, concat lists, fixture, production log)&quot;. No other branch or HEAD changes since the Oct 27 21:08 CT scan. Next: Ian says who owns <code>books-site</code> and whether that fix branch is live work</td>
+<td>2026-10-28</td>
+<td><code>/workspace/project-tracker/manifests/2026-10-28-1400-mini-projects.json</code></td>
+</tr>
+<tr>
+<td>Daily full scan 2026-10-30 05:39 CT (mini <code>~/projects</code>)</td>
+<td>Ian (watcher: Archivist)</td>
+<td><strong>Active git repo with no item:</strong> <code>Slideprocessor</code> (<code>main</code>, 0 dirty) moved for the first time in over a week: <code>163f27c</code> Oct 29 23:01 CT &quot;docs: add Lectern native sales ads draft (2026-10-29)&quot;. It may belong with the Lectern items, but that is <strong>unverified</strong>. Also seen: <code>civclone</code> got its first commits Oct 29 23:02 CT (<code>2dd01fb</code> &quot;Initial commit: Epochs of Power prototype&quot;, then 2 more on <code>master</code>; dirty 140 to 6), which meets your Oct 19 initial-commit rule. Next: Ian assigns an owner or says not tracked</td>
+<td>2026-10-30</td>
+<td><code>/workspace/project-tracker/LATEST-DIFF.md</code>; <code>manifests/2026-10-30-mini-projects.json</code></td>
+</tr>
+</tbody></table>
+<p>| New bots tracked: Political Spam Blocker + Phone Call Bot | Ian (watcher: Archivist) | Both are short template profiles with no chat history yet. Phone Call Bot: confirm approve-each-call stays on (not auto mode). Political Spam Blocker: STOP replies and unsubscribes are sends, so they need your yes; add Inbox Cleaner&#39;s protected-mail rule to its lane. Next: Ian gives each a first task | 2026-10-26 | bots/political-spam-blocker.md; bots/phone-call-bot.md; Improve My Bots audit 2026-10-26 found the same two gaps (no lane, approvals, or outputs) |</p>
+<h2>Waiting on Ian</h2>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>owner</th>
+<th>question for Ian</th>
+<th>date</th>
+<th>source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Non-git <code>~/projects</code> folders: which are projects needing an initial commit?</td>
+<td>Ian (watcher: Archivist)</td>
+<td>Per your Oct 19 rule, every projects folder should have a commit. Touched in the last 7 days, no git, no tracked item: NEW 2026-10-20 evening: <code>build_orchestration</code> (20:57 CT; has <code>buildctl</code>, <code>pyproject.toml</code>, <code>.gitignore</code>), <code>cua</code> (21:01 CT; <code>AGENTS.md</code>, <code>FLEET-AND-USE-CASES.md</code>), <code>Yaber_projector</code> (18:39 CT; apks, backup, blog, scripts); <code>prismshift-backups</code> (Oct 18), <code>msi_tomahawk_x570mb</code> (Oct 17), <code>ugreennas</code> (Oct 17), <code>adgenerator</code> (Oct 17), <code>MacbookPro</code> (Oct 17; holds nested repo <code>ti85doom</code>), <code>tart-vm</code> (Oct 14), <code>monitorswitch</code> (Oct 14), <code>Hermes ai</code> (Oct 14). Full standing list (119 non-git top-level folders) with an answer column: <code>/workspace/project-tracker/NON-GIT-BACKLOG.md</code>. Name folders (or a batch) to git-init; nothing is initialised without your yes</td>
+<td>2026-10-20 <strong>(unchanged &gt;7 days, flagged 2026-10-28)</strong></td>
+<td>daily full scan 2026-10-20</td>
+</tr>
+<tr>
+<td>Orchestration decisions 2 to 7: omarchy role (inference node with one ACL port, or workstation), vLLM on omarchy (timebox or drop), move cloud-only cron off the mini, outside dead-man alert service, oMLX auto-start + build keychain on the mini, second cloud fallback for mini Hermes</td>
+<td>Atlas / Warden</td>
+<td>Yes or no per item. Decision 8 (publish Diagrams 1–4 to the wiki) closed 2026-10-18 — see Done</td>
+<td>2026-10-17 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td><code>/workspace/orchestration/BOARD.md</code></td>
+</tr>
+<tr>
+<td>Warden oMLX warm-up job on the mini</td>
+<td>Warden</td>
+<td>Give the all-clear to un-pause it? (paused, never run, as of 2026-10-18)</td>
+<td>2026-10-17 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>mini <code>~/.hermes/cron/jobs.json</code>; BOARD.md</td>
+</tr>
+<tr>
+<td>Wiki sync scope</td>
+<td>Beacon</td>
+<td><code>grokbot-wiki/bin/sync-content.sh</code> republishes every page in this repo (58+), not a short approved list. Keep it, or scope it? Needs Ian&#39;s yes to change</td>
+<td>2026-10-17 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td><code>/workspace/orchestration/BOARD.md</code></td>
+</tr>
+<tr>
+<td>Life events description</td>
+<td>Improve My Bots</td>
+<td>Approve a drafted description so the profile is not blank (still empty as of 2026-10-16; no CLI block applied)</td>
+<td>2026-10-16 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>IMB report; profile.json len=0</td>
+</tr>
+<tr>
+<td>Apple builds on the box</td>
+<td>Atlas</td>
+<td>Do you accept the Xcode license risk and want to provide Xcode.xip, an ASC API key and certificates? (Recommendation: no, keep builds on the mini)</td>
+<td>2026-10-15 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td><code>apple-dev/STATUS.md</code></td>
+</tr>
+<tr>
+<td>Older <code>remnantsecurity.com</code> repo (NAS Docker)</td>
+<td>Beacon</td>
+<td>Should it serve the main domain or the Lectern page on iantrimble.com?</td>
+<td>2026-10-15 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>Atlas t185 report</td>
+</tr>
+<tr>
+<td>Pipe Flow site folder</td>
+<td>Beacon</td>
+<td>Where does the Pipe Flow site live? (No folder on the mini. A plumberpuzzle-site repo was deployed Oct 6, so it may be that one)</td>
+<td>2026-10-06 <strong>(unchanged &gt;7 days, flagged 2026-10-16)</strong></td>
+<td>approvals.md 10-06; INVENTORY</td>
+</tr>
+<tr>
+<td>Pipe Flow reply drafts never sent</td>
+<td>Atlas</td>
+<td>Send, edit or drop them? (Drafts <strong>unverified</strong>)</td>
+<td>open</td>
+<td>Atlas summary</td>
+</tr>
+<tr>
+<td>Pending Beacon PRs: lectern #1, apps #4</td>
+<td>Beacon</td>
+<td>Merge or close? (Still &quot;NOT approved&quot; as of 10-06; cybersim #1 was merged 10-10)</td>
+<td>2026-10-06 <strong>(unchanged &gt;7 days, flagged 2026-10-16)</strong></td>
+<td>approvals.md</td>
+</tr>
+<tr>
+<td>Warden&#39;s tssh question</td>
+<td>Warden</td>
+<td>Answer Warden&#39;s tssh question (content <strong>unverified</strong>)</td>
+<td>open</td>
+<td>Atlas summary</td>
+</tr>
+<tr>
+<td>WSP (Window Switcher Pro)</td>
+<td>n/a</td>
+<td>Ian skipped this one. Keep on the board and don&#39;t re-ask</td>
+<td>open</td>
+<td>todo wsp-decision</td>
+</tr>
+<tr>
+<td>Security headers on all 9 public sites</td>
+<td>Beacon lane (<strong>owner unverified</strong>)</td>
+<td>All 9 hosts lack 6 security headers. Spec recommends putting Cloudflare in front (pilot on one host, CSP report-only first). DNS moves need your yes. HTTP to HTTPS redirect was externally confirmed fine</td>
+<td>2026-10-18 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td><code>/workspace/site-security-audit-2026-10-18.md</code>; <code>/workspace/site-security-verify-spec-2026-10-18.md</code></td>
+</tr>
+<tr>
+<td>Box Hermes open items: gateway + cron on the box (#9), copilot in the fallback chain (#10), oMLX from the box (#11), docker terminal sandbox (#13), port send/merge workflows with approval gates (#6). Claude was declined by Ian 2026-10-17</td>
+<td>Hermes Tuner</td>
+<td>Yes or no per item</td>
+<td>2026-10-16 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td><code>/workspace/hermes-tuner/PLAN.md</code></td>
+</tr>
+<tr>
+<td>Model orchestration: send the proposed handoffs to X Bookmarks (log model news) and Ledger (mirror the experiment tracker)</td>
+<td>Atlas (<strong>owner unverified</strong>)</td>
+<td>Send the drafted handoff texts? (Not sent)</td>
+<td>2026-10-16 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td><code>/workspace/model-orchestration/process.md</code></td>
+</tr>
+<tr>
+<td>Mac mini model cleanup and installs: fix mcode (broken Node path), try Mellum 2.1 (EXP-006), remove ~74 GB (Qwen3.6-35B IQ2_M, one FLUX, loose HF blobs)</td>
+<td>Atlas (<strong>owner unverified</strong>)</td>
+<td>Approve any of these? FLUX use by Studio is unverified</td>
+<td>2026-10-16 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td><code>/workspace/model-orchestration/mac-mini-inventory.md</code></td>
+</tr>
+</tbody></table>
+<h2>Waiting on something else</h2>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>owner</th>
+<th>waiting on / next step</th>
+<th>date</th>
+<th>source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Expert Calls tracker stores live login session tokens in a file every bot can read</td>
+<td>Warden / Expert Calls</td>
+<td>Improve My Bots flagged it in its Oct 26 audit (contradiction 3). Next: move the tokens out of the tracker or lock the file down; token values are not copied here</td>
+<td>2026-10-27</td>
+<td><code>/workspace/audits/audit-2026-10-26.md</code>; <code>/workspace/expert-calls/tracker.csv</code></td>
+</tr>
+<tr>
+<td>Hermes cron failures Oct 15: minimax cover, faceless research, faceless QA build, daily-native-sales-ads (4 of 6 jobs errored)</td>
+<td>Warden</td>
+<td><strong>All 4 ended ok on their Oct 16 runs</strong> (checked 2026-10-17). Cause not written down anywhere Archivist can see. Warden added a daily &quot;oMLX warm-up (6:45)&quot; job 2026-10-16 ~8:06 PM CT; <code>~/.config/omlx/key</code> still missing. Close once Warden confirms the cause</td>
+<td>2026-10-17 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>mini <code>~/.hermes/cron/jobs.json</code></td>
+</tr>
+<tr>
+<td>mac-mini-files connector possibly broken</td>
+<td>Warden</td>
+<td>Failed again 2026-10-17 ~06:15 CT (&quot;Client network socket disconnected before secure TLS connection was established&quot; to the mini on port 443) while tssh to the mini worked on retry. Test with <code>fs_list_sources</code></td>
+<td>2026-10-17 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>Archivist refresh</td>
+</tr>
+<tr>
+<td>Mini gateway watchdog crashes 2026-10-17 4:06 to 4:27 PM CT (load ~956); one Polymarket run marked unknown</td>
+<td>Warden</td>
+<td>Find the load source and the Polymarket run&#39;s side effects. Owner moved from Hermes Tuner to Warden 2026-10-19 (Improve My Bots): Hermes Tuner is box-only since Oct 16</td>
+<td>2026-10-17 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>BOARD.md (Warden report); IMB Oct 19</td>
+</tr>
+<tr>
+<td>omarchy offline on the tailnet</td>
+<td>Ian / Atlas</td>
+<td>Faulty RAM confirmed 2026-10-17; powered off. Offline since about 2026-10-17 7:05 PM CT, still offline 2026-10-19. Hash-check anything built on it until fixed</td>
+<td>2026-10-19 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>BOARD.md; Archivist refresh</td>
+</tr>
+<tr>
+<td>Box tailnet link degraded; the Neo and omarchy unreachable</td>
+<td>Warden</td>
+<td>2026-10-29 ~06:16 CT: the Mac mini is back (tssh worked first try; it was unreachable from ~9 PM CT Oct 27 until at least Oct 28 morning). The MacBook Pro answers. The Neo fails with a SOCKS failure (offline about 4 days). omarchy gives no SSH banner. The box&#39;s own row still reads offline. Hermes Tuner added retries for the NAS hop (<code>/workspace/hermes-tuner/nas.sh</code>)</td>
+<td>2026-10-29</td>
+<td>Archivist refresh; <code>/workspace/tailscale/STATUS.txt</code>; infra/tailnet.md</td>
+</tr>
+<tr>
+<td>Wiki bot counts stale</td>
+<td>Beacon</td>
+<td>Architecture page note says &quot;current docs say 18 bots&quot; and the pro images say 17; docs list 26 active since 2026-10-26 (Political Spam Blocker and Phone Call Bot added). Mermaid renders need a rebuild from ARCHITECTURE.md</td>
+<td>2026-10-20 <strong>(unchanged &gt;7 days, flagged 2026-10-28)</strong></td>
+<td><code>grokbot-wiki/build.mjs</code>; ARCHITECTURE.md</td>
+</tr>
+<tr>
+<td>Bills routines and handoffs</td>
+<td>Bills</td>
+<td>No routines visible to Archivist; split with Inbox Cleaner on bill mail <strong>unverified</strong></td>
+<td>2026-10-18 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>bots/bills.md</td>
+</tr>
+<tr>
+<td>YuE2 on the MacBook Pro</td>
+<td>Atlas</td>
+<td>Check it over tssh now that SSH works</td>
+<td>open</td>
+<td>Atlas summary</td>
+</tr>
+<tr>
+<td>ASC watch expecting TilePilot 200</td>
+<td>Atlas</td>
+<td>Optional prompt update</td>
+<td>open</td>
+<td>Atlas summary</td>
+</tr>
+<tr>
+<td>Atlas inbound evening missing Oct 13–14; ASC watch late Oct 14</td>
+<td>Atlas</td>
+<td>Confirm the routines are healthy (inbound-evening-2026-10-15 exists)</td>
+<td>2026-10-15 <strong>(unchanged &gt;7 days, flagged 2026-10-26)</strong></td>
+<td>audit-2026-10-15</td>
+</tr>
+</tbody></table>
+<h2>Done recently (about the last 2 weeks)</h2>
+<ul>
+<li>10-19 20:02 to 21:23 CT: Box SSH to the NAS approved by Ian (tailnet TCP 22; recorded in <code>/workspace/tailscale/PLAN.md</code>, Archivist did not hear Ian directly). Hermes Tuner then fixed and updated the NAS Hermes install to v0.22.2, added a Telegram allowlist, 4 Hermes cron jobs, an hourly snapshot timer and weekly config backups. See decisions/2026-10-19-box-nas-ssh-and-nas-hermes.md.</li>
+<li>10-19 ~1:48 PM CT: Course video plan landed (<code>/workspace/courses/video-plan-2026-10-19.md</code>). Research only.</li>
+<li>10-19 11:43 AM CT: Ian decided (Archivist chat) the @utopyaszx &quot;agentic or pure&quot; answer: tell them we are working on making SnapDog agentic and name the supported features. Scout owns the reply. Features from <code>CreatorStudioMCP/README</code> — agent-driven Creator Studio: inspect/list/boot/capture/edit/import/reel/validate/export; AI shot planning, captions, translation, email redaction, image analysis; in-development, no date, no Mac App Store bundle promise. See decisions/2026-10-19-snapdog-agentic-creator-studio.md.</li>
+<li>10-19 ~1:15 PM CT: Closed reopened Dev Diary X posting rule: main posts may post directly without Ian&#39;s yes. Learning to Sell grant now covers blog, tracker, X, Reddit, Facebook, other public channels. &quot;Don&#39;t block cli&quot;: no CLI block on Atlas/Archivist/Hermes Tuner/Bills/Learning to Sell. Source: Improve My Bots report Oct 19 (Ian&#39;s yes in IMB&#39;s chat; Archivist did not hear Ian directly), verified in profile.json 2026-10-19 13:12 CT.</li>
+<li>10-18 6:38 PM CT: Learning to Sell part 1 and the living tracker went live on blog.remnantsecurity.com (itrimble/product-diary PR #50, merged by Ian). Archivist saw <code>/category/learning-to-sell/</code> return 200 on 10-19. See decisions/2026-10-18-learning-to-sell.md.</li>
+<li>10-18 6:18 PM CT: Wiki Architecture page made pro-only with Apple platform chips; mermaid diagrams kept as text links (itrimble/grokbot-wiki PR #1, merged by Ian). Archivist saw all 4 pro images linked on the live page 10-19.</li>
+<li>10-18: New bot Learning to Sell (build-in-public narrator for the marketing fleet). See bots/learning-to-sell.md.</li>
+<li>10-18: Public site security check: HTTP to HTTPS redirect confirmed on all 9 hosts from outside the box (the box&#39;s port 80 is filtered). Header work moved to Waiting on Ian.</li>
+<li>10-18 ~12:15 PM CT: Wiki architecture diagrams live and verified. Beacon published 3 mermaid PNGs (diagram-1-machines updated 17→18 bots, diagram-2-bot-handoffs, diagram-3-orchestration) plus 4 diagrams-pro images (network, local-ai, bot-operating-model, orchestration DESIGN). Archivist verified all 7 over strict HTTPS (HTTP/2 200, content-type image/png) on <a href="https://wiki.remnantsecurity.com/architecture/">https://wiki.remnantsecurity.com/architecture/</a>; main commit <code>7f792f9</code>, gh-pages <code>4f2b4a7</code>. Separate In-progress item kept for Ian&#39;s new reference-style diagrams in <code>/workspace/grokbot-preview/diagrams-pro/</code> (not published yet).</li>
+<li>10-17 21:31 CT: Scout posted the Lectern, Pipe Flow and CyberSim X experiment posts, after Ian&#39;s yes in the Ledger chat (21:33 CT entry; Halcyon and SnapDog were already live). See <code>/workspace/approvals/approvals.md</code>.</li>
+<li>10-17: oMLX through the box SOCKS proxy verified live (orchestration BOARD.md). Closed the &quot;oMLX check from the box&quot; item.</li>
+<li>10-17: Ian approved the box as control plane with the MacBook Pro as deputy; Phase 0 files created in <code>/workspace/orchestration/</code>. See decisions/2026-10-17-box-control-plane.md.</li>
+<li>10-17: Ian decided to skip Claude for box Hermes (paid extra-usage credits). Hermes Tuner logged it.</li>
+<li>10-17: New bot Bills (household and utility bills). See bots/bills.md.</li>
+<li>10-17 ~4:57 PM CT: Wiki cert fixed and site live at <a href="https://wiki.remnantsecurity.com/">https://wiki.remnantsecurity.com/</a> — Beacon removed/re-added the custom domain in itrimble/grokbot-wiki Pages, re-triggering Let&#39;s Encrypt; cert CN wiki.remnantsecurity.com valid to Jan 15 2027, https_enforced=true. Archivist verified from the box (strict curl, no -k): <code>/</code>, <code>/bots/beacon/</code>, <code>/architecture/</code> all HTTP/2 200 with ssl_verify=0; openssl subject=CN=wiki.remnantsecurity.com, notAfter=Jan 15 20:54:50 2027 GMT, issuer Let&#39;s Encrypt YR2; http:// → https:// 301. Closed wiki In progress and Wiki DNS Waiting on Ian. See decisions/2026-10-16-wiki-site.md.</li>
+<li>10-16 ~8:03 AM CT (seen 10-17): Hermes Tuner profile now names the box install, matching Ian&#39;s correction. Closed.</li>
+<li>10-16 <del>8:52 PM CT: Foreman live profile matches docs on NAS — Improve My Bots updated only the NAS clause (NAS edits allowed generally, canonical AIMacMini:</del>/projects, protected sections kept) and reported a fresh smoke Index. Archivist re-read profile.json and updated bots/foreman.md; no Index transcript found on disk. See bots/foreman.md.</li>
+<li>10-16 8:04 PM CT: NAS rule settled, per Ian (confirmed in the Archivist chat, answering the widget). All NAS edits are allowed now; the single canonical root stays <code>AIMacMini:~/projects</code>. This supersedes the narrow <code>PROJECTS.md</code>/<code>ACTIVITY.md</code>-only exception. See decisions/2026-10-16-nas-editable.md.</li>
+<li>10-16 ~7:31 PM CT (reported by Warden): Warden reported Ian confirmed directly in Warden&#39;s chat to widen the NAS rule — NAS edits allowed generally, canonical root stays <code>AIMacMini:~/projects</code> — and that Warden saved it superseding the narrow exception. Ian then confirmed the same in the Archivist chat at 8:04 PM CT (see entry above). See decisions/2026-10-16-nas-editable.md.</li>
+<li>10-16 7:30 PM CT: NAS contradiction resolved for the confirmed exception, per Ian. Single canonical root stays <code>AIMacMini:~/projects</code>; <code>/Volumes/nas/projects</code> stays a backup mirror, but <code>PROJECTS.md</code> and <code>ACTIVITY.md</code> writes are allowed there (rest backup-only). Ian&#39;s exact words recorded verbatim: &#39;You can edit to NAS.&#39; (2026-10-16 7:30 PM CT, Archivist chat). That widening was later reported by Warden (~7:31 PM CT) and confirmed by Ian in the Archivist chat at 8:04 PM CT — settled, see the entries above. See decisions/2026-10-16-nas-editable.md.</li>
+<li>10-16 ~7:57 AM CT: Closed Dev Diary X posting-rule conflict (reopened 2026-10-17, see Waiting on Ian). Atlas confirmed Ian decided Dev Diary may post publicly on X with no approval needed for main posts (and bots use each CLI&#39;s default model, no pins). Source: Atlas (not heard from Ian directly). Dev Diary&#39;s own profile/chat notes may still say approve-main-posts until it updates.</li>
+<li>10-16 06:10 CT: Archivist&#39;s first scheduled weekday refresh (Hermes Tuner page, box/mini Hermes, tailnet status, model-orchestration links).</li>
+<li>10-16 ~00:32–00:47 CT: Model-orchestration research, Mac mini model inventory, and experiment tracker (EXP-001 to 009) written to <code>/workspace/model-orchestration/</code>. All experiments proposed, none run.</li>
+<li>10-16 00:39–00:47 CT: Hermes Tuner (new bot) applied Ian&#39;s approved box Hermes fixes: v0.21.6 to v0.22.2, primary gpt-5.5 (unsupported) to gpt-6.1-sol, aux pinned, hard stop on, Apple skills disabled, memory seeded, 6 skills ported, live tests passed. See decisions/2026-10-16-box-hermes-tuning.md.</li>
+<li>10-16 (by t184): Box rejoined the tailnet; docs synced to the mini at ~12:19 and ~12:28 AM CT.</li>
+<li>10-16 ~12:18–12:25 AM CT: Improve My Bots applied (Ian&#39;s yes) CLI guardrails + per-bot lines on 12 bots; self-check on Beacon/Foreman/Studio; Tax Collector mission; Inbox Cleaner receipt rule; shared skill plain-writing; audit check #8 Mondays (IMB reports applied; Guide-based paragraph not yet in IMB profile.json). Life events description still empty. See decisions/2026-10-16-cli-rollout-applied.md.</li>
+<li>10-16 ~00:16 CT: Archivist made OPEN-WORK.md the single master open-work list; retired OPEN_ITEMS.md.</li>
+<li>10-16 12:14 AM CT (reported by Atlas): Dev Diary may post publicly on X (intentional, not draft-only). Bots use each tool&#39;s default model for Claude Code and Codex (no model pins). CyberSim 1.1.2 submission approved; SnapDog 1.2.2 upload-only; private repos for CyberSim and Lectern sites approved — moved to In progress.</li>
+<li>10-16 12:04 AM CT: Ian approved (a) NAS exception for Foreman&#39;s PROJECTS.md/ACTIVITY.md (Warden applying), (b) Tax Collector description + Inbox Cleaner receipt rule (applied ~12:25 AM CT; Life events description still waiting), (c) CLI guardrails (applied to 12 bots ~12:18–12:25 AM CT).</li>
+<li>10-16: SSH read/write/run verified to mini, MBP and Neo over the tailnet (Atlas). Archivist docs scaffold started.</li>
+<li>10-15: 7 web sites cloned and set up for Claude Code/Codex; read-only CLI test passed on the SnapDog site (<code>web/HOWTO.md</code>). Apple build tools installed on the box, and a hello-world Swift build runs. CLI rollout drafted. oMLX auto-start, key cleanup and the tailnet ACL done (Atlas summary). StatBar Gumroad ZIP swap done and verified.</li>
+<li>10-14: Tailscale on the box, oMLX shared tailnet-only, Funnel turned off (LOCAL-AI.md, audit-10-15).</li>
+<li>10-12: SnapDog replies posted (0xdoppo, Jordy_vD_), and rajbasx/Ved_CJ replies confirmed.</li>
+<li>10-10: cybersim-site PRs #1 and #2 merged and live. CyberSim 1.1.2 promo text, description, keywords and screenshots updated (not submitted).</li>
+<li>10-06: Plumber Puzzle site PR #1 merged and live. SnapDog 1.2.2 macOS version created in ASC. ASC watch moved to the box key.</li>
+<li>10-05: Reddit follow-up posted to u/CPT17.</li>
+<li>10-04: Beacon site fix batch approved. SnapDog standing reply and promo rules set.</li>
+<li>10-02: Philipp and Trevin replies posted; Kerran code DM sent (review nudge sent 10-06).</li>
+</ul>
+<h2>Stale or abandoned candidates (finish or drop)</h2>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>owner</th>
+<th>suggestion</th>
+<th>source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ACTIVITY.md and DIGEST.md not refreshed since 10-05</td>
+<td>Foreman</td>
+<td>Re-run, or retire DIGEST (it points at the 4TB mirror)</td>
+<td>mini file dates</td>
+</tr>
+<tr>
+<td>OpenClaw-era TODO/STATUS/PROJECTS files (Jan to Mar 2026)</td>
+<td>Ian</td>
+<td>Archive to <code>_archive</code></td>
+<td>mini</td>
+</tr>
+<tr>
+<td><code>_docs/TODO_PHASE3.md</code> (Mar 2026)</td>
+<td>Ian</td>
+<td>Review or archive</td>
+<td>mini</td>
+</tr>
+<tr>
+<td>CyberSim &quot;demoted&quot; in PROJECTS.md although it&#39;s actively being shipped</td>
+<td>Foreman</td>
+<td>Re-promote</td>
+<td>PROJECTS.md vs approvals.md</td>
+</tr>
+<tr>
+<td>leaving-kentucky × 5 folders (last change 09-29), marked &quot;do not promote&quot;</td>
+<td>Ian</td>
+<td>Consolidate or drop</td>
+<td>PROJECTS.md, ACTIVITY.md</td>
+</tr>
+<tr>
+<td>Duplicate folders (equilibrium-<em>, alttab-</em>, qix-clone, cyberlab, metro-ios-app-claude)</td>
+<td>Foreman</td>
+<td>Archive the duplicates</td>
+<td>PROJECTS.md</td>
+</tr>
+<tr>
+<td>Old Scout digests from Aug to Sep in /workspace root</td>
+<td>Atlas</td>
+<td>Clean up the box</td>
+<td>/workspace listing</td>
+</tr>
+</tbody></table>
+</article></main></div><footer>Built from <code>/workspace/grokbot-docs</code> — no secrets or tailnet IPs. <a href="https://blog.remnantsecurity.com/">Product Diary</a></footer></body></html>
