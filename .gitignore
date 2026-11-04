@@ -1,3 +1,8 @@
 node_modules/
 dist/
 content/
+assets/home-network/families/
+__pycache__/
+*.pyc
+facts/fleet.json
+facts/diagrams-built.json

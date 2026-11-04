@@ -1,6 +1,26 @@
-import re, os, html
-import cairosvg
+import re, os, html, json, textwrap, datetime
+try:
+    import cairosvg
+except ImportError:          # PNGs are skipped (SVGs are still written) and the page says so
+    cairosvg=None
 BASE=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPO_ROOT=os.path.dirname(os.path.dirname(BASE))
+
+# Bot counts and names come from the docs, via bin/fleet_facts.py, every time the site is built.
+# 17 was the last hand-counted value; it is only used if facts/fleet.json is missing.
+def _load_fleet():
+    try: return json.load(open(os.path.join(REPO_ROOT,"facts","fleet.json")))
+    except (OSError, ValueError): return None
+FLEET=_load_fleet()
+BOTS_ACTIVE=(FLEET or {}).get("bots_active") or 17
+BOTS_DATE=(FLEET or {}).get("generated_date") or "2026-10-17"
+# Bots drawn by name in diagram 3. Keep this next to the drawing; the docs list is compared against it.
+DRAWN={"Atlas","X Bookmarks","Book Growth","Archivist","Foreman","Warden","Improve My Bots","Hermes Tuner","Beacon","Scout",
+       "Ledger","Studio","Outbound Prospecting","Inbox Cleaner","Life events","Tax Collector","Dev Diary"}
+def _undrawn_lines():
+    missing=[n for n in (FLEET or {}).get("names_active",[]) if n not in DRAWN]
+    return textwrap.wrap("In the docs, not drawn here: "+", ".join(missing)+".",72)[:5] if missing else []
+UNDRAWN_LINES=_undrawn_lines()
 ICON_DIR=os.path.join(BASE,"icons")
 def icon_path(name):
     p=os.path.join(ICON_DIR,name+".svg")
@@ -19,7 +39,7 @@ class SVG:
         self.parts.append(f'<text x="48" y="52" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="800" fill="white">{html.escape(title)}</text>')
         self.parts.append(f'<text x="48" y="88" font-family="Inter,Arial,sans-serif" font-size="21" fill="#BFD7EA">{html.escape(subtitle)}</text>')
         self.parts.append(f'<text x="{w-48}" y="52" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="end">REMNANT SECURITY  •  GROK BOT FLEET</text>')
-        self.parts.append(f'<text x="{w-48}" y="84" font-family="Inter,Arial,sans-serif" font-size="17" fill="#8FB0CC" text-anchor="end">Verified 2026-10-17  •  No IPs / keys shown</text>')
+        self.parts.append(f'<text x="{w-48}" y="84" font-family="Inter,Arial,sans-serif" font-size="17" fill="#8FB0CC" text-anchor="end">Bot counts from docs {BOTS_DATE}  •  Other details verified 2026-10-17  •  No IPs / keys shown</text>')
         # defs marker
         self.defs='<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker><marker id="arrT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0E9A8B"/></marker><marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D97706"/></marker></defs>'
     def icon(self,name,x,y,size=34):
@@ -95,8 +115,8 @@ class SVG:
     def save(self,name):
         svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.w}" height="{self.h}" viewBox="0 0 {self.w} {self.h}">{self.defs}'+"".join(self.parts)+'</svg>'
         open(os.path.join(BASE,name+".svg"),"w").write(svg)
-        cairosvg.svg2png(bytestring=svg.encode(), write_to=os.path.join(BASE,name+".png"), output_width=2400)
-        print(name, "saved")
+        if cairosvg: cairosvg.svg2png(bytestring=svg.encode(), write_to=os.path.join(BASE,name+".png"), output_width=2400)
+        print(name, "saved" + ("" if cairosvg else " (SVG only: cairosvg is not installed)"))
 
 # DIAGRAM 1
 s=SVG(2400,1680,"1  •  Network Architecture — Machines, Tailnet & Trust Boundaries","How Ian's fleet reaches each other: tailnet-only, least-privilege ACLs, no public Funnel, no inbound to the Box")
@@ -108,7 +128,7 @@ s.icon("tailscale",2280,158,40)
 # Box
 s.card(80,230,620,360,"THE BOX — Shared Agent Host",[
  "Debian 13 • 8 vCPU Xeon • 15 GB RAM • NO GPU",
- "17 Grok Bots (one shared VM, separate desktops)",
+ f"{BOTS_ACTIVE} Grok Bots (one shared VM, separate desktops)",
  "CLIs: claude • codex • hermes • swift • xtool",
  "Userspace tailscaled (no kernel TUN / root net)",
  "SOCKS5 proxy: localhost:1055  →  tailnet egress",
@@ -297,7 +317,7 @@ for i,t in enumerate(["Box Hermes: cloud gpt-6.1-sol FIRST, DeepSeek/MiniMax if 
 s.save("diagram-2-local-ai-flow")
 
 # DIAGRAM 3
-s=SVG(2400,1900,"3  •  Bot Operating Model — Lanes, Handoffs & the Atlas Gate","17 Grok Bots, each with a lane. Atlas is the portfolio gate; Warden owns runtime; Hermes is a coding agent, not a Grok Bot")
+s=SVG(2400,1900,"3  •  Bot Operating Model — Lanes, Handoffs & the Atlas Gate",f"{BOTS_ACTIVE} Grok Bots, each with a lane. Atlas is the portfolio gate; Warden owns runtime; Hermes is a coding agent, not a Grok Bot")
 s.platform_strip(["macOS \u00b7 AIMacMini ~/projects (Foreman)"])
 # Atlas center
 s.card(920,170,560,260,"ATLAS — Portfolio Gate",[
@@ -344,9 +364,10 @@ s.card(820,960,700,360,"HERMES — Coding Agent  (NOT a Grok Bot)",[
 ],"purple",subtitle="Execution engine, not a lane owner")
 s.card(1580,960,760,360,"OTHER LANES  (one-line ownership)",[
  "Outbound Prospecting — pitches",
- "Inbox Cleaner, Life Events, Tax Collector, Dev Diary…",
+ "Inbox Cleaner, Life Events, Tax Collector, Dev Diary",
  "Each bot page in the wiki is its source of truth",
  "If a handoff is not documented, it does not happen",
+ *UNDRAWN_LINES,
 ],"slate",subtitle="Full roster: wiki content/bots/*.md")
 # arrows
 s.arrow(760,290,920,290,"flags / reports",lx=840,ly=265)
@@ -358,7 +379,7 @@ s.poly([(1350,430),(1350,480),(2000,480),(2000,520)],"",lx=0,ly=0)
 s.arrow(470,960,470,860,"status ↑",lx=520,ly=910)
 s.arrow(760,1140,820,1140,"heavy coding",lx=790,ly=1115)
 s.note(60,1400,720,260,"WHY A GATE? (FOR AI-ENTHUSIAST READERS)",[
- "17 autonomous agents without a gate = 17|invented priorities. Atlas makes shipping a|decision, not a side-effect of any one bot.",
+ f"{BOTS_ACTIVE} autonomous agents without a gate = {BOTS_ACTIVE}|invented priorities. Atlas makes shipping a|decision, not a side-effect of any one bot.",
  "Read-only reporting (Foreman → Atlas) keeps|status truthful: reporters cannot edit the plan."])
 s.note(840,1400,720,260,"LANE vs EXECUTION ENGINE",[
  "Bots own outcomes (sites, experiments,|content). Hermes owns execution (code, bulk|research) — tuned separately from bot config.",
@@ -441,7 +462,7 @@ s.card(1220,620,540,430,"MACBOOK PRO — Video + Deputy",[
 s.card(1800,620,540,430,"THE BOX AS WORKER  (limited)",[
  "Cloud CLIs: claude (judgment), codex (mechanical)",
  "Box Hermes: gpt-6.1-sol → DeepSeek → MiniMax",
- "17 Grok Bot lanes: sites/books/content/etc.",
+ f"{BOTS_ACTIVE} Grok Bot lanes: sites/books/content/etc.",
  "Small builds -j2 off-peak ONLY",
  "⛔ NO local models, NO heavy builds,",
  "⛔ NO Apple builds on Box (15 GB, no GPU)",
@@ -472,3 +493,9 @@ s.note(60,1680,2280,110,"DESIGN ONLY — NO MACHINE CHANGES YET  •  Decisions 
 s.parts.append('<text x="48" y="1885" font-family="Inter,Arial" font-size="16" fill="#64748B">Sources: /workspace/orchestration-design-2026-10-17.md + architecture-review-2026-10-17.md + wiki infra/*.md  •  Verified 2026-10-17  •  No IPs / keys / secrets shown  •  Icons: Simple Icons (see icons/) with text labels</text>')
 s.save("diagram-4-orchestration")
 print("patched")
+
+# What this run built, for the page to compare against the docs (read by build.mjs).
+os.makedirs(os.path.join(REPO_ROOT,"facts"), exist_ok=True)
+json.dump({"bots_active": BOTS_ACTIVE, "date": BOTS_DATE, "from_facts": FLEET is not None, "png": cairosvg is not None,
+           "built": datetime.date.today().isoformat()},
+          open(os.path.join(REPO_ROOT,"facts","diagrams-built.json"),"w"), indent=2)
