@@ -16,6 +16,15 @@ function sanitize(t){
 }
 function walk(dir,base=""){let out=[];for(const e of fs.readdirSync(dir,{withFileTypes:true})){if(e.name.startsWith(".")||e.name==="node_modules")continue;const p=path.join(dir,e.name);const rel=base?base+"/"+e.name:e.name;if(e.isDirectory())out.push(...walk(p,rel));else if(e.name.endsWith(".md"))out.push(rel);}return out.sort();}
 const files=walk(SRC);
+// What the Architecture diagrams were built from, so the page can say whether they match the docs.
+const readJson=p=>{try{return JSON.parse(fs.readFileSync(path.join(ROOT,p),"utf8"))}catch{return null}};
+const fleet=readJson("facts/fleet.json"), built=readJson("facts/diagrams-built.json");
+const fresh=!!(fleet&&built&&built.from_facts&&built.bots_active===fleet.bots_active);
+const diagramNote=(fresh
+  ? `Bot counts in these diagrams are read from the docs each time the site is built (${esc(built.date)}): ${esc(fleet.bots_active)} active of ${esc(fleet.bots_total)} profiles.`+(built.png?"":" The PNG images could not be regenerated on this build, so they may show older counts; the SVG sources are current.")
+  : `WARNING: these diagrams were not regenerated for the current docs${fleet?` (the docs list ${esc(fleet.bots_active)} active bots)`:""}, so counts in the pictures may be out of date.`)
+  +(fleet&&fleet.consistency_problems&&fleet.consistency_problems.length?` The docs disagree with themselves: ${esc(fleet.consistency_problems.join("; "))}.`:"")
+  +" Other details were last verified on October 17, 2026.";
 const pages=files.map(rel=>{
   const raw=sanitize(fs.readFileSync(path.join(SRC,rel),"utf8"));
   const title=(raw.match(/^#\s+(.+)/m)||[])[1]||rel;
@@ -34,7 +43,7 @@ const pages=files.map(rel=>{
       ["Bot Operating Model","/assets/diagrams-pro/diagram-3-bot-operating-model.png","Bot operating model diagram","Lanes, handoffs and the Atlas gate. Platform: macOS \u00b7 AIMacMini ~/projects."],
       ["Orchestration (design)","/assets/diagrams-pro/diagram-4-orchestration.png","Orchestration control plane diagram (design)","Control plane, routing and failover \u2014 design, labelled DESIGN in the image; expands the approved Phase 0 orchestration mermaid. Platforms: macOS \u00b7 Mac mini / MacBook Pro."],
     ];
-    html+=`<h2>Diagrams</h2><p class="quiet">Note: these detailed renders are an October 17, 2026 snapshot (they say 17 bots). Where counts differ, the mermaid sources and docs are authoritative \u2014 current docs say 18 bots. No IPs, keys or secrets are shown. Apple platform chips (macOS/iOS) in each diagram use the Simple Icons glyph from <code>assets/diagrams-pro/icons/</code> with a text label \u2014 see <code>assets/diagrams-pro/README.md</code> for source/license. iPadOS, tvOS and watchOS do not appear in the docs, so they are not shown.</p>`+
+    html+=`<h2>Diagrams</h2><p class="quiet">${diagramNote} No IPs, keys or secrets are shown. Apple platform chips (macOS/iOS) in each diagram use the Simple Icons glyph from <code>assets/diagrams-pro/icons/</code> with a text label \u2014 see <code>assets/diagrams-pro/README.md</code> for source/license. iPadOS, tvOS and watchOS do not appear in the docs, so they are not shown.</p>`+
       pro.map(([cap,src,alt,desc])=>`<figure class="pro-diagram"><img src="${src}" alt="${alt}"><figcaption><strong>${cap}</strong> \u2014 ${desc}</figcaption></figure>`).join("")+
       `<h2>Mermaid source renders</h2><p>Text links only \u2014 the current-docs mermaid diagrams are not shown as images on this page:</p><ul>`+
       [["Machines","diagram-1-machines"],["Bot handoffs","diagram-2-bot-handoffs"],["Orchestration","diagram-3-orchestration"]].map(([name,f])=>`<li>${name}: <a href="/assets/diagrams/${f}.mmd">${f}.mmd (source)</a> \u00b7 <a href="/assets/diagrams/${f}.png">${f}.png (render)</a></li>`).join("")+

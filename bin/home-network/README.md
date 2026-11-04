@@ -42,3 +42,21 @@ The wiki box deploys; it must `git pull` before it builds or it will overwrite t
 - The collector and everything else is standard library only and must stay compatible with Python 3.9.
 - `NOTABLE` changes (a link falling, a device going offline, link flapping, new unidentified devices)
   still publish. They also send an alert so a person looks.
+
+## The Architecture page
+
+Its detailed diagrams used to be fixed pictures with hard-coded text. They now rebuild on every deploy:
+
+```
+deploy.sh  ->  git pull --ff-only  ->  sync-content.sh (docs from the box)
+           ->  bin/fleet_facts.py   facts/fleet.json   (bot counts and names, read from content/README.md)
+           ->  assets/diagrams-pro/src/build_diagrams.py   (uses the facts; needs cairosvg for the PNGs)
+           ->  build.mjs            (writes the note under the diagrams from what was actually built)
+```
+
+- Bot counts come from the docs. Bots the docs list but the diagram does not draw are named on the card
+  automatically. The set of drawn bots is `DRAWN` in `build_diagrams.py`: update it when you draw another bot.
+- If the diagrams could not be regenerated, or the docs disagree with themselves, the page says so instead
+  of showing stale numbers quietly.
+- Statements such as "verified 2026-10-17" about live checks stay manual on purpose. Nothing generates a
+  claim that something was verified.
