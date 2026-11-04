@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" role="img" aria-labelledby="t d">
+<title id="t">Who depends on whom in the home network</title>
+<desc id="d">The gateway hands out addresses and internet to the NAS, the Macs and omarchy. The NAS provides DNS filtering, files and backups to the Macs. The KVM shares a keyboard and display with the Macs. A Tailscale overlay joins the Macs, NAS, omarchy, phones and an outbound-only automation VM.</desc>
+<style>
+.bg{fill:#fbfaf7}.box{fill:#fff;stroke:#cfccc2;stroke-width:1.2}.grp{fill:#f3f1ea;stroke:#cfccc2;stroke-width:1.2}
+.t{fill:#1d1d1b;font:13px ui-sans-serif,system-ui,sans-serif}.h{font-weight:700;font-size:14px}.m{fill:#6b6a66;font-size:12px}
+.title{font-size:22px;font-weight:700}.lab{fill:#6b6a66;font:11.5px ui-sans-serif,system-ui,sans-serif}
+.e{stroke:#8a8880;stroke-width:2;fill:none}.ov{fill:none;stroke:#b4462b;stroke-width:2;stroke-dasharray:3 5}.acc{fill:#b4462b}.ah{fill:#8a8880}.ahv{fill:#b4462b}
+@media (prefers-color-scheme:dark){.bg{fill:#141412}.box{fill:#1d1d1b;stroke:#4a4841}.grp{fill:#1b1a18;stroke:#4a4841}.t{fill:#ecebe6}.m,.lab{fill:#9a9890}.e{stroke:#9a9890}.ah{fill:#9a9890}.ov{stroke:#e07a5f}.acc,.ahv{fill:#e07a5f}}
+</style>
+<defs>
+<marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path class="ah" d="M0,0 L9,4.5 L0,9 z"/></marker>
+<marker id="v" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path class="ahv" d="M0,0 L9,4.5 L0,9 z"/></marker>
+</defs>
+<rect class="bg" width="1100" height="700" rx="10"/>
+<text class="t title" x="30" y="42">Who depends on whom</text>
+<text class="lab" x="30" y="64">As of 2026-11-03. Solid arrows are services on the LAN. Dashed arrows travel over the Tailscale overlay.</text>
+
+<rect class="box" x="450" y="95" width="200" height="60" rx="8"/>
+<text class="t h" x="465" y="121">5G gateway</text>
+<text class="t m" x="465" y="141">DHCP, NAT, the internet</text>
+
+<rect class="box" x="60" y="230" width="240" height="76" rx="8"/>
+<text class="t h" x="75" y="254">NAS</text>
+<text class="t m" x="75" y="274">DNS filtering, file shares, backups,</text>
+<text class="t m" x="75" y="292">media, Tailscale</text>
+
+<rect class="box" x="430" y="230" width="240" height="76" rx="8"/>
+<text class="t h" x="445" y="254">Mac mini, MacBook Pro, Neo</text>
+<text class="t m" x="445" y="274">builds and scheduled jobs;</text>
+<text class="t m" x="445" y="292">use the NAS when at home</text>
+
+<rect class="box" x="800" y="230" width="240" height="76" rx="8"/>
+<text class="t h" x="815" y="254">omarchy</text>
+<text class="t m" x="815" y="274">Linux workstation,</text>
+<text class="t m" x="815" y="292">powered down at the moment</text>
+
+<rect class="box" x="600" y="400" width="200" height="60" rx="8"/>
+<text class="t h" x="615" y="426">TESmart KVM</text>
+<text class="t m" x="615" y="446">shares keyboard and display</text>
+
+<rect class="box" x="140" y="400" width="200" height="60" rx="8"/>
+<text class="t h" x="155" y="426">iPhone and iPad</text>
+<text class="t m" x="155" y="446">reach the home over Tailscale</text>
+
+<rect class="box" x="890" y="400" width="180" height="60" rx="8"/>
+<text class="t h" x="905" y="426">Automation VM</text>
+<text class="t m" x="905" y="446">outside the house</text>
+
+<line class="e" x1="500" y1="155" x2="230" y2="228" marker-end="url(#a)"/>
+<text class="lab" x="262" y="190">DHCP, NAT</text>
+<line class="e" x1="550" y1="155" x2="550" y2="228" marker-end="url(#a)"/>
+<text class="lab" x="562" y="195">DHCP, NAT</text>
+<line class="e" x1="600" y1="155" x2="920" y2="228" marker-end="url(#a)"/>
+<text class="lab" x="790" y="178">DHCP, NAT</text>
+
+<line class="e" x1="300" y1="252" x2="428" y2="252" marker-end="url(#a)"/>
+<text class="lab" x="306" y="244">DNS filtering</text>
+<line class="e" x1="430" y1="282" x2="302" y2="282" marker-end="url(#a)"/>
+<text class="lab" x="316" y="298">files, backups</text>
+
+<line class="e" x1="640" y1="306" x2="640" y2="398" marker-end="url(#a)"/>
+<text class="lab" x="650" y="356">keyboard,</text>
+<text class="lab" x="650" y="371">display</text>
+
+<line class="ov" x1="100" y1="306" x2="100" y2="560"/>
+<line class="ov" x1="240" y1="460" x2="240" y2="558" marker-end="url(#v)"/>
+<line class="ov" x1="500" y1="306" x2="500" y2="560"/>
+<line class="ov" x1="870" y1="306" x2="870" y2="560"/>
+<line class="ov" x1="980" y1="460" x2="980" y2="558" marker-end="url(#v)"/>
+<text class="lab" x="990" y="512">dials out only</text>
+
+<rect class="grp" x="30" y="560" width="1040" height="96" rx="12" stroke-dasharray="3 5"/>
+<text class="t h acc" x="50" y="590">Tailscale overlay</text>
+<text class="t m" x="50" y="612">Lets the Macs, the NAS and omarchy reach each other from anywhere. On the LAN they connect directly.</text>
+<text class="t m" x="50" y="632">My access rules let the automation VM dial out and let nothing dial in.</text>
+</svg>

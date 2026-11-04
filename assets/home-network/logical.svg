@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 790" role="img" aria-labelledby="t d">
+<title id="t">Logical view of the home network: one flat network</title>
+<desc id="d">The internet reaches a 5G gateway. Behind it is one flat private network holding the Wi-Fi mesh and its clients, the wired workspace, and the services on the NAS. A Tailscale overlay runs on top.</desc>
+<style>
+.bg{fill:#fbfaf7}.box{fill:#fff;stroke:#cfccc2;stroke-width:1.2}.grp{fill:#f3f1ea;stroke:#cfccc2;stroke-width:1.2}
+.t{fill:#1d1d1b;font:13px ui-sans-serif,system-ui,sans-serif}.h{font-weight:700;font-size:14px}.m{fill:#6b6a66;font-size:12px}
+.title{font-size:22px;font-weight:700}.lab{fill:#6b6a66;font:11.5px ui-sans-serif,system-ui,sans-serif}.c{text-anchor:middle}
+.lx{stroke:#8a8880;stroke-width:3;fill:none}.ov{fill:none;stroke:#b4462b;stroke-width:2;stroke-dasharray:3 5}.acc{fill:#b4462b}
+@media (prefers-color-scheme:dark){.bg{fill:#141412}.box{fill:#1d1d1b;stroke:#4a4841}.grp{fill:#1b1a18;stroke:#4a4841}.t{fill:#ecebe6}.m,.lab{fill:#9a9890}.lx{stroke:#9a9890}.ov{stroke:#e07a5f}.acc{fill:#e07a5f}}
+</style>
+<rect class="bg" width="1100" height="790" rx="10"/>
+<text class="t title" x="30" y="42">Logical view: one flat network</text>
+<text class="lab" x="30" y="64">As of 2026-11-03. There are no VLANs. Wired, Wi-Fi, smart-home and server traffic share one broadcast domain.</text>
+
+<ellipse class="box" cx="550" cy="112" rx="110" ry="26"/>
+<text class="t h c" x="550" y="117">Internet (5G cellular)</text>
+<line class="lx" x1="550" y1="138" x2="550" y2="165"/>
+<rect class="box" x="400" y="165" width="300" height="66" rx="8"/>
+<text class="t h c" x="550" y="191">5G home-internet gateway</text>
+<text class="t m c" x="550" y="212">router, NAT, DHCP, MTU 1420</text>
+<line class="lx" x1="550" y1="231" x2="550" y2="270"/>
+
+<rect class="grp" x="30" y="270" width="1040" height="370" rx="12"/>
+<text class="t m" x="50" y="292">ONE FLAT PRIVATE NETWORK (a single /24)</text>
+
+<text class="t h" x="50" y="330">Wi-Fi mesh</text>
+<text class="t m" x="50" y="348">3 x Deco BE63 in access-point mode</text>
+<rect class="box" x="50" y="362" width="300" height="36" rx="6"/><text class="t" x="64" y="385">Phones and tablets</text>
+<rect class="box" x="50" y="408" width="300" height="36" rx="6"/><text class="t" x="64" y="431">TVs and AV receivers</text>
+<rect class="box" x="50" y="454" width="300" height="36" rx="6"/><text class="t" x="64" y="477">Smart-home devices</text>
+<rect class="box" x="50" y="500" width="300" height="36" rx="6"/><text class="t" x="64" y="523">Laptops when they are off the wire</text>
+<rect class="box" x="50" y="546" width="300" height="36" rx="6"/><text class="t" x="64" y="569">Other appliances</text>
+
+<text class="t h" x="385" y="330">Wired workspace</text>
+<text class="t m" x="385" y="348">behind the 2.5G switch</text>
+<rect class="box" x="385" y="362" width="300" height="36" rx="6"/><text class="t" x="399" y="385">MacBook Pro M4 Max</text>
+<rect class="box" x="385" y="408" width="300" height="36" rx="6"/><text class="t" x="399" y="431">Mac mini M4</text>
+<rect class="box" x="385" y="454" width="300" height="36" rx="6"/><text class="t" x="399" y="477">MacBook Neo</text>
+<rect class="box" x="385" y="500" width="300" height="36" rx="6"/><text class="t" x="399" y="523">omarchy (powered down)</text>
+<rect class="box" x="385" y="546" width="300" height="36" rx="6"/><text class="t" x="399" y="569">TESmart KVM</text>
+
+<text class="t h" x="720" y="330">Services on the NAS</text>
+<text class="t m" x="720" y="348">UGREEN DXP2800, static address</text>
+<rect class="box" x="720" y="362" width="330" height="36" rx="6"/><text class="t" x="734" y="385">File shares (SMB, NFS)</text>
+<rect class="box" x="720" y="408" width="330" height="36" rx="6"/><text class="t" x="734" y="431">Time Machine backups for the Macs</text>
+<rect class="box" x="720" y="454" width="330" height="36" rx="6"/><text class="t" x="734" y="477">DNS filtering for the whole LAN</text>
+<rect class="box" x="720" y="500" width="330" height="36" rx="6"/><text class="t" x="734" y="523">Media server and helper containers</text>
+<rect class="box" x="720" y="546" width="330" height="36" rx="6"/><text class="t" x="734" y="569">Tailscale (runs in a container)</text>
+<text class="lab" x="50" y="624">No segmentation between these groups.</text>
+
+<line class="ov" x1="200" y1="640" x2="200" y2="670"/>
+<line class="ov" x1="535" y1="640" x2="535" y2="670"/>
+<line class="ov" x1="885" y1="640" x2="885" y2="670"/>
+<rect class="grp" x="30" y="670" width="1040" height="96" rx="12" stroke-dasharray="3 5"/>
+<text class="t h acc" x="50" y="698">Tailscale overlay</text>
+<text class="t m" x="50" y="720">Encrypted peer-to-peer links on top of the LAN. They reach the Macs, the NAS, omarchy, an iPhone and an iPad from anywhere.</text>
+<text class="t m" x="50" y="738">Peers on the same LAN connect directly. An automation VM outside the house joins the same overlay and can only dial out.</text>
+</svg>

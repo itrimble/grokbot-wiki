@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 820" role="img" aria-labelledby="t d">
+<title id="t">Physical layout and link speeds of the home network</title>
+<desc id="d">A 5G gateway feeds a mesh root node over 1 GbE. Three mesh nodes link to each other wirelessly. The workspace node uplinks to an 8-port 2.5G switch. The NAS and the MacBook Pro dock connect at 2.5G, the Mac mini and other adapters at 1G.</desc>
+<style>
+.bg{fill:#fbfaf7}.box{fill:#fff;stroke:#cfccc2;stroke-width:1.2}.grp{fill:#f3f1ea;stroke:#cfccc2;stroke-width:1.2}
+.t{fill:#1d1d1b;font:13px ui-sans-serif,system-ui,sans-serif}.h{font-weight:700;font-size:14px}.m{fill:#6b6a66;font-size:12px}
+.title{font-size:22px;font-weight:700}.lab{fill:#6b6a66;font:11.5px ui-sans-serif,system-ui,sans-serif}
+.l25{stroke:#2e8b57;stroke-width:4;fill:none}.l1{stroke:#2b6cb0;stroke-width:4;fill:none}.lx{stroke:#8a8880;stroke-width:4;fill:none}.lw{stroke:#8a8880;stroke-width:2.5;fill:none;stroke-dasharray:7 6}.bus{stroke:#cfccc2;stroke-width:2;fill:none}
+.port{fill:none;stroke:#8a8880;stroke-width:1.2}.ovl{fill:none;stroke:#b4462b;stroke-width:1.6;stroke-dasharray:3 5}
+@media (prefers-color-scheme:dark){.bg{fill:#141412}.box{fill:#1d1d1b;stroke:#4a4841}.grp{fill:#1b1a18;stroke:#4a4841}.t{fill:#ecebe6}.m,.lab{fill:#9a9890}.l25{stroke:#5fcf8f}.l1{stroke:#6aa8f0}.lx,.lw{stroke:#9a9890}.bus{stroke:#4a4841}.port{stroke:#9a9890}.ovl{stroke:#e07a5f}}
+</style>
+<rect class="bg" width="1100" height="820" rx="10"/>
+<text class="t title" x="30" y="42">Physical layout and link speeds</text>
+<text class="lab" x="30" y="64">As of 2026-11-03. Color is the speed each link negotiated. Dashed means wireless or not confirmed.</text>
+
+<rect class="grp" x="30" y="90" width="310" height="230" rx="10"/>
+<text class="t m" x="46" y="112">GATEWAY ROOM</text>
+<rect class="box" x="55" y="125" width="260" height="62" rx="8"/>
+<text class="t h" x="70" y="148">5G home-internet gateway</text>
+<text class="t m" x="70" y="168">TMO-G4SE: router, NAT, DHCP</text>
+<line class="l1" x1="185" y1="187" x2="185" y2="235"/>
+<text class="lab" x="197" y="216">1 GbE</text>
+<rect class="box" x="55" y="235" width="260" height="62" rx="8"/>
+<text class="t h" x="70" y="258">Deco BE63: mesh root</text>
+<text class="t m" x="70" y="278">the gateway plugs in here</text>
+
+<rect class="grp" x="30" y="420" width="310" height="130" rx="10"/>
+<text class="t m" x="46" y="442">FAR ROOM</text>
+<rect class="box" x="55" y="455" width="260" height="62" rx="8"/>
+<text class="t h" x="70" y="478">Deco BE63: far node</text>
+<text class="t m" x="70" y="498">Wi-Fi coverage only</text>
+<line class="lw" x1="185" y1="297" x2="185" y2="455"/>
+<text class="lab" x="197" y="365">wireless backhaul</text>
+<text class="lab" x="197" y="381">6 to 11 ms from the workspace</text>
+
+<rect class="grp" x="390" y="90" width="680" height="700" rx="10"/>
+<text class="t m" x="406" y="112">WIRED WORKSPACE</text>
+
+<rect class="box" x="420" y="120" width="260" height="100" rx="8" stroke-dasharray="5 4"/>
+<text class="t h" x="435" y="143">Wi-Fi clients</text>
+<text class="t m" x="435" y="164">Phones, tablets, TVs, AV receivers</text>
+<text class="t m" x="435" y="182">Smart-home devices and laptops</text>
+<text class="t m" x="435" y="200">Each joins the closest Deco</text>
+
+<rect class="box" x="420" y="235" width="260" height="62" rx="8"/>
+<text class="t h" x="435" y="258">Deco BE63: workspace node</text>
+<text class="t m" x="435" y="278">wired anchor, 0.5 ms from wired hosts</text>
+<line class="lw" x1="315" y1="266" x2="420" y2="266"/>
+<text class="lab" x="328" y="257">wireless</text>
+<text class="lab" x="328" y="288">3 to 5 ms</text>
+
+<line class="lx" x1="550" y1="297" x2="550" y2="350"/>
+<text class="lab" text-anchor="end" x="538" y="318">uplink to the switch</text>
+<text class="lab" text-anchor="end" x="538" y="333">speed not measured</text>
+
+<rect class="box" x="420" y="350" width="260" height="92" rx="8"/>
+<text class="t h" x="435" y="373">TP-Link TL-SG108S-M2</text>
+<text class="t m" x="435" y="391">8 x 2.5G, unmanaged,</text>
+<text class="t m" x="435" y="407">loop prevention on</text>
+<rect class="port" x="434" y="418" width="20" height="14" rx="2"/><rect class="port" x="462" y="418" width="20" height="14" rx="2"/><rect class="port" x="490" y="418" width="20" height="14" rx="2"/><rect class="port" x="518" y="418" width="20" height="14" rx="2"/><rect class="port" x="546" y="418" width="20" height="14" rx="2"/><rect class="port" x="574" y="418" width="20" height="14" rx="2"/><rect class="port" x="602" y="418" width="20" height="14" rx="2"/><rect class="port" x="630" y="418" width="20" height="14" rx="2"/>
+
+<rect class="box" x="420" y="470" width="260" height="120" rx="8" stroke-dasharray="5 4"/>
+<text class="t h" x="435" y="493">Tailscale overlay</text>
+<text class="t m" x="435" y="514">Runs on every Mac, the NAS, omarchy,</text>
+<text class="t m" x="435" y="532">the iPhone and the iPad.</text>
+<text class="t m" x="435" y="556">Peers on this LAN connect directly.</text>
+<text class="t m" x="435" y="574">Away from home, through a relay.</text>
+
+<line class="bus" x1="715" y1="155" x2="715" y2="605"/>
+<line class="lx" x1="680" y1="396" x2="715" y2="396"/>
+
+<rect class="box" x="760" y="120" width="290" height="70" rx="8"/>
+<text class="t h" x="775" y="145">UGREEN DXP2800 NAS</text>
+<text class="t m" x="775" y="165">Intel N100, one 2.5GbE port, static address</text>
+<line class="l25" x1="715" y1="155" x2="760" y2="155"/>
+
+<rect class="box" x="760" y="210" width="290" height="70" rx="8"/>
+<text class="t h" x="775" y="235">MacBook Pro M4 Max</text>
+<text class="t m" x="775" y="255">USB-C dock at 2.5G, Wi-Fi also on</text>
+<line class="l25" x1="715" y1="245" x2="760" y2="245"/>
+
+<rect class="box" x="760" y="300" width="290" height="70" rx="8"/>
+<text class="t h" x="775" y="325">Mac mini M4</text>
+<text class="t m" x="775" y="345">built-in 1 GbE, Wi-Fi also on</text>
+<line class="l1" x1="715" y1="335" x2="760" y2="335"/>
+
+<rect class="box" x="760" y="390" width="290" height="70" rx="8"/>
+<text class="t h" x="775" y="415">MacBook Neo</text>
+<text class="t m" x="775" y="435">USB Ethernet adapter, 1G</text>
+<line class="l1" x1="715" y1="425" x2="760" y2="425" stroke-dasharray="7 6"/>
+
+<rect class="box" x="760" y="480" width="290" height="70" rx="8"/>
+<text class="t h" x="775" y="505">omarchy (Linux workstation)</text>
+<text class="t m" x="775" y="525">2.5G NIC, powered down at the moment</text>
+<line class="l25" x1="715" y1="515" x2="760" y2="515" stroke-dasharray="7 6"/>
+
+<rect class="box" x="760" y="570" width="290" height="70" rx="8"/>
+<text class="t h" x="775" y="595">TESmart KVM</text>
+<text class="t m" x="775" y="615">shares keyboard and display</text>
+<text class="t m" x="775" y="631">1G LAN adapter to the MacBook Pro</text>
+<line class="l1" x1="715" y1="605" x2="760" y2="605" stroke-dasharray="7 6"/>
+
+<rect class="grp" x="30" y="590" width="310" height="150" rx="10"/>
+<text class="t h" x="46" y="614">Legend</text>
+<line class="l25" x1="50" y1="637" x2="105" y2="637"/><text class="t m" x="118" y="641">2.5 Gbps, negotiated</text>
+<line class="l1" x1="50" y1="661" x2="105" y2="661"/><text class="t m" x="118" y="665">1 Gbps, negotiated</text>
+<line class="lx" x1="50" y1="685" x2="105" y2="685"/><text class="t m" x="118" y="689">wired, speed not measured</text>
+<line class="lw" x1="50" y1="709" x2="105" y2="709"/><text class="t m" x="118" y="713">wireless, or port not confirmed</text>
+
+<text class="lab" x="30" y="756">Wireless latencies were measured on</text>
+<text class="lab" x="30" y="772">2026-11-01 from a wired machine, before</text>
+<text class="lab" x="30" y="788">the switch went in. Not re-measured.</text>
+</svg>
