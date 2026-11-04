@@ -1,58 +1,141 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 790" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-labelledby="t d">
 <title id="t">Logical view of the home network: one flat network</title>
 <desc id="d">The internet reaches a 5G gateway. Behind it is one flat private network holding the Wi-Fi mesh and its clients, the wired workspace, and the services on the NAS. A Tailscale overlay runs on top.</desc>
 <style>
 .bg{fill:#fbfaf7}.box{fill:#fff;stroke:#cfccc2;stroke-width:1.2}.grp{fill:#f3f1ea;stroke:#cfccc2;stroke-width:1.2}
 .t{fill:#1d1d1b;font:13px ui-sans-serif,system-ui,sans-serif}.h{font-weight:700;font-size:14px}.m{fill:#6b6a66;font-size:12px}
-.title{font-size:22px;font-weight:700}.lab{fill:#6b6a66;font:11.5px ui-sans-serif,system-ui,sans-serif}.c{text-anchor:middle}
-.lx{stroke:#8a8880;stroke-width:3;fill:none}.ov{fill:none;stroke:#b4462b;stroke-width:2;stroke-dasharray:3 5}.acc{fill:#b4462b}
-@media (prefers-color-scheme:dark){.bg{fill:#141412}.box{fill:#1d1d1b;stroke:#4a4841}.grp{fill:#1b1a18;stroke:#4a4841}.t{fill:#ecebe6}.m,.lab{fill:#9a9890}.lx{stroke:#9a9890}.ov{stroke:#e07a5f}.acc{fill:#e07a5f}}
+.title{font-size:22px;font-weight:700}.lab{fill:#6b6a66;font:11.5px ui-sans-serif,system-ui,sans-serif}.r{text-anchor:end}.c{text-anchor:middle}
+.l25{stroke:#2e8b57;stroke-width:4;fill:none}.l1{stroke:#2b6cb0;stroke-width:4;fill:none}.lx{stroke:#8a8880;stroke-width:4;fill:none}
+.lw{stroke:#8a8880;stroke-width:2.5;fill:none;stroke-dasharray:7 6}.bus{stroke:#cfccc2;stroke-width:2;fill:none}
+.e{stroke:#8a8880;stroke-width:2;fill:none}.ov{fill:none;stroke:#b4462b;stroke-width:2;stroke-dasharray:3 5}
+.port{fill:none;stroke:#8a8880;stroke-width:1.2}.acc{fill:#b4462b}.ah{fill:#8a8880}.ahv{fill:#b4462b}.bd{fill:#8a8880}
+.c-net .tb{fill:#e3ecfa}.c-net .tg{fill:#2b6cb0}
+.c-pc .tb{fill:#dcf1ec}.c-pc .tg{fill:#1c8a75}
+.c-st .tb{fill:#fbecd3}.c-st .tg{fill:#b86e0a}
+.c-ov .tb{fill:#f9e3dc}.c-ov .tg{fill:#b4462b}
+.c-cl .tb{fill:#eceae3}.c-cl .tg{fill:#5f5e59}
+.c-in .tb{fill:#ece4f8}.c-in .tg{fill:#6b46c1}
+@media (prefers-color-scheme:dark){
+.bg{fill:#141412}.box{fill:#1d1d1b;stroke:#4a4841}.grp{fill:#1b1a18;stroke:#4a4841}.t{fill:#ecebe6}.m,.lab{fill:#9a9890}
+.l25{stroke:#5fcf8f}.l1{stroke:#6aa8f0}.lx,.lw,.e{stroke:#9a9890}.bus{stroke:#4a4841}.port{stroke:#9a9890}.ov{stroke:#e07a5f}
+.acc,.ahv{fill:#e07a5f}.ah,.bd{fill:#9a9890}
+.c-net .tb{fill:#1b2a44}.c-net .tg{fill:#6aa8f0}
+.c-pc .tb{fill:#143229}.c-pc .tg{fill:#4fd1b5}
+.c-st .tb{fill:#3a2a10}.c-st .tg{fill:#f0b45a}
+.c-ov .tb{fill:#3a1f18}.c-ov .tg{fill:#e07a5f}
+.c-cl .tb{fill:#2a2926}.c-cl .tg{fill:#b4b2a8}
+.c-in .tb{fill:#2a2140}.c-in .tg{fill:#b79cf0}
+}
 </style>
-<rect class="bg" width="1100" height="790" rx="10"/>
+<defs>
+<symbol id="i-custom-mac-mini" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M5 7h14a2.5 2.5 0 0 1 2.5 2.5v4A2.5 2.5 0 0 1 19 16H5a2.5 2.5 0 0 1-2.5-2.5v-4A2.5 2.5 0 0 1 5 7zm12.4 3.3a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8zM5 17.6h14v1.4H5z"/></symbol>
+<symbol id="i-custom-switch" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 7h18a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zM3.5 10v3h2.4v-3zm3.7 0v3h2.4v-3zm3.7 0v3h2.4v-3zm3.7 0v3h2.4v-3zm3.7 0v3h2.4v-3z"/></symbol>
+<symbol id="i-mdi-access-point-network" viewBox="0 0 24 24"><path d="M4.93 3.93A9.97 9.97 0 0 0 2 11c0 2.76 1.12 5.26 2.93 7.07l1.41-1.41A7.94 7.94 0 0 1 4 11c0-2.21.89-4.22 2.34-5.66zm14.14 0l-1.41 1.41A7.96 7.96 0 0 1 20 11c0 2.22-.89 4.22-2.34 5.66l1.41 1.41A9.97 9.97 0 0 0 22 11c0-2.76-1.12-5.26-2.93-7.07M7.76 6.76A5.98 5.98 0 0 0 6 11c0 1.65.67 3.15 1.76 4.24l1.41-1.41A4 4 0 0 1 8 11c0-1.11.45-2.11 1.17-2.83zm8.48 0l-1.41 1.41A4 4 0 0 1 16 11c0 1.11-.45 2.11-1.17 2.83l1.41 1.41A5.98 5.98 0 0 0 18 11c0-1.65-.67-3.15-1.76-4.24M12 9a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2m-1 6v4h-1a1 1 0 0 0-1 1H2v2h7a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1h7v-2h-7a1 1 0 0 0-1-1h-1v-4z"/></symbol>
+<symbol id="i-mdi-backup-restore" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-9 9H0l4 4l4-4H5a7 7 0 0 1 7-7a7 7 0 0 1 7 7a7 7 0 0 1-7 7c-1.5 0-2.91-.5-4.06-1.3L6.5 19.14A9.1 9.1 0 0 0 12 21a9 9 0 0 0 9-9a9 9 0 0 0-9-9m2 9a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2"/></symbol>
+<symbol id="i-mdi-cellphone" viewBox="0 0 24 24"><path d="M17 19H7V5h10m0-4H7c-1.11 0-2 .89-2 2v18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2"/></symbol>
+<symbol id="i-mdi-cloud" viewBox="0 0 24 24"><path d="M6.5 20q-2.28 0-3.89-1.57Q1 16.85 1 14.58q0-1.95 1.17-3.48q1.18-1.53 3.08-1.95q.63-2.3 2.5-3.72Q9.63 4 12 4q2.93 0 4.96 2.04Q19 8.07 19 11q1.73.2 2.86 1.5q1.14 1.28 1.14 3q0 1.88-1.31 3.19T18.5 20Z"/></symbol>
+<symbol id="i-mdi-desktop-tower" viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v2h8V4zm8 4H8v2h8zm0 10h-2v2h2z"/></symbol>
+<symbol id="i-mdi-folder-network" viewBox="0 0 24 24"><path d="M3 15V5a2 2 0 0 1 2-2h6l2 2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-6v2h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H5a2 2 0 0 1-2-2"/></symbol>
+<symbol id="i-mdi-home-automation" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h14v-8h3zm0 5.5c2.34 0 4.46.93 6 2.44l-1.2 1.18a6.8 6.8 0 0 0-4.8-1.95c-1.88 0-3.58.74-4.8 1.95L6 10.94a8.54 8.54 0 0 1 6-2.44m0 3.33c1.4 0 2.67.56 3.6 1.47l-1.2 1.17a3.4 3.4 0 0 0-2.4-.97c-.94 0-1.79.37-2.4.97L8.4 13.3a5.13 5.13 0 0 1 3.6-1.47m0 3.34c.94 0 1.7.74 1.7 1.66s-.76 1.67-1.7 1.67s-1.7-.75-1.7-1.67s.76-1.66 1.7-1.66"/></symbol>
+<symbol id="i-mdi-keyboard" viewBox="0 0 24 24"><path d="M19 10h-2V8h2m0 5h-2v-2h2m-3-1h-2V8h2m0 5h-2v-2h2m0 6H8v-2h8m-9-5H5V8h2m0 5H5v-2h2m1 0h2v2H8m0-5h2v2H8m3 1h2v2h-2m0-5h2v2h-2m9-5H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2"/></symbol>
+<symbol id="i-mdi-laptop" viewBox="0 0 24 24"><path d="M4 6h16v10H4m16 2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2H0v2h24v-2z"/></symbol>
+<symbol id="i-mdi-nas" viewBox="0 0 24 24"><path d="M4 5c-1.11 0-2 .89-2 2v10c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V7c0-1.11-.89-2-2-2zm.5 2a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1M7 7h13v10H7zm1 1v8h3V8zm4 0v8h3V8zm4 0v8h3V8zM9 9h1v1H9zm4 0h1v1h-1zm4 0h1v1h-1z"/></symbol>
+<symbol id="i-mdi-router-wireless" viewBox="0 0 24 24"><path d="m20.2 5.9l.8-.8C19.6 3.7 17.8 3 16 3s-3.6.7-5 2.1l.8.8C13 4.8 14.5 4.2 16 4.2s3 .6 4.2 1.7m-.9.8c-.9-.9-2.1-1.4-3.3-1.4s-2.4.5-3.3 1.4l.8.8c.7-.7 1.6-1 2.5-1s1.8.3 2.5 1zM19 13h-2V9h-2v4H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2M8 18H6v-2h2zm3.5 0h-2v-2h2zm3.5 0h-2v-2h2z"/></symbol>
+<symbol id="i-mdi-signal-5g" viewBox="0 0 24 24"><path d="M22 16.5v-6h-4.5v3H19v3h-3v-9h6v-3h-6a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h3a3 3 0 0 0 3-3m-12-12H3v9h4v3H3v3h5.5A1.5 1.5 0 0 0 10 18v-6a1.5 1.5 0 0 0-1.5-1.5H6v-3h4z"/></symbol>
+<symbol id="i-mdi-speaker" viewBox="0 0 24 24"><path d="M12 12a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m5-2H7c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2"/></symbol>
+<symbol id="i-mdi-television" viewBox="0 0 24 24"><path d="M21 17H3V5h18m0-2H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5v2h8v-2h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"/></symbol>
+<symbol id="i-simple-adguard" viewBox="0 0 24 24"><path d="M12 0C8.249 0 3.725.861 0 2.755C0 6.845-.051 17.037 12 24C24.051 17.037 24 6.845 24 2.755C20.275.861 15.751 0 12 0m-.106 15.429L6.857 9.612c.331-.239 1.75-1.143 2.794.042l2.187 2.588c.009-.001 5.801-5.948 5.815-5.938c.246-.22.694-.503 1.204-.101z"/></symbol>
+<symbol id="i-simple-apple" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04c-2.04.027-3.91 1.183-4.961 3.014c-2.117 3.675-.546 9.103 1.519 12.09c1.013 1.454 2.208 3.09 3.792 3.039c1.52-.065 2.09-.987 3.935-.987c1.831 0 2.35.987 3.96.948c1.637-.026 2.676-1.48 3.676-2.948c1.156-1.688 1.636-3.325 1.662-3.415c-.039-.013-3.182-1.221-3.22-4.857c-.026-3.04 2.48-4.494 2.597-4.559c-1.429-2.09-3.623-2.324-4.39-2.376c-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83c-1.207.052-2.662.805-3.532 1.818c-.78.896-1.454 2.338-1.273 3.714c1.338.104 2.715-.688 3.559-1.701"/></symbol>
+<symbol id="i-simple-docker" viewBox="0 0 24 24"><path d="M13.983 11.078h2.119a.186.186 0 0 0 .186-.185V9.006a.186.186 0 0 0-.186-.186h-2.119a.185.185 0 0 0-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 0 0 .186-.186V3.574a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 0 0 .186-.186V6.29a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 0 0 .184-.186V6.29a.185.185 0 0 0-.185-.185H8.1a.185.185 0 0 0-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 0 0 .185-.186V6.29a.185.185 0 0 0-.185-.185H5.136a.186.186 0 0 0-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 0 0 .186-.185V9.006a.186.186 0 0 0-.186-.186h-2.118a.185.185 0 0 0-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 0 0 .184-.185V9.006a.185.185 0 0 0-.184-.186h-2.12a.185.185 0 0 0-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 0 0 .185-.185V9.006a.185.185 0 0 0-.184-.186h-2.12a.186.186 0 0 0-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 0 0 .184-.185V9.006a.185.185 0 0 0-.184-.186h-2.12a.185.185 0 0 0-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51q-.508.001-1.01.087c-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199l-.226.327c-.284.438-.49.922-.612 1.43c-.23.97-.09 1.882.403 2.661c-.595.332-1.55.413-1.744.42H.751a.75.75 0 0 0-.75.748a11.4 11.4 0 0 0 .692 4.062c.545 1.428 1.355 2.48 2.41 3.124c1.18.723 3.1 1.137 5.275 1.137a15.7 15.7 0 0 0 2.93-.266a12.3 12.3 0 0 0 3.823-1.389a10.5 10.5 0 0 0 2.61-2.136c1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009c.309-.293.55-.65.707-1.046l.098-.288Z"/></symbol>
+<symbol id="i-simple-linux" viewBox="0 0 24 24"><path d="M12.504 0q-.232 0-.48.021c-4.226.333-3.105 4.807-3.17 6.298c-.076 1.092-.3 1.953-1.05 3.02c-.885 1.051-2.127 2.75-2.716 4.521c-.278.832-.41 1.684-.287 2.489a.4.4 0 0 0-.11.135c-.26.268-.45.6-.663.839c-.199.199-.485.267-.797.4c-.313.136-.658.269-.864.68c-.09.189-.136.394-.132.602c0 .199.027.4.055.536c.058.399.116.728.04.97c-.249.68-.28 1.145-.106 1.484c.174.334.535.47.94.601c.81.2 1.91.135 2.774.6c.926.466 1.866.67 2.616.47c.526-.116.97-.464 1.208-.946c.587-.003 1.23-.269 2.26-.334c.699-.058 1.574.267 2.577.2c.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071s1.592-.536 2.257-1.306c.631-.765 1.683-1.084 2.378-1.503c.348-.199.629-.469.649-.853c.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926c-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.36.36 0 0 0-.19-.064c.431-1.278.264-2.55-.173-3.694c-.533-1.41-1.465-2.638-2.175-3.483c-.796-1.005-1.576-1.957-1.56-3.368c.026-2.152.236-6.133-3.544-6.139m.529 3.405h.013c.213 0 .396.062.584.198c.19.135.33.332.438.533c.105.259.158.459.166.724c0-.02.006-.04.006-.06v.105l-.004-.021l-.004-.024a1.8 1.8 0 0 1-.15.706a.95.95 0 0 1-.213.335a1 1 0 0 0-.088-.042c-.104-.045-.198-.064-.284-.133a1.3 1.3 0 0 0-.22-.066c.05-.06.146-.133.183-.198q.08-.193.088-.402v-.02a1.2 1.2 0 0 0-.061-.4c-.045-.134-.101-.2-.183-.333c-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 0 0-.205.334a1.2 1.2 0 0 0-.09.4v.019q.002.134.02.267c-.193-.067-.438-.135-.607-.202a2 2 0 0 1-.018-.2v-.02a1.8 1.8 0 0 1 .15-.768a1.08 1.08 0 0 1 .43-.533a1 1 0 0 1 .594-.2zm-2.962.059h.036c.142 0 .27.048.399.135c.146.129.264.288.344.465c.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024c-.152.055-.274.135-.393.2q.018-.136.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.6.6 0 0 0-.166-.267a.25.25 0 0 0-.183-.064h-.021c-.071.006-.13.04-.186.132a.55.55 0 0 0-.12.27a1 1 0 0 0-.023.33v.015c.012.135.037.2.08.334c.046.134.098.2.166.268q.014.014.034.024c-.07.057-.117.07-.176.136a.3.3 0 0 1-.131.068a2.6 2.6 0 0 1-.275-.402a1.8 1.8 0 0 1-.155-.667a1.8 1.8 0 0 1 .08-.668a1.4 1.4 0 0 1 .283-.535c.128-.133.26-.2.418-.2m1.37 1.706c.332 0 .733.065 1.216.399c.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.57.57 0 0 1 .016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465c-.276.135-.588.292-1.012.267a1.1 1.1 0 0 1-.448-.067a4 4 0 0 1-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71q-.104-.403.193-.6c.224-.135.38-.271.483-.336c.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601c.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473c.286.534.855 1.659 1.102 3.024c.156-.005.33.018.513.064c.646-1.671-.546-3.467-1.089-3.966c-.22-.2-.232-.335-.123-.335c.59.534 1.365 1.572 1.646 2.757c.13.535.16 1.104.021 1.67c.067.028.135.06.205.067c1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224c-.915-.4-1.646-.336-1.77.465c-.008.043-.013.066-.018.135c-.068.023-.139.053-.209.064c-.43.268-.662.669-.793 1.187c-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35c-1.5 1.072-3.58 1.538-5.348.334a2.7 2.7 0 0 0-.402-.533a1.5 1.5 0 0 0-.275-.333c.182 0 .338-.03.465-.067a.62.62 0 0 0 .314-.334c.108-.267 0-.697-.345-1.163s-.931-.995-1.788-1.521c-.63-.4-.986-.87-1.15-1.396c-.165-.534-.143-1.085-.015-1.645c.245-1.07.873-2.11 1.274-2.763c.107-.065.037.135-.408.974c-.396.751-1.14 2.497-.122 3.854a8.1 8.1 0 0 1 .647-2.876c.564-1.278 1.743-3.504 1.836-5.268c.048.036.217.135.289.202c.218.133.38.333.59.465c.21.201.477.335.876.335q.058.005.11.006c.412 0 .73-.134.997-.268c.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377c.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876c.085.4.154.78.409 1.066c.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595c-.63.401-1.746.712-2.457 1.57c-.618.737-1.37 1.14-2.036 1.191c-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69c.176-.668.428-1.344.463-1.897c.037-.714.076-1.335.195-1.814c.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01q.08 0 .157.014c.376.055.706.333 1.023.752l.91 1.664l.003.003c.243.533.754 1.064 1.189 1.637c.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294c-.645.135-1.52.002-2.395-.464c-.968-.536-2.118-.469-2.857-.602q-.553-.1-.723-.4c-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118c-.055-.401-.083-.71.043-.94c.16-.334.396-.4.69-.533c.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838c.19-.201.38-.336.663-.336m7.159-9.074c-.435.201-.945.535-1.488.535c-.542 0-.97-.267-1.28-.466c-.154-.134-.28-.268-.373-.335c-.164-.134-.144-.333-.074-.333c.109.016.129.134.199.2c.096.066.215.2.36.333c.292.2.68.467 1.167.467c.485 0 1.053-.267 1.398-.466c.195-.135.445-.334.648-.467c.156-.136.149-.267.279-.267c.128.016.034.134-.147.332a8 8 0 0 1-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05c.074-.043.18-.027.26.004c.063 0 .16.067.15.135c-.006.049-.085.066-.135.066c-.055 0-.092-.043-.141-.068c-.052-.018-.146-.008-.163-.065m-.551 0c-.02.058-.113.049-.166.066c-.047.025-.086.068-.14.068c-.05 0-.13-.02-.136-.068c-.01-.066.088-.133.15-.133c.08-.031.184-.047.259-.005c.019.009.036.03.03.05v.02h.003z"/></symbol>
+<symbol id="i-simple-plex" viewBox="0 0 24 24"><path d="M3.987 8.409c-.96 0-1.587.28-2.12.933v-.72H0v8.88s.038.018.127.037c.138.03.821.187 1.331-.249c.441-.377.542-.814.542-1.318v-1.283c.533.573 1.147.813 2 .813c1.84 0 3.253-1.493 3.253-3.48c0-2.12-1.36-3.613-3.266-3.613m16.748 5.595l.406.591c.391.614.894.906 1.492.908c.621-.012 1.064-.562 1.226-.755c0 0-.307-.27-.686-.72c-.517-.614-1.214-1.755-1.24-1.803zm-3.205-1.955c0-2.08-1.52-3.64-3.52-3.64s-3.467 1.587-3.467 3.573a3.48 3.48 0 0 0 3.507 3.52c1.413 0 2.626-.84 3.253-2.293h-2.04l-.093.093c-.427.4-.72.533-1.227.533c-.787 0-1.373-.506-1.453-1.266h4.986c.04-.214.054-.307.054-.52m-7.671-.219c0 .769.11 1.701.868 2.722l.056.069c-.306.526-.742.88-1.248.88c-.399 0-.814-.211-1.138-.579a2.18 2.18 0 0 1-.538-1.441V6.409H9.86zm9.283 3.46h-2.39l2.247-3.332l-2.247-3.335h2.39l2.248 3.335zM3.573 13.662c-.933 0-1.68-.773-1.68-1.72s.76-1.666 1.68-1.666s1.68.733 1.68 1.68c0 .946-.733 1.706-1.68 1.706m18.361-1.974L24 8.622h-2.391l-.87 1.293zm-9.404-.466c.16-.706.72-1.133 1.493-1.133s1.373.467 1.507 1.133z"/></symbol>
+<symbol id="i-simple-tailscale" viewBox="0 0 24 24"><path d="M24 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0m-9 9a3 3 0 1 1-6 0a3 3 0 0 1 6 0m0-9a3 3 0 1 1-6 0a3 3 0 0 1 6 0m6-6a3 3 0 1 1 0-6a3 3 0 0 1 0 6m0-.5a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M3 24a3 3 0 1 1 0-6a3 3 0 0 1 0 6m0-.5a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m18 .5a3 3 0 1 1 0-6a3 3 0 0 1 0 6m0-.5a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M6 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0m9-9a3 3 0 1 1-6 0a3 3 0 0 1 6 0m-3 2.5a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M6 3a3 3 0 1 1-6 0a3 3 0 0 1 6 0M3 5.5a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5"/></symbol>
+<marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path class="ah" d="M0,0 L9,4.5 L0,9 z"/></marker>
+<marker id="v" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path class="ahv" d="M0,0 L9,4.5 L0,9 z"/></marker>
+</defs>
+<rect class="bg" width="1200" height="850" rx="10"/>
 <text class="t title" x="30" y="42">Logical view: one flat network</text>
 <text class="lab" x="30" y="64">As of 2026-11-03. There are no VLANs. Wired, Wi-Fi, smart-home and server traffic share one broadcast domain.</text>
-
-<ellipse class="box" cx="550" cy="112" rx="110" ry="26"/>
-<text class="t h c" x="550" y="117">Internet (5G cellular)</text>
-<line class="lx" x1="550" y1="138" x2="550" y2="165"/>
-<rect class="box" x="400" y="165" width="300" height="66" rx="8"/>
-<text class="t h c" x="550" y="191">5G home-internet gateway</text>
-<text class="t m c" x="550" y="212">router, NAT, DHCP, MTU 1420</text>
-<line class="lx" x1="550" y1="231" x2="550" y2="270"/>
-
-<rect class="grp" x="30" y="270" width="1040" height="370" rx="12"/>
-<text class="t m" x="50" y="292">ONE FLAT PRIVATE NETWORK (a single /24)</text>
-
-<text class="t h" x="50" y="330">Wi-Fi mesh</text>
-<text class="t m" x="50" y="348">3 x Deco BE63 in access-point mode</text>
-<rect class="box" x="50" y="362" width="300" height="36" rx="6"/><text class="t" x="64" y="385">Phones and tablets</text>
-<rect class="box" x="50" y="408" width="300" height="36" rx="6"/><text class="t" x="64" y="431">TVs and AV receivers</text>
-<rect class="box" x="50" y="454" width="300" height="36" rx="6"/><text class="t" x="64" y="477">Smart-home devices</text>
-<rect class="box" x="50" y="500" width="300" height="36" rx="6"/><text class="t" x="64" y="523">Laptops when they are off the wire</text>
-<rect class="box" x="50" y="546" width="300" height="36" rx="6"/><text class="t" x="64" y="569">Other appliances</text>
-
-<text class="t h" x="385" y="330">Wired workspace</text>
-<text class="t m" x="385" y="348">behind the 2.5G switch</text>
-<rect class="box" x="385" y="362" width="300" height="36" rx="6"/><text class="t" x="399" y="385">MacBook Pro M4 Max</text>
-<rect class="box" x="385" y="408" width="300" height="36" rx="6"/><text class="t" x="399" y="431">Mac mini M4</text>
-<rect class="box" x="385" y="454" width="300" height="36" rx="6"/><text class="t" x="399" y="477">MacBook Neo</text>
-<rect class="box" x="385" y="500" width="300" height="36" rx="6"/><text class="t" x="399" y="523">omarchy (powered down)</text>
-<rect class="box" x="385" y="546" width="300" height="36" rx="6"/><text class="t" x="399" y="569">TESmart KVM</text>
-
-<text class="t h" x="720" y="330">Services on the NAS</text>
-<text class="t m" x="720" y="348">UGREEN DXP2800, static address</text>
-<rect class="box" x="720" y="362" width="330" height="36" rx="6"/><text class="t" x="734" y="385">File shares (SMB, NFS)</text>
-<rect class="box" x="720" y="408" width="330" height="36" rx="6"/><text class="t" x="734" y="431">Time Machine backups for the Macs</text>
-<rect class="box" x="720" y="454" width="330" height="36" rx="6"/><text class="t" x="734" y="477">DNS filtering for the whole LAN</text>
-<rect class="box" x="720" y="500" width="330" height="36" rx="6"/><text class="t" x="734" y="523">Media server and helper containers</text>
-<rect class="box" x="720" y="546" width="330" height="36" rx="6"/><text class="t" x="734" y="569">Tailscale (runs in a container)</text>
-<text class="lab" x="50" y="624">No segmentation between these groups.</text>
-
-<line class="ov" x1="200" y1="640" x2="200" y2="670"/>
-<line class="ov" x1="535" y1="640" x2="535" y2="670"/>
-<line class="ov" x1="885" y1="640" x2="885" y2="670"/>
-<rect class="grp" x="30" y="670" width="1040" height="96" rx="12" stroke-dasharray="3 5"/>
-<text class="t h acc" x="50" y="698">Tailscale overlay</text>
-<text class="t m" x="50" y="720">Encrypted peer-to-peer links on top of the LAN. They reach the Macs, the NAS, omarchy, an iPhone and an iPad from anywhere.</text>
-<text class="t m" x="50" y="738">Peers on the same LAN connect directly. An automation VM outside the house joins the same overlay and can only dial out.</text>
+<rect class="box" x="475" y="92" width="250" height="64" rx="10"/>
+<g class="c-in"><rect class="tb" x="487" y="102.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-cloud" x="495.0" y="110.0" width="28" height="28"/></g>
+<text class="t h" x="543" y="120.0">Internet</text>
+<text class="t m" x="543" y="138.0">cellular, via the gateway</text>
+<line class="lx" x1="600" y1="156" x2="600" y2="185"/>
+<rect class="box" x="450" y="185" width="300" height="76" rx="10"/>
+<g class="c-net"><rect class="tb" x="462" y="201.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-router-wireless" x="470.0" y="209.0" width="28" height="28"/></g>
+<text class="t h" x="518" y="219.0">5G home-internet gateway</text>
+<text class="t m" x="518" y="237.0">router, NAT, DHCP, MTU 1420</text>
+<use class="bd" href="#i-mdi-signal-5g" x="724" y="195" width="17" height="17"/>
+<line class="lx" x1="600" y1="261" x2="600" y2="300"/>
+<rect class="grp" x="30" y="300" width="1140" height="400" rx="12"/>
+<text class="t m" x="50" y="322">ONE FLAT PRIVATE NETWORK (a single /24)</text>
+<g class="c-net"><rect class="tb" x="50" y="336" width="40" height="40" rx="9"/><use class="tg" href="#i-mdi-access-point-network" x="57.5" y="343.5" width="25" height="25"/></g>
+<text class="t h" x="102" y="354">Wi-Fi mesh</text>
+<text class="t m" x="102" y="372">3 x Deco BE63 in access-point mode</text>
+<rect class="box" x="50" y="392" width="350" height="42" rx="8"/>
+<g class="c-cl"><rect class="tb" x="58" y="399" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-cellphone" x="63.0" y="404.0" width="18" height="18"/></g>
+<text class="t" x="96" y="418">Phones and tablets</text>
+<rect class="box" x="50" y="442" width="350" height="42" rx="8"/>
+<g class="c-cl"><rect class="tb" x="58" y="449" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-television" x="63.0" y="454.0" width="18" height="18"/></g>
+<text class="t" x="96" y="468">TVs and AV receivers</text>
+<rect class="box" x="50" y="492" width="350" height="42" rx="8"/>
+<g class="c-cl"><rect class="tb" x="58" y="499" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-home-automation" x="63.0" y="504.0" width="18" height="18"/></g>
+<text class="t" x="96" y="518">Smart-home devices</text>
+<rect class="box" x="50" y="542" width="350" height="42" rx="8"/>
+<g class="c-cl"><rect class="tb" x="58" y="549" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-speaker" x="63.0" y="554.0" width="18" height="18"/></g>
+<text class="t" x="96" y="568">Voice assistants and speakers</text>
+<rect class="box" x="50" y="592" width="350" height="42" rx="8"/>
+<g class="c-cl"><rect class="tb" x="58" y="599" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-laptop" x="63.0" y="604.0" width="18" height="18"/></g>
+<text class="t" x="96" y="618">Laptops when they are off the wire</text>
+<g class="c-net"><rect class="tb" x="425" y="336" width="40" height="40" rx="9"/><use class="tg" href="#i-custom-switch" x="432.5" y="343.5" width="25" height="25"/></g>
+<text class="t h" x="477" y="354">Wired workspace</text>
+<text class="t m" x="477" y="372">behind the 2.5G switch</text>
+<rect class="box" x="425" y="392" width="350" height="42" rx="8"/>
+<g class="c-pc"><rect class="tb" x="433" y="399" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-laptop" x="438.0" y="404.0" width="18" height="18"/></g>
+<text class="t" x="471" y="418">MacBook Pro M4 Max</text>
+<use class="bd" href="#i-simple-apple" x="749" y="404" width="17" height="17"/>
+<rect class="box" x="425" y="442" width="350" height="42" rx="8"/>
+<g class="c-pc"><rect class="tb" x="433" y="449" width="28" height="28" rx="6"/><use class="tg" href="#i-custom-mac-mini" x="438.0" y="454.0" width="18" height="18"/></g>
+<text class="t" x="471" y="468">Mac mini M4</text>
+<use class="bd" href="#i-simple-apple" x="749" y="454" width="17" height="17"/>
+<rect class="box" x="425" y="492" width="350" height="42" rx="8"/>
+<g class="c-pc"><rect class="tb" x="433" y="499" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-laptop" x="438.0" y="504.0" width="18" height="18"/></g>
+<text class="t" x="471" y="518">MacBook Neo</text>
+<use class="bd" href="#i-simple-apple" x="749" y="504" width="17" height="17"/>
+<rect class="box" x="425" y="542" width="350" height="42" rx="8"/>
+<g class="c-pc"><rect class="tb" x="433" y="549" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-desktop-tower" x="438.0" y="554.0" width="18" height="18"/></g>
+<text class="t" x="471" y="568">omarchy (powered down)</text>
+<use class="bd" href="#i-simple-linux" x="749" y="554" width="17" height="17"/>
+<rect class="box" x="425" y="592" width="350" height="42" rx="8"/>
+<g class="c-cl"><rect class="tb" x="433" y="599" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-keyboard" x="438.0" y="604.0" width="18" height="18"/></g>
+<text class="t" x="471" y="618">TESmart KVM</text>
+<g class="c-st"><rect class="tb" x="800" y="336" width="40" height="40" rx="9"/><use class="tg" href="#i-mdi-nas" x="807.5" y="343.5" width="25" height="25"/></g>
+<text class="t h" x="852" y="354">Services on the NAS</text>
+<text class="t m" x="852" y="372">UGREEN DXP2800, static address</text>
+<rect class="box" x="800" y="392" width="350" height="42" rx="8"/>
+<g class="c-st"><rect class="tb" x="808" y="399" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-folder-network" x="813.0" y="404.0" width="18" height="18"/></g>
+<text class="t" x="846" y="418">File shares (SMB, NFS)</text>
+<rect class="box" x="800" y="442" width="350" height="42" rx="8"/>
+<g class="c-st"><rect class="tb" x="808" y="449" width="28" height="28" rx="6"/><use class="tg" href="#i-mdi-backup-restore" x="813.0" y="454.0" width="18" height="18"/></g>
+<text class="t" x="846" y="468">Time Machine backups for the Macs</text>
+<rect class="box" x="800" y="492" width="350" height="42" rx="8"/>
+<g class="c-st"><rect class="tb" x="808" y="499" width="28" height="28" rx="6"/><use class="tg" href="#i-simple-adguard" x="813.0" y="504.0" width="18" height="18"/></g>
+<text class="t" x="846" y="518">DNS filtering for the whole LAN</text>
+<rect class="box" x="800" y="542" width="350" height="42" rx="8"/>
+<g class="c-st"><rect class="tb" x="808" y="549" width="28" height="28" rx="6"/><use class="tg" href="#i-simple-plex" x="813.0" y="554.0" width="18" height="18"/></g>
+<text class="t" x="846" y="568">Media server and helpers</text>
+<use class="bd" href="#i-simple-docker" x="1124" y="554" width="17" height="17"/>
+<rect class="box" x="800" y="592" width="350" height="42" rx="8"/>
+<g class="c-ov"><rect class="tb" x="808" y="599" width="28" height="28" rx="6"/><use class="tg" href="#i-simple-tailscale" x="813.0" y="604.0" width="18" height="18"/></g>
+<text class="t" x="846" y="618">Tailscale (runs in a container)</text>
+<use class="bd" href="#i-simple-docker" x="1124" y="604" width="17" height="17"/>
+<text class="lab" x="50" y="688">No segmentation between these groups.</text>
+<line class="ov" x1="225" y1="700" x2="225" y2="730"/>
+<line class="ov" x1="600" y1="700" x2="600" y2="730"/>
+<line class="ov" x1="975" y1="700" x2="975" y2="730"/>
+<rect class="grp" x="30" y="730" width="1140" height="100" rx="12" stroke-dasharray="3 5"/>
+<g class="c-ov"><rect class="tb" x="50" y="752" width="48" height="48" rx="11"/><use class="tg" href="#i-simple-tailscale" x="59.0" y="761.0" width="30" height="30"/></g>
+<text class="t h acc" x="114" y="768">Tailscale overlay</text>
+<text class="t m" x="114" y="788">Encrypted peer-to-peer links on top of the LAN. They reach the Macs, the NAS, omarchy, an iPhone and an iPad from anywhere.</text>
+<text class="t m" x="114" y="806">Peers on the same LAN connect directly. An automation VM outside the house joins the same overlay and can only dial out.</text>
 </svg>
