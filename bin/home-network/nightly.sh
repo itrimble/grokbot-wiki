@@ -6,6 +6,7 @@
 #   bin/home-network/nightly.sh              # the real run
 #   NIGHTLY_DRY=1 bin/home-network/nightly.sh  # everything except commit, push and alerts
 set -uo pipefail
+export PYTHONDONTWRITEBYTECODE=1   # never leave __pycache__ files in the clone
 
 REPO="${WIKI_FACTS_REPO:-$HOME/wiki-facts/grokbot-wiki}"
 TARGETS="${HOME_NETWORK_TARGETS:-$HOME/.config/home-network/targets.json}"
