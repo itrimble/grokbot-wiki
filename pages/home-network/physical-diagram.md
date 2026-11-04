@@ -7,8 +7,8 @@
 | From | To | Medium | Speed | How I know |
 |---|---|---|---|---|
 | 5G gateway | Mesh root node | Ethernet | 1 GbE | Gateway LAN ports are gigabit; read 2026-11-01 |
-| Mesh root | Workspace node | Wireless backhaul | Not measured | about 3 ms from the workspace, measured 2026-11-03 |
-| Mesh root | Far node | Wireless backhaul | Not measured | about 8 ms from the workspace, measured 2026-11-03 |
+| Mesh root | Workspace node | Wireless backhaul | Not measured | about 5 ms from the workspace, measured 2026-11-03 |
+| Mesh root | Far node | Wireless backhaul | Not measured | about 7 ms from the workspace, measured 2026-11-03 |
 | Workspace node | Switch | Ethernet, 2.5G-capable port | Not measured | Port speed not read |
 | Switch | NAS | Ethernet | 2.5 Gbps | Read from the NAS itself on 2026-11-03 |
 | Switch | MacBook Pro (USB-C dock) | Ethernet | 2.5 Gbps | Read from the Mac on 2026-11-03 |
@@ -25,4 +25,4 @@ On 2026-11-01, before the switch, omarchy moved 600 MB to the NAS at 2.34 Gbit/s
 
 ## Rooms
 
-I describe the layout by role, not by room name. The workspace is the one room with every wired machine in it. The gateway is in a different room, one wireless hop away, and the far node is a second hop beyond that. That is why latency from the workspace is under 1 ms to its own node, about 3 ms to the root and about 8 ms to the far node.
+I describe the layout by role, not by room name. The workspace is the one room with every wired machine in it. The gateway is in a different room, one wireless hop away, and the far node is a second hop beyond that. That is why latency from the workspace is under 1 ms to its own node, about 5 ms to the root and about 7 ms to the far node.

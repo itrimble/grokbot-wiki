@@ -75,7 +75,7 @@
 <use class="bd" href="#i-simple-tplink" x="314" y="515" width="17" height="17"/>
 <line class="lw" x1="195" y1="341" x2="195" y2="505"/>
 <text class="lab" x="207" y="415">wireless backhaul</text>
-<text class="lab" x="207" y="431">about 8 ms from the workspace</text>
+<text class="lab" x="207" y="431">about 7 ms from the workspace</text>
 <rect class="grp" x="420" y="90" width="750" height="740" rx="10"/>
 <text class="t m" x="436" y="112">WIRED WORKSPACE</text>
 <rect class="box" x="450" y="120" width="300" height="125" rx="10" stroke-dasharray="5 4"/>
@@ -93,7 +93,7 @@
 <use class="bd" href="#i-simple-tplink" x="724" y="275" width="17" height="17"/>
 <line class="lw" x1="340" y1="303" x2="450" y2="303"/>
 <text class="lab" x="354" y="294">wireless</text>
-<text class="lab" x="354" y="322">~3 ms</text>
+<text class="lab" x="354" y="322">~5 ms</text>
 <line class="lx" x1="600" y1="341" x2="600" y2="400"/>
 <text class="lab r" x="588" y="364">uplink to the switch</text>
 <text class="lab r" x="588" y="380">speed not measured</text>

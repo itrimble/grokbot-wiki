@@ -45,7 +45,7 @@ I left out addresses, MAC addresses, serial numbers, hostnames and account names
 
 ## What I have not identified
 
-The nightly sweep of the LAN on 2026-11-03 saw 33 devices and could not name five of them. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
+The nightly sweep of the LAN on 2026-11-03 saw 34 devices and could not name five of them. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
 
 I also did not record which switch port each device uses. The switch is unmanaged, so the ports only show in the lights on its front.
 
