@@ -1,6 +1,6 @@
 # Home network: logical diagram
 
-<figure class="pro-diagram"><a href="/assets/home-network/logical.svg"><img src="/assets/home-network/logical.svg" alt="Logical diagram: the internet reaches a 5G gateway, behind which one flat private network holds the Wi-Fi mesh and its clients, the wired workspace and the services on the NAS, with a Tailscale overlay on top."></a><figcaption><em>The logical view, drawn on 2026-11-03: one flat network with three groups of devices and a Tailscale overlay.</em> Select the image to open it full size.</figcaption></figure>
+<figure class="pro-diagram"><a href="/assets/home-network/logical.svg"><img src="/assets/home-network/logical.svg" alt="Logical diagram: the internet reaches a 5G gateway, behind which one flat private network holds the Wi-Fi mesh and its clients, the wired workspace and the services on the NAS, with a Tailscale overlay on top."></a><figcaption><em>The logical view, drawn on 2026-11-04: one flat network with three groups of devices and a Tailscale overlay.</em> Select the image to open it full size.</figcaption></figure>
 
 ## What the picture says
 

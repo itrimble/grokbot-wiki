@@ -1,39 +1,40 @@
 {
-  "collected_at": "2026-11-04T02:48:32Z",
-  "collected_date": "2026-11-03",
+  "collected_at": "2026-11-04T11:40:37Z",
+  "collected_date": "2026-11-04",
   "network": {
     "hosts_seen": 34,
-    "hosts_unidentified": 5
+    "hosts_unidentified": 7
   },
   "roles": {
     "deco_far": {
-      "rtt_ms": 7.2,
+      "rtt_ms": 8.7,
       "status": "online"
     },
     "deco_root": {
-      "rtt_ms": 5.2,
+      "rtt_ms": 4.0,
       "status": "online"
     },
     "deco_workspace": {
-      "rtt_ms": 0.6,
+      "rtt_ms": 0.5,
       "status": "online"
     },
     "gateway": {
-      "rtt_ms": 5.5,
+      "rtt_ms": 7.0,
       "status": "online"
     },
     "mbp": {
       "link_mbps": 2500,
-      "rtt_ms": 0.5,
+      "rtt_ms": 0.7,
       "status": "online"
     },
     "mbp_kvm": {
       "link_mbps": 1000,
-      "status": "online"
+      "link_stale": true,
+      "status": "offline"
     },
     "mini": {
       "link_mbps": 1000,
-      "rtt_ms": 0.1,
+      "rtt_ms": 0.2,
       "status": "online"
     },
     "nas": {
@@ -42,11 +43,10 @@
       "link_mbps": 2500,
       "rtt_ms": 0.7,
       "status": "online",
-      "uptime_s": 17447
+      "uptime_s": 49355
     },
     "neo": {
       "link_mbps": 1000,
-      "rtt_ms": 0.9,
       "status": "online"
     },
     "omarchy": {
