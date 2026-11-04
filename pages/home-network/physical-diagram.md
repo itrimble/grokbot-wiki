@@ -7,15 +7,15 @@
 | From | To | Medium | Speed | How I know |
 |---|---|---|---|---|
 | 5G gateway | Mesh root node | Ethernet | 1 GbE | Gateway LAN ports are gigabit; read 2026-11-01 |
-| Mesh root | Workspace node | Wireless backhaul | Not measured | About 3 to 5 ms, measured 2026-11-01 |
-| Mesh root | Far node | Wireless backhaul | Not measured | About 6 to 11 ms from the workspace, measured 2026-11-01 |
+| Mesh root | Workspace node | Wireless backhaul | Not measured | about 3 ms from the workspace, measured 2026-11-03 |
+| Mesh root | Far node | Wireless backhaul | Not measured | about 8 ms from the workspace, measured 2026-11-03 |
 | Workspace node | Switch | Ethernet, 2.5G-capable port | Not measured | Port speed not read |
 | Switch | NAS | Ethernet | 2.5 Gbps | Read from the NAS itself on 2026-11-03 |
 | Switch | MacBook Pro (USB-C dock) | Ethernet | 2.5 Gbps | Read from the Mac on 2026-11-03 |
 | Switch | Mac mini | Ethernet | 1 Gbps | Read from the Mac on 2026-11-03; its NIC is gigabit |
 | MacBook Neo | Ethernet adapter | Ethernet | 1 Gbps | Read from the Mac on 2026-11-03; I did not confirm which port it uses |
 | MacBook Pro | KVM's LAN adapter | Ethernet | 1 Gbps | Read from the Mac on 2026-11-03; port not confirmed |
-| Switch | omarchy | Ethernet | 2.5 Gbps when last measured | Read 2026-11-01; it is powered down now |
+| Switch | omarchy | Ethernet | 2.5 Gbps when last measured | It is powered down now |
 
 ## What I measured, and what I did not
 
@@ -25,4 +25,4 @@ On 2026-11-01, before the switch, omarchy moved 600 MB to the NAS at 2.34 Gbit/s
 
 ## Rooms
 
-I describe the layout by role, not by room name. The workspace is the one room with every wired machine in it. The gateway is in a different room, one wireless hop away, and the far node is a second hop beyond that. That is why latency from the workspace is about half a millisecond to its own node, 3 to 5 ms to the root and 6 to 11 ms to the far node.
+I describe the layout by role, not by room name. The workspace is the one room with every wired machine in it. The gateway is in a different room, one wireless hop away, and the far node is a second hop beyond that. That is why latency from the workspace is under 1 ms to its own node, about 3 ms to the root and about 8 ms to the far node.

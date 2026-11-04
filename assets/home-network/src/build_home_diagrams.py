@@ -16,6 +16,7 @@ No addresses, MAC addresses, hostnames or account names belong in these diagrams
 """
 import argparse
 import base64
+import json
 import pathlib
 import re
 import struct
@@ -36,6 +37,51 @@ WARNINGS = []
 FAMILY = DEFAULT
 USED = {}      # symbol id -> symbol markup
 RASTER = set() # symbol ids that are raster images
+FACTS = {}     # facts/home-network.json when given, else empty (the diagrams then show the seed values)
+
+
+def load_facts(path):
+    global FACTS
+    p = pathlib.Path(path)
+    FACTS = json.loads(p.read_text()) if p.exists() else {}
+
+
+def role(name):
+    return FACTS.get("roles", {}).get(name, {})
+
+
+def mbps(name, default=None):
+    return role(name).get("link_mbps", default)
+
+
+def is_offline(name):
+    return role(name).get("status") == "offline"
+
+
+def speed_cls(value):
+    if value is None:
+        return "lx"
+    if value >= 2500:
+        return "l25"
+    if value >= 1000:
+        return "l1"
+    return "l100"
+
+
+def speed_label(value):
+    if value is None:
+        return "speed unknown"
+    return {10000: "10G", 5000: "5G", 2500: "2.5G", 1000: "1G", 100: "100M", 10: "10M"}.get(value, f"{value}M")
+
+
+def ms(value):
+    if value is None:
+        return "not measured"
+    return "under 1 ms" if value < 1 else f"about {round(value)} ms"
+
+
+def as_of():
+    return FACTS.get("collected_date", "2026-11-03")
 
 
 # ---------------------------------------------------------------- icons
@@ -103,7 +149,7 @@ STYLE = """<style>
 .bg{fill:#fbfaf7}.box{fill:#fff;stroke:#cfccc2;stroke-width:1.2}.grp{fill:#f3f1ea;stroke:#cfccc2;stroke-width:1.2}
 .t{fill:#1d1d1b;font:13px ui-sans-serif,system-ui,sans-serif}.h{font-weight:700;font-size:14px}.m{fill:#6b6a66;font-size:12px}
 .title{font-size:22px;font-weight:700}.lab{fill:#6b6a66;font:11.5px ui-sans-serif,system-ui,sans-serif}.r{text-anchor:end}.c{text-anchor:middle}
-.l25{stroke:#2e8b57;stroke-width:4;fill:none}.l1{stroke:#2b6cb0;stroke-width:4;fill:none}.lx{stroke:#8a8880;stroke-width:4;fill:none}
+.l25{stroke:#2e8b57;stroke-width:4;fill:none}.l1{stroke:#2b6cb0;stroke-width:4;fill:none}.l100{stroke:#d97706;stroke-width:4;fill:none}.lx{stroke:#8a8880;stroke-width:4;fill:none}
 .lw{stroke:#8a8880;stroke-width:2.5;fill:none;stroke-dasharray:7 6}.bus{stroke:#cfccc2;stroke-width:2;fill:none}
 .e{stroke:#8a8880;stroke-width:2;fill:none}.ov{fill:none;stroke:#b4462b;stroke-width:2;stroke-dasharray:3 5}
 .port{fill:none;stroke:#8a8880;stroke-width:1.2}.acc{fill:#b4462b}.ah{fill:#8a8880}.ahv{fill:#b4462b}.bd{fill:#8a8880;color:#8a8880}
@@ -115,7 +161,7 @@ STYLE = """<style>
 .c-in .tb{fill:#ece4f8}.c-in .tg{fill:#6b46c1;color:#6b46c1}
 @media (prefers-color-scheme:dark){
 .bg{fill:#141412}.box{fill:#1d1d1b;stroke:#4a4841}.grp{fill:#1b1a18;stroke:#4a4841}.t{fill:#ecebe6}.m,.lab{fill:#9a9890}
-.l25{stroke:#5fcf8f}.l1{stroke:#6aa8f0}.lx,.lw,.e{stroke:#9a9890}.bus{stroke:#4a4841}.port{stroke:#9a9890}.ov{stroke:#e07a5f}
+.l25{stroke:#5fcf8f}.l1{stroke:#6aa8f0}.l100{stroke:#ffb454}.lx,.lw,.e{stroke:#9a9890}.bus{stroke:#4a4841}.port{stroke:#9a9890}.ov{stroke:#e07a5f}
 .acc,.ahv{fill:#e07a5f}.ah{fill:#9a9890}.bd{fill:#9a9890;color:#9a9890}
 .c-net .tb{fill:#1b2a44}.c-net .tg{fill:#6aa8f0;color:#6aa8f0}
 .c-pc .tb{fill:#143229}.c-pc .tg{fill:#4fd1b5;color:#4fd1b5}
@@ -209,7 +255,7 @@ def write(name, content):
 def physical():
     W = 1200
     b = [header("Physical layout and link speeds",
-                "As of 2026-11-03. Color is the speed each link negotiated. Dashed means wireless or not confirmed.", W)]
+                f"As of {as_of()}. Color is the speed each link negotiated. Dashed means wireless, offline or not confirmed.", W)]
     b.append('<rect class="grp" x="30" y="90" width="330" height="275" rx="10"/>')
     b.append(txt(46, 112, "GATEWAY ROOM"))
     b.append(card(50, 125, 290, 76, "router", "net", "5G home-internet gateway", ["TMO-G4SE: router, NAT, DHCP"], ["g5"]))
@@ -221,7 +267,7 @@ def physical():
     b.append(card(50, 505, 290, 76, "mesh_ap", "net", "Deco BE63: far node", ["Wi-Fi coverage only"], ["tplink"]))
     b.append(line(195, 341, 195, 505, "lw"))
     b.append(txt(207, 415, "wireless backhaul", "lab"))
-    b.append(txt(207, 431, "6 to 11 ms from the workspace", "lab"))
+    b.append(txt(207, 431, f"{ms(role('deco_far').get('rtt_ms'))} from the workspace", "lab"))
     b.append('<rect class="grp" x="420" y="90" width="750" height="740" rx="10"/>')
     b.append(txt(436, 112, "WIRED WORKSPACE"))
     b.append('<rect class="box" x="450" y="120" width="300" height="125" rx="10" stroke-dasharray="5 4"/>')
@@ -232,7 +278,7 @@ def physical():
     b.append(card(450, 265, 300, 76, "mesh_ap", "net", "Deco BE63: workspace node", ["wired anchor for the workspace"], ["tplink"]))
     b.append(line(340, 303, 450, 303, "lw"))
     b.append(txt(354, 294, "wireless", "lab"))
-    b.append(txt(354, 322, "3 to 5 ms", "lab"))
+    b.append(txt(354, 322, ms(role("deco_root").get("rtt_ms")).replace("about ", "~"), "lab"))
     b.append(line(600, 341, 600, 400, "lx"))
     b.append(txt(588, 364, "uplink to the switch", "lab r"))
     b.append(txt(588, 380, "speed not measured", "lab r"))
@@ -243,27 +289,32 @@ def physical():
                   ["Runs on every Mac, the NAS,", "omarchy, the iPhone and iPad.", "Direct on this LAN; away from", "home it goes through a relay."], dashed=True))
     b.append(line(805, 163, 805, 613, "bus", ' stroke-linecap="round"'))
     b.append(line(750, 452, 805, 452, "lx"))
+    def sp(name, default):
+        return mbps(name, default)
+
+    omarchy_note = "powered down at the moment" if is_offline("omarchy") else "online"
+    omarchy_nic = f"{speed_label(sp('omarchy', 2500))} NIC" + (" when last seen" if is_offline("omarchy") else "")
     devices = [
-        (125, "nas", "st", "UGREEN DXP2800 NAS", ["Intel N100, one 2.5GbE port", "static address"], [], "l25", False),
-        (215, "laptop", "pc", "MacBook Pro M4 Max", ["USB-C dock at 2.5G", "Wi-Fi also on"], ["apple"], "l25", False),
-        (305, "macmini", "pc", "Mac mini M4", ["built-in 1 GbE", "Wi-Fi also on"], ["apple"], "l1", False),
-        (395, "laptop", "pc", "MacBook Neo", ["USB Ethernet adapter, 1G", "Wi-Fi also on"], ["apple"], "l1", True),
-        (485, "tower", "pc", "omarchy (Linux PC)", ["2.5G NIC", "powered down at the moment"], ["linux"], "l25", True),
-        (575, "keyboard", "cl", "TESmart KVM", ["shares keyboard and display", "1G LAN adapter to the MacBook Pro"], [], "l1", True),
+        (125, "nas", "st", "UGREEN DXP2800 NAS", ["Intel N100, one 2.5GbE port", f"{speed_label(sp('nas', 2500))} link, static address"], [], speed_cls(sp("nas", 2500)), is_offline("nas")),
+        (215, "laptop", "pc", "MacBook Pro M4 Max", [f"USB-C dock at {speed_label(sp('mbp', 2500))}", "Wi-Fi also on"], ["apple"], speed_cls(sp("mbp", 2500)), is_offline("mbp")),
+        (305, "macmini", "pc", "Mac mini M4", [f"built-in NIC at {speed_label(sp('mini', 1000))}", "Wi-Fi also on"], ["apple"], speed_cls(sp("mini", 1000)), is_offline("mini")),
+        (395, "laptop", "pc", "MacBook Neo", [f"USB Ethernet adapter at {speed_label(sp('neo', 1000))}", "Wi-Fi also on"], ["apple"], speed_cls(sp("neo", 1000)), True),
+        (485, "tower", "pc", "omarchy (Linux PC)", [omarchy_nic, omarchy_note], ["linux"], speed_cls(sp("omarchy", 2500)), is_offline("omarchy")),
+        (575, "keyboard", "cl", "TESmart KVM", ["shares keyboard and display", f"{speed_label(sp('mbp_kvm', 1000))} LAN adapter to the MacBook Pro"], [], speed_cls(sp("mbp_kvm", 1000)), True),
     ]
     for y, k, cat, title, subs, badges, cls, dashed in devices:
         b.append(card(850, y, 300, 76, k, cat, title, subs, badges))
         extra = ' stroke-dasharray="7 6"' if dashed else ""
         b.append(line(805, y + 38, 850, y + 38, cls, extra))
-    b.append('<rect class="grp" x="30" y="640" width="330" height="150" rx="10"/>')
-    b.append(txt(46, 664, "Legend", "t h"))
+    b.append('<rect class="grp" x="30" y="630" width="330" height="165" rx="10"/>')
+    b.append(txt(46, 654, "Legend", "t h"))
     for i, (cls, label) in enumerate([("l25", "2.5 Gbps, negotiated"), ("l1", "1 Gbps, negotiated"),
-                                      ("lx", "wired, speed not measured"), ("lw", "wireless, or port not confirmed")]):
-        yy = 687 + i * 24
+                                      ("l100", "100 Mbps or less, worth checking"), ("lx", "wired, speed not measured"), ("lw", "wireless, offline or port not confirmed")]):
+        yy = 677 + i * 24
         b.append(line(50, yy, 105, yy, cls))
         b.append(txt(118, yy + 4, label, "t m"))
-    b.append(txt(30, 808, "Wireless latencies were measured on 2026-11-01 from a wired", "lab"))
-    b.append(txt(30, 824, "machine, before the switch went in. Not re-measured.", "lab"))
+    b.append(txt(30, 808, f"Link speeds and latencies were read from the machines", "lab"))
+    b.append(txt(30, 824, f"on {as_of()}, measured from the workspace.", "lab"))
     write("physical.svg", svg(W, 840, "Physical layout and link speeds of the home network",
                               "A 5G gateway feeds a mesh root node over 1 GbE. Three mesh nodes link to each other wirelessly. The workspace node uplinks to an 8-port 2.5G switch. The NAS and the MacBook Pro dock connect at 2.5G, the Mac mini and other adapters at 1G.",
                               "\n".join(b)))
@@ -273,7 +324,7 @@ def physical():
 def logical():
     W = 1200
     b = [header("Logical view: one flat network",
-                "As of 2026-11-03. There are no VLANs. Wired, Wi-Fi, smart-home and server traffic share one broadcast domain.", W)]
+                f"As of {as_of()}. There are no VLANs. Wired, Wi-Fi, smart-home and server traffic share one broadcast domain.", W)]
     b.append(card(475, 92, 250, 64, "cloud", "in", "Internet", ["cellular, via the gateway"]))
     b.append(line(600, 156, 600, 185, "lx"))
     b.append(card(450, 185, 300, 76, "router", "net", "5G home-internet gateway", ["router, NAT, DHCP, MTU 1420"], ["g5"]))
@@ -291,7 +342,7 @@ def logical():
             ("laptop", "pc", "MacBook Pro M4 Max", ["apple"]),
             ("macmini", "pc", "Mac mini M4", ["apple"]),
             ("laptop", "pc", "MacBook Neo", ["apple"]),
-            ("tower", "pc", "omarchy (powered down)", ["linux"]),
+            ("tower", "pc", "omarchy (powered down)" if is_offline("omarchy") else "omarchy", ["linux"]),
             ("keyboard", "cl", "TESmart KVM", [])]),
         (800, "nas", "st", "Services on the NAS", "UGREEN DXP2800, static address", [
             ("share", "st", "File shares (SMB, NFS)", []),
@@ -323,11 +374,11 @@ def logical():
 def relationships():
     W = 1200
     b = [header("Who depends on whom",
-                "As of 2026-11-03. Solid arrows are services on the LAN. Dashed arrows travel over the Tailscale overlay.", W)]
+                f"As of {as_of()}. Solid arrows are services on the LAN. Dashed arrows travel over the Tailscale overlay.", W)]
     b.append(card(475, 95, 250, 76, "router", "net", "5G gateway", ["DHCP, NAT, the internet"], ["g5"]))
     b.append(card(50, 235, 280, 90, "nas", "st", "NAS", ["DNS filtering, file shares,", "backups, media, Tailscale"]))
     b.append(card(460, 235, 280, 90, "laptop", "pc", "The Macs", ["mini, MacBook Pro, Neo", "use the NAS when at home"], ["apple"]))
-    b.append(card(870, 235, 280, 90, "tower", "pc", "omarchy", ["Linux workstation,", "powered down at the moment"], ["linux"]))
+    b.append(card(870, 235, 280, 90, "tower", "pc", "omarchy", ["Linux workstation,", "powered down at the moment" if is_offline("omarchy") else "online"], ["linux"]))
     b.append(card(680, 430, 230, 76, "keyboard", "cl", "TESmart KVM", ["shares keyboard", "and display"]))
     b.append(card(150, 430, 260, 76, "phone", "cl", "iPhone and iPad", ["remote access via Tailscale"]))
     b.append(card(940, 430, 230, 76, "server", "ov", "Automation VM", ["outside the house"]))
@@ -374,6 +425,8 @@ def main():
     parser.add_argument("--site", default=DEFAULT, choices=ALL_FAMILIES, help="family the wiki pages use (default mdi)")
     parser.add_argument("--all", action="store_true", help="build every family")
     parser.add_argument("--list", action="store_true", help="list the families and exit")
+    parser.add_argument("--facts", default=str(OUT.parent.parent / "facts" / "home-network.json"),
+                        help="facts file that drives speeds, status and dates (default: facts/home-network.json if present)")
     args = parser.parse_args()
     if args.list:
         for name in ALL_FAMILIES:
@@ -383,6 +436,7 @@ def main():
         return
     global SITE
     SITE = args.site
+    load_facts(args.facts)
     for family in (ALL_FAMILIES if args.all else [args.family or SITE]):
         build(family)
     if WARNINGS:

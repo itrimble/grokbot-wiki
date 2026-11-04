@@ -1,6 +1,6 @@
 # Home network: overview
 
-This is the network in my house, drawn the way I wish other people had documented theirs. It is one flat private network behind a 5G gateway, with three Wi-Fi mesh nodes, a small 2.5G switch where my computers sit, and a NAS that does more work than anything else on it. I checked the details on 2026-11-03 and I say so where I did not.
+This is the network in my house, drawn the way I wish other people had documented theirs. It is one flat private network behind a 5G gateway, with three Wi-Fi mesh nodes, a small 2.5G switch where my computers sit, and a NAS that does more work than anything else on it. I last checked the details on 2026-11-03. A script reads the machines every night, so the speeds, statuses and counts on this page update themselves. Anything marked as not measured was not read.
 
 I left out addresses, MAC addresses, serial numbers, hostnames and account names on purpose. The relationships are the point.
 
@@ -33,7 +33,7 @@ I left out addresses, MAC addresses, serial numbers, hostnames and account names
 | Deco BE63, far node | Wi-Fi coverage for the far end of the house | Wireless backhaul only | Two wireless hops from the workspace |
 | TP-Link TL-SG108S-M2 | 8-port 2.5G unmanaged switch with loop prevention switched on | Uplink to the workspace node | Joins the NAS, the Mac mini and the MacBook Pro dock |
 | UGREEN DXP2800 NAS | Files, Time Machine backups, DNS filtering, media server, Tailscale container. Intel N100, 8 GB, one 2.5GbE port. | 2.5G through the switch; static address | The Macs lean on it for files, backups and DNS when at home |
-| Mac mini M4 | Always-on host for scheduled jobs and builds | Built-in 1 GbE through the switch; Wi-Fi also on | Uses the NAS for DNS and backups |
+| Mac mini M4 | Always-on host for scheduled jobs and builds | Built-in NIC at 1G through the switch; Wi-Fi also on | Uses the NAS for DNS and backups |
 | MacBook Pro M4 Max | My main machine | USB-C dock at 2.5G through the switch; Wi-Fi also on; a third 1G adapter on the KVM | Same dependencies as the mini |
 | MacBook Neo | Second laptop | USB Ethernet adapter at 1G, plus Wi-Fi | Same dependencies as the mini |
 | omarchy | Linux workstation | 2.5G NIC and Wi-Fi. Powered down at the moment. | Reaches the rest over the LAN or Tailscale |
@@ -45,7 +45,7 @@ I left out addresses, MAC addresses, serial numbers, hostnames and account names
 
 ## What I have not identified
 
-A sweep of the LAN on 2026-11-03 found about five devices I cannot name. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
+The nightly sweep of the LAN on 2026-11-03 saw 33 devices and could not name five of them. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
 
 I also did not record which switch port each device uses. The switch is unmanaged, so the ports only show in the lights on its front.
 

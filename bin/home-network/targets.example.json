@@ -1,0 +1,23 @@
+{
+  "_note": "Copy to ~/.config/home-network/targets.json and fill in. This file is PRIVATE: it holds addresses, MACs and host aliases, so it is never committed. The collector's output keeps none of them.",
+  "sweep_prefix": "A.B.C",
+  "tailscale": "/usr/local/bin/tailscale",
+  "identified_macs": ["aa:bb:cc:dd:ee:01", "aa:bb:cc:dd:ee:02"],
+  "roles": {
+    "gateway":        {"ping": "A.B.C.1"},
+    "deco_root":      {"ping": "A.B.C.2"},
+    "deco_workspace": {"ping": "A.B.C.3"},
+    "deco_far":       {"ping": "A.B.C.4"},
+    "nas":     {"ping": "A.B.C.10", "ssh": "user@A.B.C.10", "os": "linux", "iface": "eth0"},
+    "mini":    {"ping": "A.B.C.20", "ssh": "self", "os": "mac", "iface": "en0"},
+    "mbp":     {"ping": "A.B.C.21", "ssh": "mbp-alias", "os": "mac", "mac": "aa:bb:cc:dd:ee:03"},
+    "mbp_kvm": {"ssh": "mbp-alias", "os": "mac", "mac": "aa:bb:cc:dd:ee:04"},
+    "neo":     {"ping": "A.B.C.22", "ssh": "neo-alias", "os": "mac", "iface": "en5"},
+    "omarchy": {"ping": "A.B.C.30"}
+  },
+  "_fields": {
+    "ssh": "an SSH alias or user@host, or \"self\" for the machine running the collector",
+    "os": "mac reads ifconfig; linux reads /sys/class/net",
+    "iface / mac": "find the interface by name, or by MAC when the name can change"
+  }
+}

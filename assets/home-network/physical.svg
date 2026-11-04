@@ -5,7 +5,7 @@
 .bg{fill:#fbfaf7}.box{fill:#fff;stroke:#cfccc2;stroke-width:1.2}.grp{fill:#f3f1ea;stroke:#cfccc2;stroke-width:1.2}
 .t{fill:#1d1d1b;font:13px ui-sans-serif,system-ui,sans-serif}.h{font-weight:700;font-size:14px}.m{fill:#6b6a66;font-size:12px}
 .title{font-size:22px;font-weight:700}.lab{fill:#6b6a66;font:11.5px ui-sans-serif,system-ui,sans-serif}.r{text-anchor:end}.c{text-anchor:middle}
-.l25{stroke:#2e8b57;stroke-width:4;fill:none}.l1{stroke:#2b6cb0;stroke-width:4;fill:none}.lx{stroke:#8a8880;stroke-width:4;fill:none}
+.l25{stroke:#2e8b57;stroke-width:4;fill:none}.l1{stroke:#2b6cb0;stroke-width:4;fill:none}.l100{stroke:#d97706;stroke-width:4;fill:none}.lx{stroke:#8a8880;stroke-width:4;fill:none}
 .lw{stroke:#8a8880;stroke-width:2.5;fill:none;stroke-dasharray:7 6}.bus{stroke:#cfccc2;stroke-width:2;fill:none}
 .e{stroke:#8a8880;stroke-width:2;fill:none}.ov{fill:none;stroke:#b4462b;stroke-width:2;stroke-dasharray:3 5}
 .port{fill:none;stroke:#8a8880;stroke-width:1.2}.acc{fill:#b4462b}.ah{fill:#8a8880}.ahv{fill:#b4462b}.bd{fill:#8a8880;color:#8a8880}
@@ -17,7 +17,7 @@
 .c-in .tb{fill:#ece4f8}.c-in .tg{fill:#6b46c1;color:#6b46c1}
 @media (prefers-color-scheme:dark){
 .bg{fill:#141412}.box{fill:#1d1d1b;stroke:#4a4841}.grp{fill:#1b1a18;stroke:#4a4841}.t{fill:#ecebe6}.m,.lab{fill:#9a9890}
-.l25{stroke:#5fcf8f}.l1{stroke:#6aa8f0}.lx,.lw,.e{stroke:#9a9890}.bus{stroke:#4a4841}.port{stroke:#9a9890}.ov{stroke:#e07a5f}
+.l25{stroke:#5fcf8f}.l1{stroke:#6aa8f0}.l100{stroke:#ffb454}.lx,.lw,.e{stroke:#9a9890}.bus{stroke:#4a4841}.port{stroke:#9a9890}.ov{stroke:#e07a5f}
 .acc,.ahv{fill:#e07a5f}.ah{fill:#9a9890}.bd{fill:#9a9890;color:#9a9890}
 .c-net .tb{fill:#1b2a44}.c-net .tg{fill:#6aa8f0;color:#6aa8f0}
 .c-pc .tb{fill:#143229}.c-pc .tg{fill:#4fd1b5;color:#4fd1b5}
@@ -51,7 +51,7 @@
 </defs>
 <rect class="bg" width="1200" height="840" rx="10"/>
 <text class="t title" x="30" y="42">Physical layout and link speeds</text>
-<text class="lab" x="30" y="64">As of 2026-11-03. Color is the speed each link negotiated. Dashed means wireless or not confirmed.</text>
+<text class="lab" x="30" y="64">As of 2026-11-03. Color is the speed each link negotiated. Dashed means wireless, offline or not confirmed.</text>
 <rect class="grp" x="30" y="90" width="330" height="275" rx="10"/>
 <text class="t m" x="46" y="112">GATEWAY ROOM</text>
 <rect class="box" x="50" y="125" width="290" height="76" rx="10"/>
@@ -75,7 +75,7 @@
 <use class="bd" href="#i-simple-tplink" x="314" y="515" width="17" height="17"/>
 <line class="lw" x1="195" y1="341" x2="195" y2="505"/>
 <text class="lab" x="207" y="415">wireless backhaul</text>
-<text class="lab" x="207" y="431">6 to 11 ms from the workspace</text>
+<text class="lab" x="207" y="431">about 8 ms from the workspace</text>
 <rect class="grp" x="420" y="90" width="750" height="740" rx="10"/>
 <text class="t m" x="436" y="112">WIRED WORKSPACE</text>
 <rect class="box" x="450" y="120" width="300" height="125" rx="10" stroke-dasharray="5 4"/>
@@ -93,7 +93,7 @@
 <use class="bd" href="#i-simple-tplink" x="724" y="275" width="17" height="17"/>
 <line class="lw" x1="340" y1="303" x2="450" y2="303"/>
 <text class="lab" x="354" y="294">wireless</text>
-<text class="lab" x="354" y="322">3 to 5 ms</text>
+<text class="lab" x="354" y="322">~3 ms</text>
 <line class="lx" x1="600" y1="341" x2="600" y2="400"/>
 <text class="lab r" x="588" y="364">uplink to the switch</text>
 <text class="lab r" x="588" y="380">speed not measured</text>
@@ -124,7 +124,7 @@
 <g class="c-st"><rect class="tb" x="862" y="141.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-nas" x="870.0" y="149.0" width="28" height="28"/></g>
 <text class="t h" x="918" y="151.0">UGREEN DXP2800 NAS</text>
 <text class="t m" x="918" y="169.0">Intel N100, one 2.5GbE port</text>
-<text class="t m" x="918" y="185.0">static address</text>
+<text class="t m" x="918" y="185.0">2.5G link, static address</text>
 <line class="l25" x1="805" y1="163" x2="850" y2="163"/>
 <rect class="box" x="850" y="215" width="300" height="76" rx="10"/>
 <g class="c-pc"><rect class="tb" x="862" y="231.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-laptop" x="870.0" y="239.0" width="28" height="28"/></g>
@@ -136,21 +136,21 @@
 <rect class="box" x="850" y="305" width="300" height="76" rx="10"/>
 <g class="c-pc"><rect class="tb" x="862" y="321.0" width="44" height="44" rx="10"/><use class="tg" href="#i-custom-macmini" x="870.0" y="329.0" width="28" height="28"/></g>
 <text class="t h" x="918" y="331.0">Mac mini M4</text>
-<text class="t m" x="918" y="349.0">built-in 1 GbE</text>
+<text class="t m" x="918" y="349.0">built-in NIC at 1G</text>
 <text class="t m" x="918" y="365.0">Wi-Fi also on</text>
 <use class="bd" href="#i-simple-apple" x="1124" y="315" width="17" height="17"/>
 <line class="l1" x1="805" y1="343" x2="850" y2="343"/>
 <rect class="box" x="850" y="395" width="300" height="76" rx="10"/>
 <g class="c-pc"><rect class="tb" x="862" y="411.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-laptop" x="870.0" y="419.0" width="28" height="28"/></g>
 <text class="t h" x="918" y="421.0">MacBook Neo</text>
-<text class="t m" x="918" y="439.0">USB Ethernet adapter, 1G</text>
+<text class="t m" x="918" y="439.0">USB Ethernet adapter at 1G</text>
 <text class="t m" x="918" y="455.0">Wi-Fi also on</text>
 <use class="bd" href="#i-simple-apple" x="1124" y="405" width="17" height="17"/>
 <line class="l1" x1="805" y1="433" x2="850" y2="433" stroke-dasharray="7 6"/>
 <rect class="box" x="850" y="485" width="300" height="76" rx="10"/>
 <g class="c-pc"><rect class="tb" x="862" y="501.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-tower" x="870.0" y="509.0" width="28" height="28"/></g>
 <text class="t h" x="918" y="511.0">omarchy (Linux PC)</text>
-<text class="t m" x="918" y="529.0">2.5G NIC</text>
+<text class="t m" x="918" y="529.0">2.5G NIC when last seen</text>
 <text class="t m" x="918" y="545.0">powered down at the moment</text>
 <use class="bd" href="#i-simple-linux" x="1124" y="495" width="17" height="17"/>
 <line class="l25" x1="805" y1="523" x2="850" y2="523" stroke-dasharray="7 6"/>
@@ -160,16 +160,18 @@
 <text class="t m" x="918" y="619.0">shares keyboard and display</text>
 <text class="t m" x="918" y="635.0">1G LAN adapter to the MacBook Pro</text>
 <line class="l1" x1="805" y1="613" x2="850" y2="613" stroke-dasharray="7 6"/>
-<rect class="grp" x="30" y="640" width="330" height="150" rx="10"/>
-<text class="t h" x="46" y="664">Legend</text>
-<line class="l25" x1="50" y1="687" x2="105" y2="687"/>
-<text class="t m" x="118" y="691">2.5 Gbps, negotiated</text>
-<line class="l1" x1="50" y1="711" x2="105" y2="711"/>
-<text class="t m" x="118" y="715">1 Gbps, negotiated</text>
-<line class="lx" x1="50" y1="735" x2="105" y2="735"/>
-<text class="t m" x="118" y="739">wired, speed not measured</text>
-<line class="lw" x1="50" y1="759" x2="105" y2="759"/>
-<text class="t m" x="118" y="763">wireless, or port not confirmed</text>
-<text class="lab" x="30" y="808">Wireless latencies were measured on 2026-11-01 from a wired</text>
-<text class="lab" x="30" y="824">machine, before the switch went in. Not re-measured.</text>
+<rect class="grp" x="30" y="630" width="330" height="165" rx="10"/>
+<text class="t h" x="46" y="654">Legend</text>
+<line class="l25" x1="50" y1="677" x2="105" y2="677"/>
+<text class="t m" x="118" y="681">2.5 Gbps, negotiated</text>
+<line class="l1" x1="50" y1="701" x2="105" y2="701"/>
+<text class="t m" x="118" y="705">1 Gbps, negotiated</text>
+<line class="l100" x1="50" y1="725" x2="105" y2="725"/>
+<text class="t m" x="118" y="729">100 Mbps or less, worth checking</text>
+<line class="lx" x1="50" y1="749" x2="105" y2="749"/>
+<text class="t m" x="118" y="753">wired, speed not measured</text>
+<line class="lw" x1="50" y1="773" x2="105" y2="773"/>
+<text class="t m" x="118" y="777">wireless, offline or port not confirmed</text>
+<text class="lab" x="30" y="808">Link speeds and latencies were read from the machines</text>
+<text class="lab" x="30" y="824">on 2026-11-03, measured from the workspace.</text>
 </svg>
