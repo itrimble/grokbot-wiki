@@ -44,7 +44,7 @@
 </defs>
 <rect class="bg" width="1200" height="740" rx="10"/>
 <text class="t title" x="30" y="42">Who depends on whom</text>
-<text class="lab" x="30" y="64">As of 2026-11-04. Solid arrows are services on the LAN. Dashed arrows travel over the Tailscale overlay.</text>
+<text class="lab" x="30" y="64">As of 2026-11-05. Solid arrows are services on the LAN. Dashed arrows travel over the Tailscale overlay.</text>
 <rect class="box" x="475" y="95" width="250" height="76" rx="10"/>
 <g class="c-net"><rect class="tb" x="487" y="111.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-router" x="495.0" y="119.0" width="28" height="28"/></g>
 <text class="t h" x="543" y="129.0">5G gateway</text>
@@ -65,7 +65,7 @@
 <g class="c-pc"><rect class="tb" x="882" y="258.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-tower" x="890.0" y="266.0" width="28" height="28"/></g>
 <text class="t h" x="938" y="268.0">omarchy</text>
 <text class="t m" x="938" y="286.0">Linux workstation,</text>
-<text class="t m" x="938" y="302.0">powered down at the moment</text>
+<text class="t m" x="938" y="302.0">online</text>
 <use class="bd" href="#i-simple-linux" x="1124" y="245" width="17" height="17"/>
 <rect class="box" x="680" y="430" width="230" height="76" rx="10"/>
 <g class="c-cl"><rect class="tb" x="692" y="446.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-keyboard" x="700.0" y="454.0" width="28" height="28"/></g>

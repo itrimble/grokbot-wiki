@@ -1,6 +1,6 @@
 # Home network: overview
 
-This is the network in my house, drawn the way I wish other people had documented theirs. It is one flat private network behind a 5G gateway, with three Wi-Fi mesh nodes, a small 2.5G switch where my computers sit, and a NAS that does more work than anything else on it. I last checked the details on 2026-11-04. A script reads the machines every night, so the speeds, statuses and counts on this page update themselves. Anything marked as not measured was not read.
+This is the network in my house, drawn the way I wish other people had documented theirs. It is one flat private network behind a 5G gateway, with three Wi-Fi mesh nodes, a small 2.5G switch where my computers sit, and a NAS that does more work than anything else on it. I last checked the details on 2026-11-05. A script reads the machines every night, so the speeds, statuses and counts on this page update themselves. Anything marked as not measured was not read.
 
 I left out addresses, MAC addresses, serial numbers, hostnames and account names on purpose. The relationships are the point.
 
@@ -36,7 +36,7 @@ I left out addresses, MAC addresses, serial numbers, hostnames and account names
 | Mac mini M4 | Always-on host for scheduled jobs and builds | Built-in NIC at 1G through the switch; Wi-Fi also on | Uses the NAS for DNS and backups |
 | MacBook Pro M4 Max | My main machine | USB-C dock at 2.5G through the switch; Wi-Fi also on; a third 1G adapter on the KVM | Same dependencies as the mini |
 | MacBook Neo | Second laptop | USB Ethernet adapter at 1G, plus Wi-Fi | Same dependencies as the mini |
-| omarchy | Linux workstation | 2.5G NIC and Wi-Fi. Powered down at the moment. | Reaches the rest over the LAN or Tailscale |
+| omarchy | Linux workstation | unknown-speed NIC and Wi-Fi. Online. | Reaches the rest over the LAN or Tailscale |
 | TESmart KVM | Shares one keyboard and display between computers | The MacBook Pro sees a 1G USB LAN adapter through it | Needs no network to do its main job |
 | Tailscale overlay | Encrypted peer-to-peer links between the Macs, the NAS, omarchy, an iPhone and an iPad | Runs over the LAN or the internet | Direct on the LAN, relayed when I am away |
 | Automation VM | A sandboxed VM outside the house that joins the overlay | Outbound only | My access rules let it dial out and let nothing dial in |
@@ -45,7 +45,7 @@ I left out addresses, MAC addresses, serial numbers, hostnames and account names
 
 ## What I have not identified
 
-The nightly sweep of the LAN on 2026-11-04 saw 34 devices and could not name seven of them. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
+The nightly sweep of the LAN on 2026-11-05 saw 36 devices and could not name eight of them. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
 
 I also did not record which switch port each device uses. The switch is unmanaged, so the ports only show in the lights on its front.
 
