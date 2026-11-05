@@ -1,0 +1,19 @@
+%% Verified 2026-10-17. Known unverified: tailnet ACL details (no ACL file check); omarchy specs (Ian/Atlas-verified only); ~17 tok/s + concurrency (unbenchmarked, see Diagram 2); oMLX login-item status.
+flowchart TD
+  XB["X Bookmarks app flags"] --> Atlas["ATLAS portfolio gate"]
+  BG["Book Growth Friday Amazon"] --> Atlas
+  Arch["Archivist meaningful changes"] --> Atlas
+  Atlas --> Beacon["Beacon sites"]
+  Atlas --> Scout["Scout listening"]
+  Atlas --> Ledger["Ledger experiments"]
+  Scout -->|"bulk research"| Hermes["Hermes coding agent NOT a Grok Bot"]
+  Studio["Studio content"] -->|"experiment IDs"| Ledger
+  Scout <-->|"success data"| Ledger
+  Atlas -->|"runtime failures"| Warden["Warden runtime"]
+  IMB["Improve My Bots symptoms"] --> Warden
+  Warden -->|"X MCP gate"| Scout
+  Foreman["Foreman ~/projects canonical"] -->|"PROJECTS/ACTIVITY read-only"| Atlas
+  Foreman -->|"heavy coding"| Hermes
+  HT["Hermes Tuner"] -->|"tunes box install"| Hermes
+  HT <-->|"runtime incidents"| Warden
+%% Orchestration 2026-10-17: Box=control plane (Atlas+file queue); model use cases: Ornith=chat/cron fallback, gemma=fast/small, bge-m3=embeddings/RAG, TTS=speech, qwen3:8b=coding assist/sweeps, cloud gpt-6.1-sol/MiniMax-M3/DeepSeek=primary/fallback coding. See diagram-4-orchestration.

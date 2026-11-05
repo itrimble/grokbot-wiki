@@ -1,0 +1,18 @@
+%% Verified 2026-10-17. Known unverified: tailnet ACL details (no ACL file check); omarchy specs (Ian/Atlas-verified only); ~17 tok/s + concurrency (unbenchmarked); oMLX login-item status.
+flowchart LR
+  Box["BOX tag:grokbox<br/>Debian 13, 8vCPU, 15GB, NO GPU<br/>17 Grok Bots + claude/codex/hermes/swift/xtool<br/>userspace tailscaled + SOCKS5 localhost:1055<br/>tssh via paramiko"]
+  Mini["MAC MINI M4 (AIMacMini)<br/>16GB unified ~11.3GiB GPU budget<br/>CANONICAL ~/projects, Xcode<br/>oMLX /v1 tailscale serve, Ollama local-only<br/>Models ~104 GB: Ollama ~25 GB + HF cache ~79 GB<br/>Disk ~923 GiB free (live 2026-10-17)"]
+  MBP["MACBOOK PRO M4 Max<br/>video/studio"]
+  Neo["NEO laptop<br/>often offline"]
+  Omarchy["OMARCHY omarchy-ai<br/>5950X 62GB RX6600XT ROCm gfx1032<br/>Ollama qwen3:8b+bge-m3<br/>Access via Grok Bot machine access, not a documented Box Ollama path"]
+  NAS["NAS<br/>/Volumes/nas/projects mirror<br/>editable, NOT canonical"]
+  Cloud["CLOUD APIs egress only<br/>Hermes cloud primaries + fallbacks (see Diagram 2)"]
+  Box -->|"SSH 22 tssh"| Mini
+  Box -->|"HTTPS 443 oMLX /v1 — Verified 2026-10-17 via SOCKS5 /v1/models"| Mini
+  Box -->|"SSH 22"| MBP
+  Box -->|"SSH 22"| Neo
+  Box -.->|"UNVERIFIED — path/ACL not documented"| Omarchy
+  Mini -->|"mirror"| NAS
+  Omarchy -->|"HTTPS egress"| Cloud
+  %% ACL denied: inbound to grokbox, Box to NAS. No Funnel.
+%% Orchestration 2026-10-17: Box=control plane (Atlas+file queue); model use cases: Ornith=chat/cron fallback, gemma=fast/small, bge-m3=embeddings/RAG, TTS=speech, qwen3:8b=coding assist/sweeps, cloud gpt-6.1-sol/MiniMax-M3/DeepSeek=primary/fallback coding. See diagram-4-orchestration.

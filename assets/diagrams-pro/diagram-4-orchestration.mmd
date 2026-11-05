@@ -1,0 +1,11 @@
+%% Verified 2026-10-17 facts. DESIGN 2026-10-17 — no machine changes yet. Known unverified: tailnet ACL, omarchy specs, ~17 tok/s.
+flowchart TB
+  Ian -->|"publish/spend/send/ship gate"| Atlas["ATLAS gate (Box)"]
+  Atlas --> Queue["BOX CONTROL PLANE<br/>file queue queue/*.md + run log state/*.jsonl<br/>effective model, tokens/cost, tok/s, result, rework"]
+  Queue -->|"tssh SSH 22 + SOCKS5 HTTPS 443 oMLX /v1"| Mini["MAC MINI worker<br/>Xcode ONLY • oMLX Ornith-9B=chat/cron fallback, gemma-4-e4b=fast/small, bge-m3=embeddings/RAG, Qwen3-TTS=speech<br/>Ollama SSH-only qwen3=local coding assist/sweeps • 1x9B max2 concurrent ~11.3GiB GPU"]
+  Queue -.->|"Phase 1 if Ian approves 1 ACL port (UNVERIFIED today)"| Omarchy["OMARCHY worker<br/>Ollama qwen3:8b=bulk coding assist, bge-m3=bulk embeddings<br/>heavy Linux/game-dev builds • gfx1032, vLLM unsupported/timebox"]
+  Queue -->|"Grok Bot machine connector / tssh async"| MBP["MBP M4 Max<br/>Studio video renders • deputy cold-restore from NAS/GitHub (Ian declares canonical)"]
+  Queue -->|"HTTPS egress"| Cloud["CLOUD CODING<br/>gpt-6.1-sol Box Hermes primary, gpt-5.6-terra aux, DeepSeek fallback1, MiniMax-M3 fallback2 / Mini Hermes primary"]
+  Health["HEALTH: 5-min probes, health files, dead-man pings (missing=alert), load-shed mini->omarchy/cloud"] --> Queue
+  Mini -->|"heartbeats + health"| Health
+  Ledger["LEDGER weekly dashboard -> EXP-001/003/005/008 -> ROUTING.md"] --> Queue
