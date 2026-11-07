@@ -1,6 +1,6 @@
 # Home network: relationships and failures
 
-<figure class="pro-diagram"><a href="/assets/home-network/relationships.svg"><img src="/assets/home-network/relationships.svg" alt="Dependency diagram: the gateway gives addresses and internet to the NAS, the Macs and omarchy; the NAS gives DNS filtering, files and backups to the Macs; a KVM shares keyboard and display with the Macs; a Tailscale overlay joins the Macs, NAS, omarchy, phones and an outbound-only automation VM."></a><figcaption><em>Who depends on whom, drawn on 2026-11-06. Solid arrows are services on the LAN; dashed arrows go over Tailscale.</em> Select the image to open it full size.</figcaption></figure>
+<figure class="pro-diagram"><a href="/assets/home-network/relationships.svg"><img src="/assets/home-network/relationships.svg" alt="Dependency diagram: the gateway gives addresses and internet to the NAS, the Macs and omarchy; the NAS gives DNS filtering, files and backups to the Macs; a KVM shares keyboard and display with the Macs; a Tailscale overlay joins the Macs, NAS, omarchy, phones and an outbound-only automation VM."></a><figcaption><em>Who depends on whom, drawn on 2026-11-07. Solid arrows are services on the LAN; dashed arrows go over Tailscale.</em> Select the image to open it full size.</figcaption></figure>
 
 ## The dependencies in words
 
