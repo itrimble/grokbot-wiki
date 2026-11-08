@@ -44,7 +44,7 @@
 </defs>
 <rect class="bg" width="1200" height="740" rx="10"/>
 <text class="t title" x="30" y="42">Who depends on whom</text>
-<text class="lab" x="30" y="64">As of 2026-11-07. Solid arrows are services on the LAN. Dashed arrows travel over the Tailscale overlay.</text>
+<text class="lab" x="30" y="64">As of 2026-11-08. Solid arrows are services on the LAN. Dashed arrows travel over the Tailscale overlay.</text>
 <rect class="box" x="475" y="95" width="250" height="76" rx="10"/>
 <g class="c-net"><rect class="tb" x="487" y="111.0" width="44" height="44" rx="10"/><use class="tg" href="#i-mdi-router" x="495.0" y="119.0" width="28" height="28"/></g>
 <text class="t h" x="543" y="129.0">5G gateway</text>

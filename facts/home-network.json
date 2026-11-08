@@ -1,9 +1,9 @@
 {
-  "collected_at": "2026-11-07T11:40:33Z",
-  "collected_date": "2026-11-07",
+  "collected_at": "2026-11-08T11:40:32Z",
+  "collected_date": "2026-11-08",
   "network": {
-    "hosts_seen": 36,
-    "hosts_unidentified": 10
+    "hosts_seen": 28,
+    "hosts_unidentified": 7
   },
   "roles": {
     "deco_far": {
@@ -11,7 +11,7 @@
       "status": "online"
     },
     "deco_root": {
-      "rtt_ms": 8.8,
+      "rtt_ms": 6.1,
       "status": "online"
     },
     "deco_workspace": {
@@ -19,17 +19,18 @@
       "status": "online"
     },
     "gateway": {
-      "rtt_ms": 11.9,
+      "rtt_ms": 57.2,
       "status": "online"
     },
     "mbp": {
       "link_mbps": 2500,
-      "rtt_ms": 0.8,
+      "rtt_ms": 0.6,
       "status": "online"
     },
     "mbp_kvm": {
       "link_mbps": 1000,
-      "status": "online"
+      "link_stale": true,
+      "status": "offline"
     },
     "mini": {
       "link_mbps": 1000,
@@ -40,9 +41,9 @@
       "carrier_changes": 4,
       "errors": 0,
       "link_mbps": 2500,
-      "rtt_ms": 0.6,
+      "rtt_ms": 0.5,
       "status": "online",
-      "uptime_s": 308555
+      "uptime_s": 394954
     },
     "neo": {
       "link_mbps": 1000,
@@ -50,13 +51,13 @@
       "status": "offline"
     },
     "omarchy": {
-      "rtt_ms": 0.6,
+      "rtt_ms": 0.3,
       "status": "online"
     }
   },
   "schema": 1,
   "tailscale": {
-    "peers_online": 4,
+    "peers_online": 3,
     "peers_total": 7
   }
 }
