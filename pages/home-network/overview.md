@@ -1,6 +1,6 @@
 # Home network: overview
 
-This is the network in my house, drawn the way I wish other people had documented theirs. It is one flat private network behind a 5G gateway, with three Wi-Fi mesh nodes, a small 2.5G switch where my computers sit, and a NAS that does more work than anything else on it. I last checked the details on 2026-11-08. A script reads the machines every night, so the speeds, statuses and counts on this page update themselves. Anything marked as not measured was not read.
+This is the network in my house, drawn the way I wish other people had documented theirs. It is one flat private network behind a 5G gateway, with three Wi-Fi mesh nodes, a small 2.5G switch where my computers sit, and a NAS that does more work than anything else on it. I last checked the details on 2026-11-09. A script reads the machines every night, so the speeds, statuses and counts on this page update themselves. Anything marked as not measured was not read.
 
 I left out addresses, MAC addresses, serial numbers, hostnames and account names on purpose. The relationships are the point.
 
@@ -45,7 +45,7 @@ I left out addresses, MAC addresses, serial numbers, hostnames and account names
 
 ## What I have not identified
 
-The nightly sweep of the LAN on 2026-11-08 saw 28 devices and could not name seven of them. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
+The nightly sweep of the LAN on 2026-11-09 saw 28 devices and could not name six of them. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
 
 I also did not record which switch port each device uses. The switch is unmanaged, so the ports only show in the lights on its front.
 
