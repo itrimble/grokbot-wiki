@@ -1,21 +1,21 @@
 # Home network: physical diagram
 
-<figure class="pro-diagram"><a href="/assets/home-network/physical.svg"><img src="/assets/home-network/physical.svg" alt="Physical layout: a 5G gateway feeds the mesh root over 1 GbE, mesh nodes link wirelessly, and the workspace node uplinks to an 8-port 2.5G switch serving the NAS and MacBook Pro at 2.5G and the Mac mini and other adapters at 1G."></a><figcaption><em>The physical layout, drawn on 2026-11-10. Line color is the speed each link negotiated; dashed lines are wireless or a port I did not confirm.</em> Select the image to open it full size.</figcaption></figure>
+<figure class="pro-diagram"><a href="/assets/home-network/physical.svg"><img src="/assets/home-network/physical.svg" alt="Physical layout: a 5G gateway feeds the mesh root over 1 GbE, mesh nodes link wirelessly, and the workspace node uplinks to an 8-port 2.5G switch serving the NAS and MacBook Pro at 2.5G and the Mac mini and other adapters at 1G."></a><figcaption><em>The physical layout, drawn on 2026-11-11. Line color is the speed each link negotiated; dashed lines are wireless or a port I did not confirm.</em> Select the image to open it full size.</figcaption></figure>
 
 ## The links
 
 | From | To | Medium | Speed | How I know |
 |---|---|---|---|---|
 | 5G gateway | Mesh root node | Ethernet | 1 GbE | Gateway LAN ports are gigabit; read 2026-11-01 |
-| Mesh root | Workspace node | Wireless backhaul | Not measured | about 9 ms from the workspace, measured 2026-11-10 |
-| Mesh root | Far node | Wireless backhaul | Not measured | about 11 ms from the workspace, measured 2026-11-10 |
+| Mesh root | Workspace node | Wireless backhaul | Not measured | about 7 ms from the workspace, measured 2026-11-11 |
+| Mesh root | Far node | Wireless backhaul | Not measured | about 4 ms from the workspace, measured 2026-11-11 |
 | Workspace node | Switch | Ethernet, 2.5G-capable port | Not measured | Port speed not read |
-| Switch | NAS | Ethernet | 2.5 Gbps | Read from the NAS itself on 2026-11-10 |
-| Switch | MacBook Pro (USB-C dock) | Ethernet | 2.5 Gbps | Read from the Mac on 2026-11-10 |
-| Switch | Mac mini | Ethernet | 1 Gbps | Read from the Mac on 2026-11-10; its NIC is gigabit |
-| MacBook Neo | Ethernet adapter | Ethernet | 1 Gbps | Read from the Mac on 2026-11-10; I did not confirm which port it uses |
-| MacBook Pro | KVM's LAN adapter | Ethernet | 1 Gbps | Read from the Mac on 2026-11-10; port not confirmed |
-| Switch | omarchy | Ethernet | not measured | Read from the machine on 2026-11-10 |
+| Switch | NAS | Ethernet | 2.5 Gbps | Read from the NAS itself on 2026-11-11 |
+| Switch | MacBook Pro (USB-C dock) | Ethernet | 2.5 Gbps | Read from the Mac on 2026-11-11 |
+| Switch | Mac mini | Ethernet | 1 Gbps | Read from the Mac on 2026-11-11; its NIC is gigabit |
+| MacBook Neo | Ethernet adapter | Ethernet | 1 Gbps | Read from the Mac on 2026-11-11; I did not confirm which port it uses |
+| MacBook Pro | KVM's LAN adapter | Ethernet | 1 Gbps | Read from the Mac on 2026-11-11; port not confirmed |
+| Switch | omarchy | Ethernet | not measured | Read from the machine on 2026-11-11 |
 
 ## What I measured, and what I did not
 
@@ -25,4 +25,4 @@ On 2026-11-01, before the switch, omarchy moved 600 MB to the NAS at 2.34 Gbit/s
 
 ## Rooms
 
-I describe the layout by role, not by room name. The workspace is the one room with every wired machine in it. The gateway is in a different room, one wireless hop away, and the far node is a second hop beyond that. That is why latency from the workspace is under 1 ms to its own node, about 9 ms to the root and about 11 ms to the far node.
+I describe the layout by role, not by room name. The workspace is the one room with every wired machine in it. The gateway is in a different room, one wireless hop away, and the far node is a second hop beyond that. That is why latency from the workspace is under 1 ms to its own node, about 7 ms to the root and about 4 ms to the far node.

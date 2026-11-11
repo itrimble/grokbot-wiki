@@ -51,7 +51,7 @@
 </defs>
 <rect class="bg" width="1200" height="840" rx="10"/>
 <text class="t title" x="30" y="42">Physical layout and link speeds</text>
-<text class="lab" x="30" y="64">As of 2026-11-10. Color is the speed each link negotiated. Dashed means wireless, offline or not confirmed.</text>
+<text class="lab" x="30" y="64">As of 2026-11-11. Color is the speed each link negotiated. Dashed means wireless, offline or not confirmed.</text>
 <rect class="grp" x="30" y="90" width="330" height="275" rx="10"/>
 <text class="t m" x="46" y="112">GATEWAY ROOM</text>
 <rect class="box" x="50" y="125" width="290" height="76" rx="10"/>
@@ -75,7 +75,7 @@
 <use class="bd" href="#i-simple-tplink" x="314" y="515" width="17" height="17"/>
 <line class="lw" x1="195" y1="341" x2="195" y2="505"/>
 <text class="lab" x="207" y="415">wireless backhaul</text>
-<text class="lab" x="207" y="431">about 11 ms from the workspace</text>
+<text class="lab" x="207" y="431">about 4 ms from the workspace</text>
 <rect class="grp" x="420" y="90" width="750" height="740" rx="10"/>
 <text class="t m" x="436" y="112">WIRED WORKSPACE</text>
 <rect class="box" x="450" y="120" width="300" height="125" rx="10" stroke-dasharray="5 4"/>
@@ -93,7 +93,7 @@
 <use class="bd" href="#i-simple-tplink" x="724" y="275" width="17" height="17"/>
 <line class="lw" x1="340" y1="303" x2="450" y2="303"/>
 <text class="lab" x="354" y="294">wireless</text>
-<text class="lab" x="354" y="322">~9 ms</text>
+<text class="lab" x="354" y="322">~7 ms</text>
 <line class="lx" x1="600" y1="341" x2="600" y2="400"/>
 <text class="lab r" x="588" y="364">uplink to the switch</text>
 <text class="lab r" x="588" y="380">speed not measured</text>
@@ -173,5 +173,5 @@
 <line class="lw" x1="50" y1="773" x2="105" y2="773"/>
 <text class="t m" x="118" y="777">wireless, offline or port not confirmed</text>
 <text class="lab" x="30" y="808">Link speeds and latencies were read from the machines</text>
-<text class="lab" x="30" y="824">on 2026-11-10, measured from the workspace.</text>
+<text class="lab" x="30" y="824">on 2026-11-11, measured from the workspace.</text>
 </svg>
