@@ -1,0 +1,10 @@
+flowchart LR
+  Bots["Any bot"] -- "proposes card" --> Proposed["queue/proposed/"]
+  Atlas["Atlas gate (publish, spend, send, ship)"] -- "approves" --> Queue["queue/"]
+  Ian -- "approves" --> Queue
+  Proposed --> Atlas
+  Queue -- "claimed by owner bot" --> Work["Work on box, mini, omarchy or MBP"]
+  Work -- "one line per run" --> RunLog["state/run-log.jsonl"]
+  Work -- "card closed" --> Done["queue/done/"]
+  RunLog --> Board["BOARD.md (dated snapshot)"]
+  Deputy["MacBook Pro deputy"] -. "reads, restores if Ian promotes it" .-> Board

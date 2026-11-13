@@ -1,0 +1,836 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Projects catalog (Mac mini ~/projects) — Grok Bot Wiki</title><link rel="stylesheet" href="/styles.css"><script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'default'});</script></head><body><header><a class="brand" href="/">Grok Bot Wiki</a><span class="by">Remnant Security · source: grokbot-docs</span></header><div class="layout"><nav><details ><summary>top (7)</summary><ul><li><a href="/architecture/">Architecture</a></li><li><a href="/changelog/">Changelog</a></li><li><a href="/open-work/">Open work: Ian&#39;s Grok Bot shop</a></li><li><a href="/index-readme/">Grok Bot shop docs (Remnant Security)</a></li><li><a href="/sync_queue/">Sync queue</a></li><li><a href="/projects-tracking/">Project tracking: design and baseline</a></li><li><a href="/routines/">Routines</a></li></ul></details><details open><summary>bots (30)</summary><ul><li><a href="/bots/ai-budget-builder/">AI Budget Builder</a></li><li><a href="/bots/apple-mac-tools/">Apple Mac Tools</a></li><li><a href="/bots/archivist/">Archivist</a></li><li><a href="/bots/atlas/">Atlas</a></li><li><a href="/bots/beacon/">Beacon</a></li><li><a href="/bots/bills/">Bills</a></li><li><a href="/bots/book-growth/">Book Growth</a></li><li><a href="/bots/broker/">Broker</a></li><li><a href="/bots/course-builder/">Course Builder</a></li><li><a href="/bots/dev-diary/">Dev Diary</a></li><li><a href="/bots/expert-calls/">Expert Calls</a></li><li><a href="/bots/foreman/">Foreman</a></li><li><a href="/bots/game-stores/">Game Stores</a></li><li><a href="/bots/hermes-tuner/">Hermes Tuner</a></li><li><a href="/bots/improve-my-bots/">Improve My Bots</a></li><li><a href="/bots/inbox-cleaner/">Inbox Cleaner</a></li><li><a href="/bots/learning-to-sell/">Learning to Sell</a></li><li><a href="/bots/ledger/">Ledger</a></li><li><a href="/bots/life-events/">Life events</a></li><li><a href="/bots/outbound-prospecting/">Outbound Prospecting</a></li><li><a href="/bots/phone-call-bot/">Phone Call Bot</a></li><li><a href="/bots/podium/">Podium · Speaking Opportunities</a></li><li><a href="/bots/political-spam-blocker/">Political Spam Blocker</a></li><li><a href="/bots/privacy-scrubber/">Privacy Scrubber</a></li><li><a href="/bots/scout/">Scout</a></li><li><a href="/bots/shepherd/">Shepherd (RETIRED)</a></li><li><a href="/bots/studio/">Studio</a></li><li><a href="/bots/tax-collector/">Tax Collector</a></li><li><a href="/bots/warden/">Warden</a></li><li><a href="/bots/x-bookmarks/">X Bookmarks</a></li></ul></details><details ><summary>decisions (22)</summary><ul><li><a href="/decisions/2026-10-10-scout-weekly-trial/">2026-10-10: Scout weekly-only trial</a></li><li><a href="/decisions/2026-10-10-shepherd-retirement/">2026-10-10: Shepherd retired</a></li><li><a href="/decisions/2026-10-10-warden-lane-split/">2026-10-10: Warden lane split</a></li><li><a href="/decisions/2026-10-15-claude-code-codex-install/">2026-10-15: Claude Code and Codex CLI on the box</a></li><li><a href="/decisions/2026-10-16-box-hermes-tuning/">2026-10-16: Hermes Tuner owns the box Hermes install</a></li><li><a href="/decisions/2026-10-16-cli-default-models/">2026-10-16: Claude Code and Codex use default models</a></li><li><a href="/decisions/2026-10-16-cli-rollout-applied/">2026-10-16: CLI rollout, receipt rule, Tax Collector mission, plain-writing, audit #8</a></li><li><a href="/decisions/2026-10-16-dev-diary-public-x/">2026-10-16: Dev Diary may post publicly on X</a></li><li><a href="/decisions/2026-10-16-nas-editable/">2026-10-16: NAS editable — all NAS edits allowed, canonical root stays on the mini</a></li><li><a href="/decisions/2026-10-16-nas-foreman-exception/">2026-10-16: NAS exception for Foreman PROJECTS.md / ACTIVITY.md</a></li><li><a href="/decisions/2026-10-16-product-diary-blog/">2026-10-16: Product Diary on blog.remnantsecurity.com</a></li><li><a href="/decisions/2026-10-16-wiki-site/">2026-10-16: Wiki at wiki.remnantsecurity.com</a></li><li><a href="/decisions/2026-10-17-box-control-plane/">2026-10-17: Box is the control plane, MacBook Pro is the deputy</a></li><li><a href="/decisions/2026-10-18-learning-to-sell/">2026-10-18: Learning to Sell bot and public sales tracker</a></li><li><a href="/decisions/2026-10-19-architecture-diagram-style/">Architecture diagram style — one-page systems map (2026-10-19)</a></li><li><a href="/decisions/2026-10-19-box-nas-ssh-and-nas-hermes/">2026-10-19: Box SSH to the NAS, and Hermes Tuner takes the NAS Hermes install</a></li><li><a href="/decisions/2026-10-19-course-mvp-text-first/">2026-10-19: Course MVP — Cybersecurity Career Jumpstart, text-first</a></li><li><a href="/decisions/2026-10-19-neo-build-node-and-projects-git-rule/">2026-10-19: Neo as build node + every projects folder gets a commit</a></li><li><a href="/decisions/2026-10-19-snapdog-agentic-creator-studio/">2026-10-19: SnapDog Creator Studio tracked (in development)</a></li><li><a href="/decisions/2026-11-02-podium-bot/">2026-11-02: Podium bot added (speaking opportunities)</a></li><li><a href="/decisions/2026-11-04-broker-bot/">2026-11-04: Broker bot added (personal insurance shopper)</a></li><li><a href="/decisions/2026-11-13-ai-budget-builder-bot/">2026-11-13: AI Budget Builder bot added</a></li></ul></details><details ><summary>diagrams (1)</summary><ul><li><a href="/diagrams/style/">Ian&#39;s chosen architecture-diagram style (approved 2026-10-19)</a></li></ul></details><details ><summary>home-network (6)</summary><ul><li><a href="/home-network/addressing-and-names/">Home network: addressing and names</a></li><li><a href="/home-network/lessons-2026-11-03/">The switch and the 100 Mb/s NAS</a></li><li><a href="/home-network/logical-diagram/">Home network: logical diagram</a></li><li><a href="/home-network/overview/">Home network: overview</a></li><li><a href="/home-network/physical-diagram/">Home network: physical diagram</a></li><li><a href="/home-network/relationships-and-failures/">Home network: relationships and failures</a></li></ul></details><details ><summary>infra (7)</summary><ul><li><a href="/infra/apple-dev/">Apple dev</a></li><li><a href="/infra/box/">The box</a></li><li><a href="/infra/local-ai/">Local AI</a></li><li><a href="/infra/macs/">Ian&#39;s Macs</a></li><li><a href="/infra/omarchy/">AMD dev PC (omarchy)</a></li><li><a href="/infra/projects-catalog/">Projects catalog (Mac mini ~/projects)</a></li><li><a href="/infra/tailnet/">Tailnet</a></li></ul></details><details ><summary>skills (16)</summary><ul><li><a href="/skills/amazon-author-catalog-check/">Amazon author catalog check</a></li><li><a href="/skills/app-store-connect-read-with-a-box-api-key/">App Store Connect read with a box API key</a></li><li><a href="/skills/approval-and-delivery-log-check/">Approval and delivery log check</a></li><li><a href="/skills/build-the-target-list/">skills/build-the-target-list/SKILL.md</a></li><li><a href="/skills/campaign-link-convention/">Campaign link convention</a></li><li><a href="/skills/draft-a-first-touch/">skills/draft-a-first-touch/SKILL.md</a></li><li><a href="/skills/draft-a-follow-up/">skills/draft-a-follow-up/SKILL.md</a></li><li><a href="/skills/getting-started/">skills/getting-started/SKILL.md</a></li><li><a href="/skills/handle-a-reply/">skills/handle-a-reply/SKILL.md</a></li><li><a href="/skills/index/">Shared skills</a></li><li><a href="/skills/indie-book-marketing-ops/">Indie book marketing ops</a></li><li><a href="/skills/merge-a-site-pr-and-verify-it-s-live/">Merge a site PR and verify it&#39;s live</a></li><li><a href="/skills/plain-writing/">Plain writing</a></li><li><a href="/skills/research-a-prospect/">skills/research-a-prospect/SKILL.md</a></li><li><a href="/skills/sharpen-what-is-working/">skills/sharpen-what-is-working/SKILL.md</a></li><li><a href="/skills/weekly-prospecting-recap/">skills/weekly-prospecting-recap/SKILL.md</a></li></ul></details></nav><main><article><p class="crumbs"><a href="/">Home</a> / infra/projects-catalog.md</p><h1>Projects catalog (Mac mini ~/projects)</h1><h1>Projects catalog (Mac mini ~/projects)</h1>
+<p>One line per folder that had no description elsewhere in these docs. Built Nov 1, 2026 from read-only profiles by <code>profile_folders.py</code>.</p>
+<p>Last activity: for git folders, the last commit date (CT). For non-git folders, a file date marked ~, sampled and approximate. Many folders show ~2026-07-12, which looks like a bulk copy date, not real work.</p>
+<h2>Apple apps (iOS / macOS)</h2>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Git</th>
+<th>What it is</th>
+<th>Last activity (CT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AI Mesh</code></td>
+<td>yes</td>
+<td>Test and management platform for a local multi-LLM consensus orchestrator, with a Swift app and TypeScript platform.</td>
+<td>2026-08-31</td>
+</tr>
+<tr>
+<td><code>alttab-pro</code></td>
+<td>no</td>
+<td>Only a handover note and two screenshots for the alt-tab window switcher.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>alttabmacapp-recovered-direct-20260817</code></td>
+<td>yes</td>
+<td>Recovered Aug 17 copy of Window Switcher Pro, the direct-sale macOS window switcher.</td>
+<td>2026-08-18</td>
+</tr>
+<tr>
+<td><code>barfly</code></td>
+<td>no</td>
+<td>Barfly, a Flutter drink discovery app built around bartenders.</td>
+<td>~2026-07-30</td>
+</tr>
+<tr>
+<td><code>budget-app</code></td>
+<td>no</td>
+<td>Small budget app, an iOS Swift version plus a simple web page.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>crawfishapp</code></td>
+<td>yes</td>
+<td>iPhone app for Gulf Coast crawfish prices, vendors and boil planning.</td>
+<td>2026-04-22</td>
+</tr>
+<tr>
+<td><code>CyberSimApp</code></td>
+<td>yes</td>
+<td>CyberSim, an iOS cert-exam practice app with about 10,000 questions across 10 security certifications.</td>
+<td>2026-04-24</td>
+</tr>
+<tr>
+<td><code>DisplayFirewall</code></td>
+<td>no</td>
+<td>Research prototype for a macOS screen-capture privacy control, kept apart from the window switcher.</td>
+<td>~2026-08-19</td>
+</tr>
+<tr>
+<td><code>dividendbuddy</code></td>
+<td>yes</td>
+<td>Dividend Buddy, a web and iOS app that plans how much to invest to reach a monthly dividend income.</td>
+<td>2026-08-22</td>
+</tr>
+<tr>
+<td><code>Evaluations-Framework-CLI</code></td>
+<td>yes</td>
+<td>xceval, an unofficial Swift command-line tool for Apple&#39;s Evaluations framework.</td>
+<td>2026-07-03</td>
+</tr>
+<tr>
+<td><code>localization</code></td>
+<td>yes</td>
+<td>Reusable localization toolkit for Ian&#39;s iOS and macOS apps and games.</td>
+<td>2026-08-22</td>
+</tr>
+<tr>
+<td><code>metroappios</code></td>
+<td>yes</td>
+<td>iPhone dashboard of Windows Phone-style live tiles in SwiftUI.</td>
+<td>2026-04-13</td>
+</tr>
+<tr>
+<td><code>NotepadClone2</code></td>
+<td>yes</td>
+<td>Notepad++-style tabbed text editor for macOS in SwiftUI and AppKit.</td>
+<td>2025-05-31</td>
+</tr>
+<tr>
+<td><code>PassCheckBuddy</code></td>
+<td>yes</td>
+<td>Offline macOS menu-bar app that teaches password strength checks.</td>
+<td>2026-07-18</td>
+</tr>
+<tr>
+<td><code>pwa_app</code></td>
+<td>yes</td>
+<td>SiteForge (also called PagePort), turns websites into Mac apps, with App Store and direct-sale versions.</td>
+<td>2026-05-07</td>
+</tr>
+<tr>
+<td><code>rssai</code></td>
+<td>yes</td>
+<td>RSSAI, an RSS reader for iOS and macOS 26 that uses on-device Apple Intelligence.</td>
+<td>2026-04-22</td>
+</tr>
+<tr>
+<td><code>shopcompare</code></td>
+<td>no</td>
+<td>DealSense, a price comparison app with a Swift client and Python backend.</td>
+<td>~2026-09-18</td>
+</tr>
+<tr>
+<td><code>Stockanalyzer</code></td>
+<td>no</td>
+<td>StockScope, a Swift stock analysis app. Spec and agent notes, no git.</td>
+<td>~2026-07-12</td>
+</tr>
+</tbody></table>
+<h2>Games</h2>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Git</th>
+<th>What it is</th>
+<th>Last activity (CT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Astral Forge</code></td>
+<td>no</td>
+<td>Astral Forge game for iOS, macOS and web, with art, audio, QA reports and docs. No git.</td>
+<td>~2026-10-24</td>
+</tr>
+<tr>
+<td><code>auracaster-tetrisgameremix</code></td>
+<td>no</td>
+<td>Tetris remix in pygame-ce and web, using Kenney assets. Near-duplicate of tetris-app.</td>
+<td>~2026-08-20</td>
+</tr>
+<tr>
+<td><code>balanceofpower</code></td>
+<td>yes</td>
+<td>Swift macOS port of the 1990 Balance of Power, with the original Pascal source and an emulator reference.</td>
+<td>2026-09-26</td>
+</tr>
+<tr>
+<td><code>equilibrium-mmx</code></td>
+<td>yes</td>
+<td>Equilibrium-MMX, an iOS geopolitical strategy game in the style of Balance of Power.</td>
+<td>2026-04-22</td>
+</tr>
+<tr>
+<td><code>equilibrium-qwen</code></td>
+<td>yes</td>
+<td>Another iOS Equilibrium strategy game build, made with Qwen. Likely an earlier sibling of equilibrium-mmx.</td>
+<td>2026-04-14</td>
+</tr>
+<tr>
+<td><code>equilibrium-website</code></td>
+<td>no</td>
+<td>One-page website for the Equilibrium game.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>forge-plugins</code></td>
+<td>no</td>
+<td>One procedural-sprites plugin for the Forge engine.</td>
+<td>~2026-08-22</td>
+</tr>
+<tr>
+<td><code>game-assets</code></td>
+<td>no</td>
+<td>Shared 3D animation and asset packs (FBX files).</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>gameengine-relay-codex</code></td>
+<td>no</td>
+<td>Forge, an agent-driven Swift game engine with a CLI, studio app and examples. Codex copy, no git.</td>
+<td>~2026-08-29</td>
+</tr>
+<tr>
+<td><code>GameEngineLive</code></td>
+<td>no</td>
+<td>Mostly Xcode build output and localization for the game engine. Looks like a build scratch folder.</td>
+<td>~2026-10-06</td>
+</tr>
+<tr>
+<td><code>hotdogcity</code></td>
+<td>no</td>
+<td>Hotdog City, a browser GTA-style multiplayer game in Godot with a backend.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>leaving-kentucky-completion-20260912</code></td>
+<td>no</td>
+<td>Sep 12 snapshot copy of the Leaving Kentucky iOS game.</td>
+<td>~2026-09-14</td>
+</tr>
+<tr>
+<td><code>leaving-kentucky-events-20260929</code></td>
+<td>no</td>
+<td>Sep 29 snapshot copy of Leaving Kentucky, events work.</td>
+<td>~2026-09-29</td>
+</tr>
+<tr>
+<td><code>leaving-kentucky-scenario-art-20260929</code></td>
+<td>no</td>
+<td>Sep 29 snapshot copy of Leaving Kentucky, scenario art work.</td>
+<td>~2026-09-29</td>
+</tr>
+<tr>
+<td><code>leaving-kentucky-validation-20260929</code></td>
+<td>no</td>
+<td>Sep 29 snapshot copy of Leaving Kentucky, validation and QA runs.</td>
+<td>~2026-09-29</td>
+</tr>
+<tr>
+<td><code>los-santos-web</code></td>
+<td>no</td>
+<td>Browser 3D city game prototype with many 3D model assets.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>minecraft_candy_crush_spinoff</code></td>
+<td>no</td>
+<td>Yolk Souls game design, concept art and Godot skeleton. Appears to duplicate yolkSouls.</td>
+<td>~2026-10-23</td>
+</tr>
+<tr>
+<td><code>roblox-gta-world</code></td>
+<td>no</td>
+<td>Plan and setup script for a GTA-style Roblox world.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>snapshots</code></td>
+<td>no</td>
+<td>Saved build snapshots of the Pipe Flow game.</td>
+<td>~2026-08-29</td>
+</tr>
+<tr>
+<td><code>tetris-app</code></td>
+<td>no</td>
+<td>Tetris game in pygame-ce and web, using Kenney assets.</td>
+<td>~2026-07-12</td>
+</tr>
+</tbody></table>
+<h2>Books and writing</h2>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Git</th>
+<th>What it is</th>
+<th>Last activity (CT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ai-wars-book</code></td>
+<td>no</td>
+<td>AI Wars book with manuscript, research, covers and KDP listing.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>BOOK-APIFictionNovel</code></td>
+<td>no</td>
+<td>Product plan for a fiction novel about APIs.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>book-cover-concepts</code></td>
+<td>no</td>
+<td>Generated book cover concept images from May.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>book-exports</code></td>
+<td>no</td>
+<td>Finished ebook exports for the Max Mercer books.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>bookforge-library</code></td>
+<td>no</td>
+<td>Library of many book projects collected for the BookForge pipeline.</td>
+<td>~2026-09-28</td>
+</tr>
+<tr>
+<td><code>British politics book</code></td>
+<td>no</td>
+<td>Nonfiction book on British government, with manuscript, audiobook, covers and website.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>Computer Efficient Agent</code></td>
+<td>no</td>
+<td>Same API fiction novel plan as BOOK-APIFictionNovel. Misnamed duplicate.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>cruisebook</code></td>
+<td>no</td>
+<td>Cruise novel with manuscript, outline and website. Notes mention Dead Signal marketing.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>insider-risk-book</code></td>
+<td>no</td>
+<td>Nonfiction insider risk book in the research phase.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>insider-threat-book</code></td>
+<td>no</td>
+<td>Draft chapters, fact checks and illustrations for an insider threat book.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>manuscript</code></td>
+<td>no</td>
+<td>Reduction plan for a manuscript. Book unclear.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>max-mercer-series</code></td>
+<td>no</td>
+<td>Marketing automation plan for the Max Mercer series.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>MaxMercer</code></td>
+<td>no</td>
+<td>Max Mercer mystery ebooks (Obsidian Protocol, Lazarus Directive, Halcyon Key) and a website.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>mmx-book-knowledge</code></td>
+<td>no</td>
+<td>Metadata folder for an MMX book knowledge base. Nearly empty.</td>
+<td>~2026-09-12</td>
+</tr>
+<tr>
+<td><code>revenge-tour</code></td>
+<td>yes</td>
+<td>Revenge Tour novel draft with character guide.</td>
+<td>2026-05-23</td>
+</tr>
+<tr>
+<td><code>root-of-the-score</code></td>
+<td>yes</td>
+<td>Root of the Score book with exports and website.</td>
+<td>2026-05-08</td>
+</tr>
+<tr>
+<td><code>scottadamsapp</code></td>
+<td>yes</td>
+<td>Pipeline that turns transcripts into a Leanpub book about Scott Adams.</td>
+<td>2026-07-13</td>
+</tr>
+<tr>
+<td><code>sparetokensbook</code></td>
+<td>no</td>
+<td>Spare Tokens book with manuscript, covers and website.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>tex-murphy-book</code></td>
+<td>no</td>
+<td>The Nightingale&#39;s Cipher, Max Mercer book one, with sequels, exports and publishing plan.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>the-blink</code></td>
+<td>no</td>
+<td>The Blink book with manuscript, audiobook, QA and KDP listing.</td>
+<td>~2026-09-18</td>
+</tr>
+<tr>
+<td><code>the-good-version</code></td>
+<td>no</td>
+<td>The Good Version novel built with BookForge, with canon, outline and QA.</td>
+<td>~2026-09-16</td>
+</tr>
+<tr>
+<td><code>the-unfiltered-future</code></td>
+<td>no</td>
+<td>The Unfiltered Future book with covers and exports.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>TheSmilingSenatorBook</code></td>
+<td>no</td>
+<td>Gulf State political novel with outline, style guide and publishing pipeline.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>what-the-hell-were-you-thinking</code></td>
+<td>no</td>
+<td>Short book with covers and exports.</td>
+<td>~2026-07-12</td>
+</tr>
+</tbody></table>
+<h2>Security and insider threat work</h2>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Git</th>
+<th>What it is</th>
+<th>Last activity (CT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cybersecurity-exam-apps</code></td>
+<td>no</td>
+<td>Market research for cybersecurity exam apps.</td>
+<td>~2026-07-22</td>
+</tr>
+<tr>
+<td><code>Cybersecurity-Training-Links</code></td>
+<td>yes</td>
+<td>Cyber training links website in React plus several companion books.</td>
+<td>2026-02-14</td>
+</tr>
+<tr>
+<td><code>cybertraininggame</code></td>
+<td>yes</td>
+<td>CyberOps Command Center, choose-your-path cyber incident training with certificates.</td>
+<td>2026-08-24</td>
+</tr>
+<tr>
+<td><code>docreport</code></td>
+<td>no</td>
+<td>Generates Insider Threat Program assessment reports and slides from interview notes.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>EventLogTutorialThriveDX</code></td>
+<td>yes</td>
+<td>Windows Event Log training app in Next.js for ThriveDX.</td>
+<td>2025-06-01</td>
+</tr>
+<tr>
+<td><code>insider-threat-app</code></td>
+<td>no</td>
+<td>Plan for an insider threat risk assessment SaaS.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>insider-threat-course</code></td>
+<td>no</td>
+<td>Udemy course on breaking into insider threat work.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>insidetrader</code></td>
+<td>yes</td>
+<td>Blank Next.js starter. Name suggests an insider trading idea.</td>
+<td>2026-02-19</td>
+</tr>
+<tr>
+<td><code>insidrthreat</code></td>
+<td>yes</td>
+<td>Next.js insider threat assessment tool. Rebuilt Oct 8.</td>
+<td>2026-10-08</td>
+</tr>
+<tr>
+<td><code>threat_intel_hunter</code></td>
+<td>yes</td>
+<td>Python CLI that checks IPs, domains and hashes against free threat intel feeds.</td>
+<td>2025-06-02</td>
+</tr>
+</tbody></table>
+<h2>AI and agent tooling</h2>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Git</th>
+<th>What it is</th>
+<th>Last activity (CT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>aichatexplorerplugin</code></td>
+<td>no</td>
+<td>ContextBraid, a browser extension to save and continue AI chats across providers.</td>
+<td>~2026-08-21</td>
+</tr>
+<tr>
+<td><code>aichatexporterplugin</code></td>
+<td>yes</td>
+<td>Another ContextBraid copy, git with no commits. Duplicate of aichatexplorerplugin.</td>
+<td>no commits</td>
+</tr>
+<tr>
+<td><code>automation-tools</code></td>
+<td>no</td>
+<td>Note on what browser automation can do.</td>
+<td>~2026-03-18</td>
+</tr>
+<tr>
+<td><code>Claude outputs</code></td>
+<td>no</td>
+<td>One agents notes file.</td>
+<td>~2026-09-12</td>
+</tr>
+<tr>
+<td><code>Claudeception</code></td>
+<td>yes</td>
+<td>Skill that makes coding agents save what they learn as reusable skills.</td>
+<td>2026-02-20</td>
+</tr>
+<tr>
+<td><code>clipwire</code></td>
+<td>no</td>
+<td>Pipeline that cuts podcast clips for a YouTube channel.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>deepseekharness</code></td>
+<td>no</td>
+<td>Only agent settings. Nearly empty.</td>
+<td>~2026-08-31</td>
+</tr>
+<tr>
+<td><code>documentAI</code></td>
+<td>yes</td>
+<td>Local AI documentation generator demo with sample apps.</td>
+<td>2025-06-29</td>
+</tr>
+<tr>
+<td><code>gemini</code></td>
+<td>no</td>
+<td>Gemini agent home with a large backup of skills and notes.</td>
+<td>~2026-10-05</td>
+</tr>
+<tr>
+<td><code>googlereview</code></td>
+<td>yes</td>
+<td>Sullivan&#39;s Review Lab, a local app for review drafting and review-bombing analysis.</td>
+<td>2026-05-30</td>
+</tr>
+<tr>
+<td><code>hermes-mission-control</code></td>
+<td>no</td>
+<td>Docs for Hermes Mission Control, the agent dashboard.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>hermes-mission-control-git</code></td>
+<td>no</td>
+<td>A bare git repo for Hermes Mission Control, stored as a folder.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>iterm2</code></td>
+<td>no</td>
+<td>iTerm2 setup and repair scripts for agent terminals.</td>
+<td>~2026-08-03</td>
+</tr>
+<tr>
+<td><code>Kokoro-TTS-Local</code></td>
+<td>yes</td>
+<td>Local Kokoro text-to-speech with audiobook tools.</td>
+<td>2026-05-12</td>
+</tr>
+<tr>
+<td><code>micro-saas</code></td>
+<td>no</td>
+<td>Plan for a set of small SaaS products.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>minimaxcode</code></td>
+<td>no</td>
+<td>Only a handover note.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>mission-control-v2</code></td>
+<td>yes</td>
+<td>Mission Control v2 web dashboard with server, client and local database.</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td><code>podai-platform</code></td>
+<td>no</td>
+<td>Plan for an AI podcast platform.</td>
+<td>~2026-10-29</td>
+</tr>
+<tr>
+<td><code>polymarket-trading-bot</code></td>
+<td>yes</td>
+<td>PredictBot, a paper-trading bot for prediction markets.</td>
+<td>2026-05-26</td>
+</tr>
+<tr>
+<td><code>qwentemp</code></td>
+<td>no</td>
+<td>Qwen agent scratch folder.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>SkillClaw</code></td>
+<td>yes</td>
+<td>Third-party project: agent skills that evolve from use.</td>
+<td>2026-05-22</td>
+</tr>
+<tr>
+<td><code>Slide-Capture-OCR</code></td>
+<td>yes</td>
+<td>AppleScript that captures slides and renames them with OCR.</td>
+<td>2025-05-07</td>
+</tr>
+<tr>
+<td><code>unsloth</code></td>
+<td>no</td>
+<td>Unsloth docs archive and skills for the local fine-tuning app.</td>
+<td>~2026-08-16</td>
+</tr>
+<tr>
+<td><code>visaqcoleman</code></td>
+<td>yes</td>
+<td>Autopilot that reads consulting requests from the expert network portal. Git with no commits.</td>
+<td>no commits</td>
+</tr>
+<tr>
+<td><code>youtube-uploader</code></td>
+<td>no</td>
+<td>Script that uploads videos to YouTube through a saved browser profile.</td>
+<td>~2026-08-28</td>
+</tr>
+</tbody></table>
+<h2>Apple developer setup and Mac infra</h2>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Git</th>
+<th>What it is</th>
+<th>Last activity (CT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>_inventory</code></td>
+<td>no</td>
+<td>Cross-Mac Apple dev pipeline notes, signing scripts and NAS inventory.</td>
+<td>~2026-11-01</td>
+</tr>
+<tr>
+<td><code>_signing</code></td>
+<td>no</td>
+<td>Apple signing certificates and fastlane setup.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>app-website</code></td>
+<td>yes</td>
+<td>Lectern AI landing page and legal pages.</td>
+<td>2026-04-25</td>
+</tr>
+<tr>
+<td><code>AppleDeveloper</code></td>
+<td>no</td>
+<td>Apple signing certificates, keys, profiles and runbooks.</td>
+<td>~2026-08-21</td>
+</tr>
+<tr>
+<td><code>aws</code></td>
+<td>no</td>
+<td>Only agent notes.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>browser-sync</code></td>
+<td>no</td>
+<td>Keeps bookmarks the same across Safari, Chrome and Comet on the three Macs.</td>
+<td>~2026-11-01</td>
+</tr>
+<tr>
+<td><code>mac-bin</code></td>
+<td>yes</td>
+<td>Fleet scripts, agent jobs and restore steps for Ian&#39;s Macs.</td>
+<td>2026-10-12</td>
+</tr>
+<tr>
+<td><code>MacMiniAI</code></td>
+<td>yes</td>
+<td>Setup for the Mac mini as a 24/7 AI workstation.</td>
+<td>2026-04-12</td>
+</tr>
+<tr>
+<td><code>old-mac-dev-utm</code></td>
+<td>no</td>
+<td>Snow Leopard dev research with VM configs and old source repos.</td>
+<td>~2026-08-29</td>
+</tr>
+<tr>
+<td><code>pihole</code></td>
+<td>no</td>
+<td>Pi-hole and AdGuard setup with network diagram.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>proxmox</code></td>
+<td>no</td>
+<td>Proxmox server Docker configs and state notes.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>TeSmart</code></td>
+<td>no</td>
+<td>Notes and scripts for the TeSmart KVM switch.</td>
+<td>~2026-09-09</td>
+</tr>
+</tbody></table>
+<h2>Money and personal</h2>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Git</th>
+<th>What it is</th>
+<th>Last activity (CT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>2025-tax-prep</code></td>
+<td>no</td>
+<td>Tracker and checklist for 2025 tax prep.</td>
+<td>~2026-03-18</td>
+</tr>
+<tr>
+<td><code>equisplit</code></td>
+<td>yes</td>
+<td>EquiSplit, a Next.js expense or equity split app.</td>
+<td>2025-06-15</td>
+</tr>
+<tr>
+<td><code>openai-anthropic-career-research</code></td>
+<td>no</td>
+<td>Research on security roles at OpenAI and Anthropic.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>recipes</code></td>
+<td>no</td>
+<td>Recipe rotation and grocery API notes.</td>
+<td>~2026-02-21</td>
+</tr>
+<tr>
+<td><code>robinhood</code></td>
+<td>no</td>
+<td>Dividend buy plans for the Robinhood accounts.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>sales-dashboard</code></td>
+<td>no</td>
+<td>Pulls Gumroad, App Store and KDP sales into a local database.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>tesla-tracker</code></td>
+<td>no</td>
+<td>Daily Tesla vehicle tracker that updates a Google Sheet.</td>
+<td>~2026-07-12</td>
+</tr>
+<tr>
+<td><code>trading-research</code></td>
+<td>no</td>
+<td>One trading game plan note.</td>
+<td>~2026-01-30</td>
+</tr>
+</tbody></table>
+<h2>Empty or unclear</h2>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Git</th>
+<th>What it is</th>
+<th>Last activity (CT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>agentswitcher</code></td>
+<td>no</td>
+<td>Empty folder.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>bitwarden</code></td>
+<td>no</td>
+<td>Empty folder.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>blogs</code></td>
+<td>no</td>
+<td>Empty folder.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>omada</code></td>
+<td>no</td>
+<td>Empty folder.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>roms</code></td>
+<td>no</td>
+<td>Empty folder.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>samsunggalaxytab</code></td>
+<td>no</td>
+<td>Empty folder.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>Stutter</code></td>
+<td>no</td>
+<td>unclear (only a handover note)</td>
+<td>~2026-07-12</td>
+</tr>
+</tbody></table>
+</article></main></div><footer>Built from <code>/workspace/grokbot-docs</code> — no secrets or tailnet IPs. <a href="https://blog.remnantsecurity.com/">Product Diary</a></footer></body></html>

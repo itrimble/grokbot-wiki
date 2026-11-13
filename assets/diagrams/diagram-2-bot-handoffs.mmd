@@ -1,0 +1,17 @@
+flowchart TD
+  Atlas --> Beacon
+  Atlas --> Scout
+  Atlas --> Ledger
+  XB[X Bookmarks] -- app flags --> Atlas
+  Scout -- bulk research --> Hermes[Hermes CLI]
+  Scout -- success data --- Ledger
+  Studio -- experiment IDs --- Ledger
+  BookGrowth[Book Growth] -- Friday Amazon --- Atlas
+  Atlas -- runtime failures --> Warden
+  IMB[Improve My Bots] -- symptoms --> Warden
+  Warden -- X MCP gate --> Scout
+  Foreman -- PROJECTS/ACTIVITY read-only --> Atlas
+  Foreman -- heavy coding --> Hermes
+  Archivist -- meaningful changes --> Atlas
+  HT[Hermes Tuner] -- tunes box install --> Hermes
+  HT -- runtime incidents --- Warden
