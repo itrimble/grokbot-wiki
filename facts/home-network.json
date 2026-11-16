@@ -1,28 +1,28 @@
 {
-  "collected_at": "2026-11-15T11:40:29Z",
-  "collected_date": "2026-11-15",
+  "collected_at": "2026-11-16T11:40:33Z",
+  "collected_date": "2026-11-16",
   "network": {
-    "hosts_seen": 33,
-    "hosts_unidentified": 9
+    "hosts_seen": 34,
+    "hosts_unidentified": 10
   },
   "roles": {
     "deco_far": {
       "status": "offline"
     },
     "deco_root": {
-      "rtt_ms": 9.9,
+      "rtt_ms": 5.8,
       "status": "online"
     },
     "deco_workspace": {
       "status": "offline"
     },
     "gateway": {
-      "rtt_ms": 12.0,
+      "rtt_ms": 6.6,
       "status": "online"
     },
     "mbp": {
       "link_mbps": 2500,
-      "rtt_ms": 8.0,
+      "rtt_ms": 9.7,
       "status": "online"
     },
     "mbp_kvm": {
@@ -39,9 +39,9 @@
       "carrier_changes": 4,
       "errors": 0,
       "link_mbps": 2500,
-      "rtt_ms": 0.6,
+      "rtt_ms": 0.7,
       "status": "online",
-      "uptime_s": 999752
+      "uptime_s": 1086155
     },
     "neo": {
       "link_mbps": 1000,
@@ -55,7 +55,7 @@
   },
   "schema": 1,
   "tailscale": {
-    "peers_online": 3,
-    "peers_total": 7
+    "peers_online": 4,
+    "peers_total": 8
   }
 }
