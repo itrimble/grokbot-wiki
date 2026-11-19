@@ -1,6 +1,6 @@
 # Home network: overview
 
-This is the network in my house, drawn the way I wish other people had documented theirs. It is one flat private network behind a 5G gateway, with three Wi-Fi mesh nodes, a small 2.5G switch where my computers sit, and a NAS that does more work than anything else on it. I last checked the details on 2026-11-18. A script reads the machines every night, so the speeds, statuses and counts on this page update themselves. Anything marked as not measured was not read.
+This is the network in my house, drawn the way I wish other people had documented theirs. It is one flat private network behind a 5G gateway, with three Wi-Fi mesh nodes, a small 2.5G switch where my computers sit, and a NAS that does more work than anything else on it. I last checked the details on 2026-11-19. A script reads the machines every night, so the speeds, statuses and counts on this page update themselves. Anything marked as not measured was not read.
 
 I left out addresses, MAC addresses, serial numbers, hostnames and account names on purpose. The relationships are the point.
 
@@ -35,7 +35,7 @@ I left out addresses, MAC addresses, serial numbers, hostnames and account names
 | UGREEN DXP2800 NAS | Files, Time Machine backups, DNS filtering, media server, Tailscale container. Intel N100, 8 GB, one 2.5GbE port. | 2.5G through the switch; static address | The Macs lean on it for files, backups and DNS when at home |
 | Mac mini M4 | Always-on host for scheduled jobs and builds | Built-in NIC at 1G through the switch; Wi-Fi also on | Uses the NAS for DNS and backups |
 | MacBook Pro M4 Max | My main machine | USB-C dock at 2.5G through the switch; Wi-Fi also on; a third 1G adapter on the KVM | Same dependencies as the mini |
-| MacBook Neo | Second laptop | USB Ethernet adapter at 1G, plus Wi-Fi | Same dependencies as the mini |
+| MacBook Neo | Second laptop | USB Ethernet adapter at unknown-speed, plus Wi-Fi | Same dependencies as the mini |
 | omarchy | Linux workstation | unknown-speed NIC and Wi-Fi. Online. | Reaches the rest over the LAN or Tailscale |
 | TESmart KVM | Shares one keyboard and display between computers | The MacBook Pro sees a 1G USB LAN adapter through it | Needs no network to do its main job |
 | Tailscale overlay | Encrypted peer-to-peer links between the Macs, the NAS, omarchy, an iPhone and an iPad | Runs over the LAN or the internet | Direct on the LAN, relayed when I am away |
@@ -45,7 +45,7 @@ I left out addresses, MAC addresses, serial numbers, hostnames and account names
 
 ## What I have not identified
 
-The nightly sweep of the LAN on 2026-11-18 saw 35 devices and could not name nine of them. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
+The nightly sweep of the LAN on 2026-11-19 saw 39 devices and could not name twelve of them. Some give only a generic hostname. I would rather list that gap here than guess. Wi-Fi clients that use randomised hardware addresses and sleep a lot are also easy to miss in a sweep, so treat the client list as a floor.
 
 I also did not record which switch port each device uses. The switch is unmanaged, so the ports only show in the lights on its front.
 
