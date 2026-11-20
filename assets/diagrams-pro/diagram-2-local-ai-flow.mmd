@@ -1,0 +1,10 @@
+%% Verified 2026-10-17. Known unverified: tailnet ACL details (no ACL file check); omarchy specs (Ian/Atlas-verified only); ~17 tok/s + concurrency (unbenchmarked); oMLX login-item status.
+flowchart LR
+  Src["Bots / Ian / Hermes / CLIs"] --> Proxy["Box SOCKS5 localhost:1055<br/>userspace tailscaled<br/>oMLX via proxy: Verified 2026-10-17<br/>SOCKS5 /v1/models returned Ornith-1.5-9B-oQ4e-mtp, bge-m3, gemma, Qwen3-TTS"]
+  Proxy -->|"HTTPS 443 /v1 tailscale serve"| OMLX["Mini oMLX<br/>Ornith-1.5-9B ~17tok/s, gemma-4-e4b-it-4bit<br/>bge-m3-mlx embeddings, Qwen3-TTS<br/>1x9B, max2 concurrent, ~6s cold"]
+  Proxy -->|"SSH 22 tssh"| OllamaMini["Mini Ollama local-only<br/>qwen3.5:9b, qwen3:8b, qwen3:4b, gemma3:4b, gemma4:e4b"]
+  Proxy -.->|"Box to Omarchy: UNVERIFIED — path/ACL not documented; use via Grok Bot machine access"| OllamaOm["Omarchy Ollama ROCm gfx1032<br/>qwen3:8b + bge-m3"]
+  HermesBox["Box Hermes v0.22.2<br/>PRIMARY gpt-6.1-sol openai-codex<br/>fallback DeepSeek->MiniMax<br/>oMLX NOT configured"]
+  HermesMini["Mini Hermes v0.22.2<br/>PRIMARY MiniMax-M3 cloud<br/>ONLY fallback local oMLX<br/>7 total — 6 active + 1 paused oMLX warm-up (Warden, never run)<br/>Oct 15: 4 jobs failed (history) — recovered Oct 16-17, all active jobs ok"]
+  HermesMini -->|"fallback"| OMLX
+%% Orchestration 2026-10-17: Box=control plane (Atlas+file queue); model use cases: Ornith=chat/cron fallback, gemma=fast/small, bge-m3=embeddings/RAG, TTS=speech, qwen3:8b=coding assist/sweeps, cloud gpt-6.1-sol/MiniMax-M3/DeepSeek=primary/fallback coding. See diagram-4-orchestration.
